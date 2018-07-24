@@ -22,7 +22,7 @@
             android:layout_height="0dp"
             />
         <com.example.nrbzms17.ui.widget.ClearEditText
-            android:id="@+id/etCode"
+            android:id="@+id/purCode"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
@@ -48,7 +48,7 @@
     </LinearLayout>
 
     <ListView
-    android:id="@+id/pullListView"
+    android:id="@+id/purchaseView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     ></ListView>

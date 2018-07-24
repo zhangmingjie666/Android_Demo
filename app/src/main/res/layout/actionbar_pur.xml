@@ -8,7 +8,7 @@
     >
     <Button
         android:drawableLeft="@drawable/back4"
-        android:id="@+id/back_menu"
+        android:id="@+id/purchase_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
@@ -28,7 +28,7 @@
         />
 
     <Spinner
-        android:id="@+id/spinner_status"
+        android:id="@+id/purchase_status"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:dropDownVerticalOffset="40dp"

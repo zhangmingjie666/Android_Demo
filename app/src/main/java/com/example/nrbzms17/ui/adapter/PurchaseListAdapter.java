@@ -51,7 +51,7 @@ public class PurchaseListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_order, null);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_purchase, null);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
@@ -72,7 +72,7 @@ public class PurchaseListAdapter extends BaseAdapter {
         viewHolder.pur_status.setText(bean.status);
         viewHolder.pur_material.setText(bean.material);
         viewHolder.pur_employee.setText(bean.employee);
-        viewHolder.pur_quantity.setText(bean.yquantity);
+        viewHolder.pur_quantity.setText(bean.quantity);
         viewHolder.pur_color.setText(bean.color);
         viewHolder.pur_contcode.setText(bean.contcode);
 
@@ -114,4 +114,5 @@ public class PurchaseListAdapter extends BaseAdapter {
         }
 
 
-    }}
+    }
+}

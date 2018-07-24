@@ -14,7 +14,7 @@ public class PurchaseBean implements Serializable {
         public String status;
         public String color;
         public String employee;
-        public String yquantity;
+        public String quantity;
         public String contcode;
     }
 }
