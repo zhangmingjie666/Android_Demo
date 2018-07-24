@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:id="@+id/ckb"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:clickable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-7dp"/>
+
+        <TextView
+            android:id="@+id/pur_customcode_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="订单号："
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:id="@+id/pur_customcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/pur_customcode_tip"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/pur_billdate_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="160dp"
+            android:layout_centerVertical="true"
+            android:text="单据日期："
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/pur_billdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/pur_billdate_tip"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/pur_company_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="供应商："
+            android:textColor="@color/black"
+            android:layout_marginLeft="20dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/pur_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/pur_company_tip"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/pur_material_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="产品："
+            android:textColor="@color/black"
+            android:layout_marginLeft="160dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/pur_material"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/pur_material_tip"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/pur_status_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="状态："
+            android:textColor="@color/black"
+            android:layout_marginLeft="20dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/pur_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/pur_status_tip"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/pur_employee_tip"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="160dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="业务员："
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/pur_employee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/pur_employee_tip"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+
+        <TextView
+        android:id="@+id/pur_contcode_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="合同号："
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+        <TextView
+        android:id="@+id/pur_contcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/pur_contcode_tip"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+        <TextView
+        android:id="@+id/pur_quantity_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="160dp"
+        android:text="成品数："
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+        <TextView
+        android:id="@+id/pur_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/pur_quantity_tip"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/pur_color_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="利润率："
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/pur_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/pur_color_tip"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+
+    <!--必须指定宽度-->
+    <!--<TextView-->
+        <!--android:id="@+id/tvDelete"-->
+        <!--android:layout_width="96dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:gravity="center"-->
+        <!--android:textSize="18sp"-->
+        <!--android:background="#e53935"-->
+        <!--android:textColor="#eeeeee"-->
+        <!--android:text="删除" />-->
+
+
+</LinearLayout>
