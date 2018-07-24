@@ -19,10 +19,6 @@ public class PurchaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase_list);
 
-        initview();
-    }
-
-    public void initview() {
         //返回
         purSearch = findViewById(R.id.purSearch);
         purSearch.setOnClickListener(new View.OnClickListener() {
@@ -32,8 +28,10 @@ public class PurchaseActivity extends AppCompatActivity {
             }
         });
 
+        initview();
+    }
 
-
+    public void initview() {
 
     }
 }
