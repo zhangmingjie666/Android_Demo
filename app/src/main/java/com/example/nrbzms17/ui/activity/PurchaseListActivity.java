@@ -3,9 +3,10 @@ package com.example.nrbzms17.ui.activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -18,20 +19,20 @@ import com.example.nrbzms17.R;
 import com.example.nrbzms17.Utils.JSONUtils;
 import com.example.nrbzms17.data.Api;
 import com.example.nrbzms17.data.listener.OnNetRequest;
-import com.example.nrbzms17.data.model.OrderBean;
-import com.example.nrbzms17.data.model.OrderBeanResponse;
-import com.example.nrbzms17.data.model.OrderListBean;
 import com.example.nrbzms17.data.model.PurchaseBean;
 import com.example.nrbzms17.data.model.PurchaseBeanResponse;
 import com.example.nrbzms17.ui.adapter.PurchaseListAdapter;
 import com.example.nrbzms17.ui.widget.ClearEditText;
-import com.jingchen.pulltorefresh.PullToRefreshLayout;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import java.util.Date;
 import java.util.List;
 
-public class PurchaseActivity extends AppCompatActivity {
+public class PurchaseListActivity extends AppCompatActivity {
 
     Button purchase_menu;
 
@@ -52,9 +53,9 @@ public class PurchaseActivity extends AppCompatActivity {
 
     //日期
     int mYear, mMonth, mDay;
-    Button btn;
-    TextView dateDisplay;
-    final int DATE_DIALOG = 1;
+    TextView start;
+    TextView end;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +67,11 @@ public class PurchaseActivity extends AppCompatActivity {
         getPurchaseList();
 
 
-        initData();
-        final Calendar ca = Calendar.getInstance();
-        mYear = ca.get(Calendar.YEAR);
-        mMonth = ca.get(Calendar.MONTH);
-        mDay = ca.get(Calendar.DAY_OF_MONTH);
+//        initData();
+//        final Calendar ca = Calendar.getInstance();
+//        mYear = ca.get(Calendar.YEAR);
+//        mMonth = ca.get(Calendar.MONTH);
+//        mDay = ca.get(Calendar.DAY_OF_MONTH);
     }
 
     public void initview() {
@@ -91,7 +92,9 @@ public class PurchaseActivity extends AppCompatActivity {
 
         purCode = (ClearEditText) findViewById(R.id.purCode);
 
-        btn = (Button) findViewById(R.id.dateChoose);
+        start = (TextView) findViewById(R.id.start);
+
+        end = (TextView) findViewById(R.id.end);
 
 //        dateDisplay = (TextView) findViewById(R.id.dateDisplay);
 
@@ -103,12 +106,32 @@ public class PurchaseActivity extends AppCompatActivity {
         mYear = ca.get(Calendar.YEAR);
         mMonth = ca.get(Calendar.MONTH);
         mDay = ca.get(Calendar.DAY_OF_MONTH);
-
+//
         String date;
 
-        date = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay).append(" ").toString();
+        String deliverdate;
 
-        btn.setText(date);
+        date = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay).append(" ").toString();
+        Date d;
+        deliverdate = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay).append(" ").toString();
+        d=StringToDate(deliverdate);
+        deliverdate=DateToString(d);
+        start.setText(date);
+        end.setText(deliverdate);
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDateDialog(1);
+            }
+        });
+
+        end.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDateDialog(2);
+            }
+        });
+
 
         //查询
         purSearch.setOnClickListener(new View.OnClickListener() {
@@ -125,10 +148,10 @@ public class PurchaseActivity extends AppCompatActivity {
                 PurchaseBean.Data processOrder = (PurchaseBean.Data) purchaseListAdapter.getItem(position);
 
 
-                Intent intent = new Intent(PurchaseActivity.this, PurchaseDetailActivity.class);
+                Intent intent = new Intent(PurchaseListActivity.this, PurchaseDetailActivity.class);
                 Bundle bundle = new Bundle();
 
-//                bundle.putSerializable(OrderListBean.Data.class.getSimpleName(), processOrder);
+                bundle.putSerializable(PurchaseBean.Data.class.getSimpleName(), processOrder);
                 intent.putExtras(bundle);
 
                 startActivity(intent);
@@ -178,62 +201,170 @@ public class PurchaseActivity extends AppCompatActivity {
             }
         });
 
-        api.getPurchaseList("", purCode.getText().toString().trim(), btn.getText().toString().trim());
+        api.getPurchaseList("", purCode.getText().toString().trim(), start.getText().toString().trim(),end.getText().toString().trim());
+
+    }
+    /**
+     *
+     */
+    String start_time="";
+    String end_time="";
+    //number参数表示设置 开始:1 或 结束:2 时间
+    public void showDateDialog(final int number){
+        //获得当前时间 DatePicker默认显示
+        Calendar calendar= Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        //SimpleDateFromat转变表示时间的格式
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        //实例化DatePickerDialog对象 并设置时间选择监听
+        DatePickerDialog dp = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//                log(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                switch (number) {
+                    case 1:
+                        //为什么这么设置时间格式? 本人项目服务器要求这么传 哈哈
+                        start_time = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
+
+                        start.setText(start_time);
+                        getPurchaseList();
+                        break;
+                    case 2:
+                        end_time = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
+                        end.setText(end_time);
+                        getPurchaseList();
+                        break;
+                }
+            }
+        }, year, month, day);
+        //当开始时间已经选则而且是点击结束时间弹出picker
+        if(!TextUtils.isEmpty(start_time)&&number==2){
+            try {
+                Date date=sdf.parse(start_time);
+                //设置最小可选择时间
+                dp.getDatePicker().setMinDate(date.getTime());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+        }
+        //当结束时间已经选择而且是点击开始时间弹出的picker
+        if(!TextUtils.isEmpty(end_time)&&number==1){
+            try {
+                Date date=sdf.parse(end_time);
+                //设置最大可选择时间
+                dp.getDatePicker().setMaxDate(date.getTime());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        dp.show();
 
     }
 
     //日期处理
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        switch (id) {
-            case DATE_DIALOG:
-                return new DatePickerDialog(PurchaseActivity.this, mdateListener, mYear, mMonth, mDay);
-        }
-        return null;
+//    @Override
+//    protected Dialog onCreateDialog(int id) {
+//        switch (id) {
+//            case DATE_DIALOG:
+//                return new DatePickerDialog(PurchaseListActivity.this, mdateListener, mYear, mMonth, mDay);
+//        }
+//        return null;
+//    }
+//
+//    DatePickerDialog.OnDateSetListener mdateListener = new DatePickerDialog.OnDateSetListener() {
+//
+//        @Override
+//        public void onDateSet(DatePicker view, int year, int monthOfYear,
+//                              int dayOfMonth) {
+//            mYear = year;
+//            mMonth = monthOfYear;
+//            mDay = dayOfMonth;
+////            display();
+//            String date;
+//            String deliverdate;
+//
+//            String time;
+//
+//            Date d;
+//            deliverdate = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay+7).append(" ").toString();
+//            date = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay).append(" ").toString();
+//
+////          dateDisplay.setText(new StringBuffer().append(mMonth + 1).append("-").append(mDay).append("-").append(mYear).append(" "));
+////            getDateAfter(7);
+//            d=StringToDate(deliverdate);
+//            deliverdate=DateToString(d);
+//            btn.setText(date);
+//            button.setText(deliverdate);
+//
+//
+//
+//
+//
+//            getPurchaseList();
+//
+//        }
+//
+//        /**
+//         * 设置日期 利用StringBuffer追加
+//         */
+//        private void display() {
+//
+//
+//        }
+//    };
+
+//    private void initData() {
+//        //监听事件
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showDialog(DATE_DIALOG);
+//            }
+//        });
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showDialog(DATE_DIALOG);
+//            }
+//        });
+
+
+
+    public static Date getDateAfter(int day){
+        Calendar now =Calendar.getInstance();
+        now.set(Calendar.DATE,now.get(Calendar.DATE)+day);
+        return now.getTime();
     }
 
-    DatePickerDialog.OnDateSetListener mdateListener = new DatePickerDialog.OnDateSetListener() {
-
-        @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear,
-                              int dayOfMonth) {
-            mYear = year;
-            mMonth = monthOfYear;
-            mDay = dayOfMonth;
-//            display();
-            String date;
-
-            date = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay).append(" ").toString();
-
-//          dateDisplay.setText(new StringBuffer().append(mMonth + 1).append("-").append(mDay).append("-").append(mYear).append(" "));
-
-            btn.setText(date);
-
-            getPurchaseList();
-
-        }
-
-        /**
-         * 设置日期 利用StringBuffer追加
-         */
-        private void display() {
-
-
-        }
-    };
-
-    private void initData() {
-
-        //监听事件
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialog(DATE_DIALOG);
-            }
-        });
-
-
+    public static Date getDateBefore(int day){
+        Calendar now =Calendar.getInstance();
+//        now.setTime(d);
+        now.set(Calendar.DATE,now.get(Calendar.DATE)-day);
+        return now.getTime();
     }
 
+    public static String DateToString(Date date){
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        String str=sdf.format(date);
+        return str;
+    }
+
+    public static Date StringToDate(String str){
+
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟
+        Date date= null;
+        try {
+            date = sdf.parse(str);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return date;
+    }
 
 }
+
+

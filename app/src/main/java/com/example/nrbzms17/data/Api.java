@@ -126,11 +126,24 @@ public class Api {
      */
     public final static String GET_PURCHASE = "purchase/list";
 
-    public void getPurchaseList(String status, String customcode) {
+    public void getPurchaseList(String status, String customcode,String date,String deliverdate) {
         Map<String, String> params = new HashMap<>();
         params.put("status", status);
         params.put("code", customcode);
+        params.put("start_time", date);
+        params.put("end_time", deliverdate);
         mClient.get(GET_PURCHASE, params, callback);
     }
 
+
+    /**
+     * 采购明细
+     */
+    public final static String GET_PURCHASEDETAIL= "purchase/detail";
+
+    public void getPurchasedetail( String id) {
+        Map<String, String> params = new HashMap<>();
+        params.put("id", id);
+        mClient.get(GET_PURCHASEDETAIL, params, callback);
+    }
 }

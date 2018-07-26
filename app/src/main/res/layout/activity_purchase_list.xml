@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/content_bg"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     >
 
     <include layout="@layout/actionbar_pur"></include>
@@ -47,10 +49,61 @@
             />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:drawableLeft="@mipmap/start_time"
+            android:id="@+id/start"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:text=""
+            android:textSize="18sp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:background="#ffffff"
+            />
+        <View
+            android:layout_width="2px"
+            android:layout_height="fill_parent"
+            android:background="?android:attr/listDivider"
+            />
+        <TextView
+            android:drawableLeft="@mipmap/start_time"
+            android:id="@+id/end"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text=""
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:background="#ffffff"
+            />
+
+
+        <!--<TextView-->
+            <!--android:id="@+id/dateDisplay"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="150dp"-->
+            <!--android:textSize="18sp"-->
+            <!--android:layout_toRightOf="@id/dateChoose"-->
+            <!--/>-->
+
+
+    </LinearLayout>
+
     <ListView
     android:id="@+id/purchaseView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+        android:background="@drawable/layer_list"
+
     ></ListView>
     <!--<com.jingchen.pulltorefresh.PullToRefreshLayout-->
         <!--android:id="@+id/pullToRefreshLayout"-->

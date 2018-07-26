@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,7 +74,7 @@ import com.example.nrbzms17.ui.Fragment.FirstFragment;
 //                            startActivity(intent);
 //                            break;
 //                        case R.id.purchase:
-//                            intent = new Intent(MainActivity.this, PurchaseActivity.class);
+//                            intent = new Intent(MainActivity.this, PurchaseListActivity.class);
 //                            startActivity(intent);
 //                            break;
 //                    }
@@ -97,7 +96,7 @@ import com.example.nrbzms17.ui.Fragment.FirstFragment;
                 purchase.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(MainActivity.this, PurchaseActivity.class);
+                        Intent intent = new Intent(MainActivity.this, PurchaseListActivity.class);
                         startActivity(intent);
                     }
                 });
@@ -108,7 +107,7 @@ import com.example.nrbzms17.ui.Fragment.FirstFragment;
 //                @Override
 //                public void onClick(View v) {
 //                    Intent intent = new Intent();
-//                    intent.setClass(MainActivity.this, PurchaseActivity.class);
+//                    intent.setClass(MainActivity.this, PurchaseListActivity.class);
 //                    startActivity(intent);
 //                    //设置切换动画，从右边进入，左边退出
 //                    overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);

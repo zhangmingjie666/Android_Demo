@@ -7,9 +7,7 @@
     android:width="0.1dp"
     android:color="#D9D9D9"
     />
-
            <padding
                android:top="0.8dp"
                />
-
 </shape>

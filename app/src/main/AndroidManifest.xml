@@ -20,10 +20,11 @@
             android:name=".ui.activity.OrderListActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity android:name=".ui.activity.OrderDetailActivity" />
-        <activity android:name=".ui.activity.PurchaseActivity" />
-        <!--<activity android:name=".ui.activity.MainActivity" />-->
+        <activity android:name=".ui.activity.PurchaseListActivity" />
+        <!-- <activity android:name=".ui.activity.MainActivity" /> -->
         <activity android:name=".ui.activity.CheckActivity" />
-        <activity android:name=".ui.activity.InspectActivity"></activity>
+        <activity android:name=".ui.activity.InspectActivity" />
+        <activity android:name=".ui.activity.PurchaseDetailActivity"></activity>
     </application>
 
 </manifest>
