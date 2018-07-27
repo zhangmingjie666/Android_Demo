@@ -523,10 +523,6 @@
             android:textColor="@color/black"
             android:textSize="17sp" />
     </RelativeLayout>
-    <!--<ListView-->
-    <!--android:id="@+id/purchaseView"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--&gt;</ListView>-->
+
 
 </LinearLayout>

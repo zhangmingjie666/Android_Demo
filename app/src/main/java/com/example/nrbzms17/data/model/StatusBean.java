@@ -4,11 +4,17 @@ import java.io.Serializable;
 
 public class StatusBean implements Serializable {
 
+//        public Data result;
+//        public class Data implements Serializable {
+//                public String id;
+//                public String status;
+//        }
+
         public String id;
-        public String status;
-        public StatusBean(String id,String status){
+        public String name;
+        public StatusBean(String id,String name){
                 this.id = id;
-                this.status =status;
+                this.name =name;
         }
 
 }

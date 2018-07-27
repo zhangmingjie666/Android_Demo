@@ -18,10 +18,14 @@ import android.widget.TextView;
 import com.example.nrbzms17.R;
 import com.example.nrbzms17.Utils.JSONUtils;
 import com.example.nrbzms17.data.Api;
+import com.example.nrbzms17.data.SharedPreference;
 import com.example.nrbzms17.data.listener.OnNetRequest;
 import com.example.nrbzms17.data.model.PurchaseBean;
 import com.example.nrbzms17.data.model.PurchaseBeanResponse;
+import com.example.nrbzms17.data.model.StatusBean;
+import com.example.nrbzms17.data.model.StatusBeanResponse;
 import com.example.nrbzms17.ui.adapter.PurchaseListAdapter;
+import com.example.nrbzms17.ui.adapter.SpinnerStatusAdapter;
 import com.example.nrbzms17.ui.widget.ClearEditText;
 
 import java.text.ParseException;
@@ -51,10 +55,17 @@ public class PurchaseListActivity extends AppCompatActivity {
 
     Button purSearch;
 
+    SpinnerStatusAdapter statusAdapter;
+
+    private StatusBean statusBean;
     //日期
     int mYear, mMonth, mDay;
     TextView start;
     TextView end;
+
+    TextView txtv_Name;
+
+    String str;
 
 
     @Override
@@ -64,6 +75,7 @@ public class PurchaseListActivity extends AppCompatActivity {
 
         initview();
 
+        setClickListeners();
         getPurchaseList();
 
 
@@ -72,6 +84,8 @@ public class PurchaseListActivity extends AppCompatActivity {
 //        mYear = ca.get(Calendar.YEAR);
 //        mMonth = ca.get(Calendar.MONTH);
 //        mDay = ca.get(Calendar.DAY_OF_MONTH);
+
+        getStatusInfo();
     }
 
     public void initview() {
@@ -100,7 +114,9 @@ public class PurchaseListActivity extends AppCompatActivity {
 
         purchase_status = (Spinner) findViewById(R.id.purchase_status);
 
-        purSearch =(Button) findViewById(R.id.purSearch);
+        purSearch = (Button) findViewById(R.id.purSearch);
+
+        txtv_Name = (TextView) findViewById(R.id.txtv_Name);
 
         final Calendar ca = Calendar.getInstance();
         mYear = ca.get(Calendar.YEAR);
@@ -114,8 +130,8 @@ public class PurchaseListActivity extends AppCompatActivity {
         date = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay).append(" ").toString();
         Date d;
         deliverdate = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay).append(" ").toString();
-        d=StringToDate(deliverdate);
-        deliverdate=DateToString(d);
+        d = StringToDate(deliverdate);
+        deliverdate = DateToString(d);
         start.setText(date);
         end.setText(deliverdate);
         start.setOnClickListener(new View.OnClickListener() {
@@ -159,9 +175,43 @@ public class PurchaseListActivity extends AppCompatActivity {
         });
 
 
+        //状态
+        statusAdapter = new SpinnerStatusAdapter();
+
+        purchase_status.setAdapter(statusAdapter);
+
     }
 
-    public void getPurchaseList( ) {
+    //状态下拉
+    private void setClickListeners() {
+
+        purchase_status.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                statusBean = (StatusBean) statusAdapter.getItem(position);
+                getPurchaseList();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+    }
+
+
+    public void getPurchaseList() {
+
+        String status = "";
+
+        if (statusBean != null) {
+            status = statusBean.id;
+
+            if (status == "-1") {
+                status = "";
+            }
+        }
 
         Api api = new Api(this, new OnNetRequest(this, true, "正在加载.....") {
             @Override
@@ -170,27 +220,12 @@ public class PurchaseListActivity extends AppCompatActivity {
                 PurchaseBeanResponse response = JSONUtils.fromJson(msg, PurchaseBeanResponse.class);
 
                 if (response != null && response.result != null) {
-
-                    if (response.result.size() > 0) {
-
-                        PurchaseBean = response.result;
-
-                        purchaseListAdapter.refresh(PurchaseBean);
-
-
-//                        order = OrderBeanList.get(0);
-
-
-                    } else {
-
-                        PurchaseBean = new ArrayList<>();
-
-                        purchase = null;
-
-                    }
-
-
+                    PurchaseBean = response.result;
+                } else {
+                    PurchaseBean = new ArrayList<>();
                 }
+
+                purchaseListAdapter.refresh(PurchaseBean);
             }
 
             @Override
@@ -201,23 +236,29 @@ public class PurchaseListActivity extends AppCompatActivity {
             }
         });
 
-        api.getPurchaseList("", purCode.getText().toString().trim(), start.getText().toString().trim(),end.getText().toString().trim());
+        api.getPurchaseList(status, purCode.getText().toString().trim(), start.getText().toString().trim(), end.getText().toString().trim());
 
     }
+
     /**
      *
      */
-    String start_time="";
-    String end_time="";
+    String start_time = "";
+    String end_time = "";
+
     //number参数表示设置 开始:1 或 结束:2 时间
-    public void showDateDialog(final int number){
+    public void showDateDialog(final int number) {
+
         //获得当前时间 DatePicker默认显示
-        Calendar calendar= Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
+
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
+
         //SimpleDateFromat转变表示时间的格式
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
         //实例化DatePickerDialog对象 并设置时间选择监听
         DatePickerDialog dp = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -239,11 +280,14 @@ public class PurchaseListActivity extends AppCompatActivity {
                 }
             }
         }, year, month, day);
+
         //当开始时间已经选则而且是点击结束时间弹出picker
-        if(!TextUtils.isEmpty(start_time)&&number==2){
+        if (!TextUtils.isEmpty(start_time) && number == 2) {
             try {
-                Date date=sdf.parse(start_time);
+                Date date = sdf.parse(start_time);
+
                 //设置最小可选择时间
+
                 dp.getDatePicker().setMinDate(date.getTime());
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -251,9 +295,9 @@ public class PurchaseListActivity extends AppCompatActivity {
 
         }
         //当结束时间已经选择而且是点击开始时间弹出的picker
-        if(!TextUtils.isEmpty(end_time)&&number==1){
+        if (!TextUtils.isEmpty(end_time) && number == 1) {
             try {
-                Date date=sdf.parse(end_time);
+                Date date = sdf.parse(end_time);
                 //设置最大可选择时间
                 dp.getDatePicker().setMaxDate(date.getTime());
             } catch (ParseException e) {
@@ -332,30 +376,29 @@ public class PurchaseListActivity extends AppCompatActivity {
 //        });
 
 
-
-    public static Date getDateAfter(int day){
-        Calendar now =Calendar.getInstance();
-        now.set(Calendar.DATE,now.get(Calendar.DATE)+day);
+    public static Date getDateAfter(int day) {
+        Calendar now = Calendar.getInstance();
+        now.set(Calendar.DATE, now.get(Calendar.DATE) + day);
         return now.getTime();
     }
 
-    public static Date getDateBefore(int day){
-        Calendar now =Calendar.getInstance();
+    public static Date getDateBefore(int day) {
+        Calendar now = Calendar.getInstance();
 //        now.setTime(d);
-        now.set(Calendar.DATE,now.get(Calendar.DATE)-day);
+        now.set(Calendar.DATE, now.get(Calendar.DATE) - day);
         return now.getTime();
     }
 
-    public static String DateToString(Date date){
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-        String str=sdf.format(date);
+    public static String DateToString(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String str = sdf.format(date);
         return str;
     }
 
-    public static Date StringToDate(String str){
+    public static Date StringToDate(String str) {
 
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟
-        Date date= null;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟
+        Date date = null;
         try {
             date = sdf.parse(str);
         } catch (ParseException e) {
@@ -365,6 +408,47 @@ public class PurchaseListActivity extends AppCompatActivity {
         return date;
     }
 
+    // 获取状态信息
+    public void getStatusInfo() {
+        Api api = new Api(this, new OnNetRequest(this) {
+            @Override
+            public void onSuccess(String msg) {
+                StatusBeanResponse statusBeanResponse = JSONUtils.fromJson(msg, StatusBeanResponse.class);
+                if (statusBeanResponse != null && statusBeanResponse.result != null) {
+
+                    statusAdapter.refresh(statusBeanResponse.result);
+
+                    String departmentId = SharedPreference.getDepartmentId();
+                    if (TextUtils.isEmpty(departmentId) || departmentId.equals("-1")) {
+                        return;
+                    }
+                    for (int i = 0; i < statusAdapter.getCount(); i++) {
+                        StatusBean bean = (StatusBean) statusAdapter.getItem(i);
+//                        if(bean.id.equals(departmentId))
+//                        {
+//                            statusBean.setSelection(i);
+//                            break;
+//                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFail() {
+
+            }
+        });
+
+        api.getStatusInfo();
+    }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+
+        getPurchaseList();
+
+        purCode.setText("");
+    }
 }
-
-

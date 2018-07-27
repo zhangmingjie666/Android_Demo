@@ -126,9 +126,9 @@ public class Api {
      */
     public final static String GET_PURCHASE = "purchase/list";
 
-    public void getPurchaseList(String status, String customcode,String date,String deliverdate) {
+    public void getPurchaseList(String name, String customcode,String date,String deliverdate) {
         Map<String, String> params = new HashMap<>();
-        params.put("status", status);
+        params.put("status", name);
         params.put("code", customcode);
         params.put("start_time", date);
         params.put("end_time", deliverdate);
@@ -146,4 +146,36 @@ public class Api {
         params.put("id", id);
         mClient.get(GET_PURCHASEDETAIL, params, callback);
     }
+
+    /**
+     * 获取状态信息
+     */
+    public final static String GET_STATUS = "status/list";
+    public void getStatusInfo(){
+        mClient.get(GET_STATUS,null,callback);
+    }
+
+    /**
+     * 审核采购
+     */
+    public final static String POST_PURCHASEAUDIT = "Purchase/purchaseAudit";
+
+    public void PurchaseAudit(String id) {
+        Map<String, String> params = new HashMap<>();
+        params.put("id", id);
+        mClient.post(POST_PURCHASEAUDIT, params, callback);
+    }
+
+
+    /**
+     * 反审采购
+     */
+    public final static String POST_PURCHASENOAUDIT = "Purchase/purchaseNoaudit";
+
+    public void PurchaseNoaudit(String id) {
+        Map<String, String> params = new HashMap<>();
+        params.put("id", id);
+        mClient.post(POST_PURCHASENOAUDIT, params, callback);
+    }
+
 }

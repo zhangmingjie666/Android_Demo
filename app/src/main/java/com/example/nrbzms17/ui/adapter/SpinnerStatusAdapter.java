@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.nrbzms17.R;
 import com.example.nrbzms17.data.model.StatusBean;
@@ -49,7 +50,7 @@ public class SpinnerStatusAdapter extends BaseAdapter {
 
         if (convertView == null) {
 
-            convertView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.actionbar_ord, null);
+            convertView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.spinner_item, null);
 
             viewHolder = new ViewHolder(convertView);
 
@@ -61,25 +62,21 @@ public class SpinnerStatusAdapter extends BaseAdapter {
         }
         StatusBean managerBean = listData.get(position);
 
-        if (managerBean.status.equals(0)) {
 
-            viewHolder.spinner_status.setTag("待审核");
 
-        } else {
+            viewHolder.txtvName.setText(managerBean.name);
 
-            viewHolder.spinner_status.setTag("已审核");
-        }
+
+
 
 
         return convertView;
     }
 
     static class ViewHolder {
+        @BindView(R.id.txtv_Name)
 
-        @BindView(R.id.spinner_status)
-
-        Spinner spinner_status;
-
+        TextView txtvName;
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
