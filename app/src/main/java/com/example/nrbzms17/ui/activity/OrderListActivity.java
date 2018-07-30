@@ -40,7 +40,7 @@ import java.util.List;
 public class OrderListActivity extends AppCompatActivity {
 
     OrderListAdapter adapter = new OrderListAdapter();
-    ;
+
     private List<OrderBean.Data> OrderBeanList = new ArrayList<>();
 
 
@@ -119,6 +119,7 @@ public class OrderListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getOrderList("status");
+                spinner.setSelection(0, true);
             }
         });
 //        // 下拉刷新事件
@@ -126,6 +127,7 @@ public class OrderListActivity extends AppCompatActivity {
             @Override
             public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
                 getOrderList("status");
+                spinner.setSelection(0, true);
             }
 
             @Override

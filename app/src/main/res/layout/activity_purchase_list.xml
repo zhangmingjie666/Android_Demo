@@ -3,117 +3,123 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/content_bg"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    >
+    android:orientation="vertical">
 
     <include layout="@layout/actionbar_pur"></include>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
         android:background="@color/content_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:padding="1dp"
         android:weightSum="1">
+
         <EditText
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            />
+            android:layout_height="0dp" />
+
         <com.example.nrbzms17.ui.widget.ClearEditText
             android:id="@+id/purCode"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
-            android:hint="输入订单号"
             android:background="@drawable/search_edittext_bg"
-            android:maxLength="20"
             android:gravity="center_vertical"
+            android:hint="输入订单号"
             android:inputType="numberDecimal"
+            android:maxLength="20"
             android:paddingLeft="8dp"
             android:paddingRight="5dp"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
+
         <Button
             android:id="@+id/purSearch"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/button_bg_box"
+            android:gravity="center"
             android:text="查询"
             android:textColor="@color/black"
-            android:gravity="center"
-            android:background="@drawable/button_bg_box"
-            android:textSize="20sp"
-            android:layout_marginLeft="8dp"
-            />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
-        <TextView
-            android:drawableLeft="@mipmap/start_time"
-            android:id="@+id/start"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="40dp"
-            android:text=""
-            android:textSize="18sp"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:background="#ffffff"
-            />
-        <View
-            android:layout_width="2px"
-            android:layout_height="fill_parent"
-            android:background="?android:attr/listDivider"
-            />
-        <TextView
-            android:drawableLeft="@mipmap/start_time"
-            android:id="@+id/end"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:text=""
-            android:layout_weight="1"
-            android:textSize="18sp"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:background="#ffffff"
-            />
+        <Spinner
+            android:id="@+id/choose_date"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#FFFAF0"
+            android:entries="@array/timeChoose"
+            android:scrollbarSize="20dp"></Spinner>
+        <!--<TextView-->
+        <!--android:drawableLeft="@mipmap/start_time"-->
+        <!--android:id="@+id/start"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:text=""-->
+        <!--android:textSize="18sp"-->
+        <!--android:gravity="center"-->
+        <!--android:textColor="@color/black"-->
+        <!--android:background="#ffffff"-->
+        <!--/>-->
+        <!--<View-->
+        <!--android:layout_width="2px"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:background="?android:attr/listDivider"-->
+        <!--/>-->
+        <!--<TextView-->
+        <!--android:drawableLeft="@mipmap/start_time"-->
+        <!--android:id="@+id/end"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:text=""-->
+        <!--android:layout_weight="1"-->
+        <!--android:textSize="18sp"-->
+        <!--android:gravity="center"-->
+        <!--android:textColor="@color/black"-->
+        <!--android:background="#ffffff"-->
+        <!--/>-->
 
 
         <!--<TextView-->
-            <!--android:id="@+id/dateDisplay"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="150dp"-->
-            <!--android:textSize="18sp"-->
-            <!--android:layout_toRightOf="@id/dateChoose"-->
-            <!--/>-->
+        <!--android:id="@+id/dateDisplay"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="150dp"-->
+        <!--android:textSize="18sp"-->
+        <!--android:layout_toRightOf="@id/dateChoose"-->
+        <!--/>-->
 
 
     </LinearLayout>
 
     <ListView
-    android:id="@+id/purchaseView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+        android:id="@+id/purchaseView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/layer_list"
 
-    ></ListView>
+        ></ListView>
     <!--<com.jingchen.pulltorefresh.PullToRefreshLayout-->
-        <!--android:id="@+id/pullToRefreshLayout"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
-        <!--<com.jingchen.pulltorefresh.PullableListView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:padding="3dp"-->
-            <!--&gt;</com.jingchen.pulltorefresh.PullableListView>-->
+    <!--android:id="@+id/pullToRefreshLayout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+    <!--<com.jingchen.pulltorefresh.PullableListView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:padding="3dp"-->
+    <!--&gt;</com.jingchen.pulltorefresh.PullableListView>-->
     <!--</com.jingchen.pulltorefresh.PullToRefreshLayout>-->
 
 </LinearLayout>

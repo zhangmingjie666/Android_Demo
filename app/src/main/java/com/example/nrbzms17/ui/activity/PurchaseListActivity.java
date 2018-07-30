@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
@@ -53,6 +54,8 @@ public class PurchaseListActivity extends AppCompatActivity {
 
     Spinner purchase_status;
 
+    Spinner choose_date;
+
     Button purSearch;
 
     SpinnerStatusAdapter statusAdapter;
@@ -66,6 +69,7 @@ public class PurchaseListActivity extends AppCompatActivity {
     TextView txtv_Name;
 
     String str;
+    private ArrayAdapter adapter;
 
 
     @Override
@@ -76,8 +80,15 @@ public class PurchaseListActivity extends AppCompatActivity {
         initview();
 
         setClickListeners();
-        getPurchaseList();
 
+
+        String starttime;
+
+        String endtime;
+
+        starttime = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay).append(" ").toString();
+        endtime = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay).append(" ").toString();
+        getPurchaseList(starttime, endtime);
 
 //        initData();
 //        final Calendar ca = Calendar.getInstance();
@@ -86,6 +97,22 @@ public class PurchaseListActivity extends AppCompatActivity {
 //        mDay = ca.get(Calendar.DAY_OF_MONTH);
 
         getStatusInfo();
+
+        choose_date = (Spinner) findViewById(R.id.choose_date);
+
+        //将可选内容与ArrayAdapter连接起来
+        adapter = ArrayAdapter.createFromResource(this, R.array.timeChoose, android.R.layout.simple_spinner_item);
+
+        //设置下拉列表的风格
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        //将adapter2 添加到spinner中
+        choose_date.setAdapter(adapter);
+
+        //添加事件Spinner事件监听
+        choose_date.setOnItemSelectedListener(new SpinnerXMLSelectedListener());
+
+
     }
 
     public void initview() {
@@ -106,6 +133,8 @@ public class PurchaseListActivity extends AppCompatActivity {
 
         purCode = (ClearEditText) findViewById(R.id.purCode);
 
+        //时间查询
+
         start = (TextView) findViewById(R.id.start);
 
         end = (TextView) findViewById(R.id.end);
@@ -117,6 +146,7 @@ public class PurchaseListActivity extends AppCompatActivity {
         purSearch = (Button) findViewById(R.id.purSearch);
 
         txtv_Name = (TextView) findViewById(R.id.txtv_Name);
+
 
         final Calendar ca = Calendar.getInstance();
         mYear = ca.get(Calendar.YEAR);
@@ -132,28 +162,30 @@ public class PurchaseListActivity extends AppCompatActivity {
         deliverdate = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay).append(" ").toString();
         d = StringToDate(deliverdate);
         deliverdate = DateToString(d);
-        start.setText(date);
-        end.setText(deliverdate);
-        start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDateDialog(1);
-            }
-        });
 
-        end.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDateDialog(2);
-            }
-        });
+
+//        start.setText(date);
+//        end.setText(deliverdate);
+//        start.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showDateDialog(1);
+//            }
+//        });
+//
+//        end.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showDateDialog(2);
+//            }
+//        });
 
 
         //查询
         purSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getPurchaseList();
+                getPurchaseList("", "");
             }
         });
 
@@ -189,7 +221,7 @@ public class PurchaseListActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 statusBean = (StatusBean) statusAdapter.getItem(position);
-                getPurchaseList();
+                getPurchaseList("", "");
             }
 
             @Override
@@ -200,8 +232,8 @@ public class PurchaseListActivity extends AppCompatActivity {
 
     }
 
-
-    public void getPurchaseList() {
+    //获取采购列表
+    public void getPurchaseList(String starttime, String endtime) {
 
         String status = "";
 
@@ -236,8 +268,8 @@ public class PurchaseListActivity extends AppCompatActivity {
             }
         });
 
-        api.getPurchaseList(status, purCode.getText().toString().trim(), start.getText().toString().trim(), end.getText().toString().trim());
-
+//        api.getPurchaseList(status, purCode.getText().toString().trim(), start.getText().toString().trim(), end.getText().toString().trim());
+        api.getPurchaseList(status, purCode.getText().toString().trim(), endtime, starttime);
     }
 
     /**
@@ -270,12 +302,12 @@ public class PurchaseListActivity extends AppCompatActivity {
                         start_time = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
 
                         start.setText(start_time);
-                        getPurchaseList();
+//                        getPurchaseList();
                         break;
                     case 2:
                         end_time = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
                         end.setText(end_time);
-                        getPurchaseList();
+//                        getPurchaseList();
                         break;
                 }
             }
@@ -307,74 +339,6 @@ public class PurchaseListActivity extends AppCompatActivity {
         dp.show();
 
     }
-
-    //日期处理
-//    @Override
-//    protected Dialog onCreateDialog(int id) {
-//        switch (id) {
-//            case DATE_DIALOG:
-//                return new DatePickerDialog(PurchaseListActivity.this, mdateListener, mYear, mMonth, mDay);
-//        }
-//        return null;
-//    }
-//
-//    DatePickerDialog.OnDateSetListener mdateListener = new DatePickerDialog.OnDateSetListener() {
-//
-//        @Override
-//        public void onDateSet(DatePicker view, int year, int monthOfYear,
-//                              int dayOfMonth) {
-//            mYear = year;
-//            mMonth = monthOfYear;
-//            mDay = dayOfMonth;
-////            display();
-//            String date;
-//            String deliverdate;
-//
-//            String time;
-//
-//            Date d;
-//            deliverdate = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay+7).append(" ").toString();
-//            date = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay).append(" ").toString();
-//
-////          dateDisplay.setText(new StringBuffer().append(mMonth + 1).append("-").append(mDay).append("-").append(mYear).append(" "));
-////            getDateAfter(7);
-//            d=StringToDate(deliverdate);
-//            deliverdate=DateToString(d);
-//            btn.setText(date);
-//            button.setText(deliverdate);
-//
-//
-//
-//
-//
-//            getPurchaseList();
-//
-//        }
-//
-//        /**
-//         * 设置日期 利用StringBuffer追加
-//         */
-//        private void display() {
-//
-//
-//        }
-//    };
-
-//    private void initData() {
-//        //监听事件
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                showDialog(DATE_DIALOG);
-//            }
-//        });
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                showDialog(DATE_DIALOG);
-//            }
-//        });
-
 
     public static Date getDateAfter(int day) {
         Calendar now = Calendar.getInstance();
@@ -442,12 +406,54 @@ public class PurchaseListActivity extends AppCompatActivity {
         api.getStatusInfo();
     }
 
+    //使用XML形式操作
+    class SpinnerXMLSelectedListener implements AdapterView.OnItemSelectedListener {
+        public void onItemSelected(AdapterView<?> arg0, View arg1, int position,
+                                   long arg3) {
+            if (position == 0) {
+
+                getPurchaseList("", "");
+            } else if (position == 1) {
+                String starttime;
+
+                String endtime;
+
+                starttime = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay).append(" ").toString();
+                endtime = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay).append(" ").toString();
+                getPurchaseList(starttime, endtime);
+            } else if (position == 2) {
+                String starttime;
+
+                String endtime;
+
+                starttime = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay).append(" ").toString();
+                endtime = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay -3).append(" ").toString();
+                getPurchaseList(starttime, endtime);
+            }else if(position == 3){
+                String starttime;
+
+                String endtime;
+
+                starttime = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay).append(" ").toString();
+                endtime = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay -7).append(" ").toString();
+                getPurchaseList(starttime, endtime);
+            }
+
+        }
+
+        public void onNothingSelected(AdapterView<?> arg0) {
+
+        }
+
+    }
+
+
     @Override
     protected void onResume() {
 
         super.onResume();
 
-        getPurchaseList();
+        getPurchaseList("", "");
 
         purCode.setText("");
     }

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.nrbzms17">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -24,7 +26,8 @@
         <!-- <activity android:name=".ui.activity.MainActivity" /> -->
         <activity android:name=".ui.activity.CheckActivity" />
         <activity android:name=".ui.activity.InspectActivity" />
-        <activity android:name=".ui.activity.PurchaseDetailActivity"></activity>
+        <activity android:name=".ui.activity.PurchaseDetailActivity" />
+        <activity android:name=".ui.activity.SettingActivity"></activity>
     </application>
 
 </manifest>

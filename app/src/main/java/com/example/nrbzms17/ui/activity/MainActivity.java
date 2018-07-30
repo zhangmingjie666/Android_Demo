@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.example.nrbzms17.R;
 import com.example.nrbzms17.ui.Fragment.FirstFragment;
 
-        public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView topBar;
     private TextView tabDeal;
     private TextView tabPoi;
@@ -100,6 +100,17 @@ import com.example.nrbzms17.ui.Fragment.FirstFragment;
                         startActivity(intent);
                     }
                 });
+
+            //启动采购
+            TextView inspect = (TextView)findViewById(R.id.inspect);
+            inspect.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(MainActivity.this, InspectActivity.class);
+                    startActivity(intent);
+                }
+            });
+
 
 
 //            TextView purchase = (TextView)findViewById(R.id.purchase);
@@ -234,8 +245,11 @@ import com.example.nrbzms17.ui.Fragment.FirstFragment;
                 tabMore.setSelected(true);
                 if (f2 == null) {
 
-                    f2 = new FirstFragment("更多");
-                    transaction.add(R.id.fragment_container, f2);
+//                    f2 = new FirstFragment("更多");
+//                    transaction.add(R.id.fragment_container, f2);
+
+                    Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                    startActivity(intent);
                 } else {
 //                    transaction.show(f2);
                 }
