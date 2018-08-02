@@ -1,7 +1,6 @@
 package com.example.nrbzms17.ui.activity;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
 
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.nrbzms17.R;
+//import com.nrbzms17.Utils.JSONUtils;
 import com.example.nrbzms17.Utils.JSONUtils;
 import com.example.nrbzms17.data.Api;
 import com.example.nrbzms17.data.SharedPreference;
@@ -28,6 +28,7 @@ import com.example.nrbzms17.data.model.StatusBeanResponse;
 import com.example.nrbzms17.ui.adapter.PurchaseListAdapter;
 import com.example.nrbzms17.ui.adapter.SpinnerStatusAdapter;
 import com.example.nrbzms17.ui.widget.ClearEditText;
+//import com.nrbzms17.ui.widget.ClearEditText;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

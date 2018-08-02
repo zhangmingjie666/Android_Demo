@@ -1,4 +1,4 @@
-//package com.example.fragmentdemo.ui.dialog;
+package com.example.nrbzms17.ui.dialog;//package com.example.fragmentdemo.ui.dialog;
 //
 //import android.app.Activity;
 //import android.app.Dialog;

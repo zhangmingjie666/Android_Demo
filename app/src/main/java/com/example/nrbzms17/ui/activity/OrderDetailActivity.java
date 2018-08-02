@@ -1,6 +1,5 @@
 package com.example.nrbzms17.ui.activity;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -9,10 +8,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nrbzms17.R;
+//import com.nrbzms17.Utils.JSONUtils;
 import com.example.nrbzms17.Utils.JSONUtils;
 import com.example.nrbzms17.data.Api;
 import com.example.nrbzms17.data.listener.OnNetRequest;

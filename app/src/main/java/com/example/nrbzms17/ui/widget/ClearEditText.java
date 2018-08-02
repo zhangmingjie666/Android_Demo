@@ -13,8 +13,6 @@ import android.widget.EditText;
 import com.example.nrbzms17.R;
 
 
-
-
 /**
  * 自带清除按钮的输入框，清除按钮的作用是清空输入框的输入内容；
  * 需要注意的是，清除按钮会占据drawableRight的位置，所以设置drawableRight会无效

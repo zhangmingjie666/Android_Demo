@@ -7,7 +7,6 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.GetBuilder;
 import com.zhy.http.okhttp.builder.PostFormBuilder;
 
-import java.io.File;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 

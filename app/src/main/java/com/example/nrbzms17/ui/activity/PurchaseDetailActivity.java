@@ -5,21 +5,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nrbzms17.R;
+//import com.nrbzms17.Utils.JSONUtils;
 import com.example.nrbzms17.Utils.JSONUtils;
 import com.example.nrbzms17.data.Api;
 import com.example.nrbzms17.data.listener.OnNetRequest;
-import com.example.nrbzms17.data.model.OrderBean;
 import com.example.nrbzms17.data.model.PurchaseBean;
-import com.example.nrbzms17.data.model.PurchaseBeanResponse;
 import com.example.nrbzms17.data.model.PurchaseDetailBean;
 import com.example.nrbzms17.data.model.PurchaseDetailBeanResponse;
 import com.example.nrbzms17.data.model.StatusBean;
 import com.example.nrbzms17.ui.adapter.PurchaseDetailAdapter;
-import com.example.nrbzms17.ui.adapter.PurchaseListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

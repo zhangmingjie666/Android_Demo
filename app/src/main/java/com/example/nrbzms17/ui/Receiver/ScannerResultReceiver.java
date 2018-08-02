@@ -12,7 +12,7 @@ import org.greenrobot.eventbus.EventBus;
  * Created by Joe on 2016/6/9.
  * Email-joe_zong@163.com
  */
-public class ScannerResultReceiver extends BroadcastReceiver{
+public class ScannerResultReceiver extends BroadcastReceiver {
     private static final String RES_ACTION = "android.intent.action.SCANRESULT";
     private final static String SCAN_ACTION = "scan.rcv.message";//device2
 

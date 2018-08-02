@@ -1,6 +1,5 @@
 package com.example.nrbzms17.ui.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,16 +15,6 @@ import com.example.nrbzms17.Utils.UIHelper;
 import com.example.nrbzms17.data.Api;
 import com.example.nrbzms17.data.listener.OnNetRequest;
 import com.example.nrbzms17.data.model.UserBean;
-import com.example.nrbzms17.data.model.UserBeanResponse;
-import com.google.gson.JsonObject;
-
-import org.json.JSONObject;
-
-import java.lang.reflect.Array;
-import java.util.HashMap;
-import java.util.Map;
-
-import butterknife.BindView;
 
 public class LoginActivity extends AppCompatActivity {
 
