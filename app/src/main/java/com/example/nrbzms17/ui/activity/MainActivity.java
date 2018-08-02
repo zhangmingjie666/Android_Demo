@@ -1,6 +1,5 @@
 package com.example.nrbzms17.ui.activity;
 
-import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.View;
 import android.support.v4.app.FragmentActivity;
@@ -19,25 +18,20 @@ public class MainActivity extends FragmentActivity {
 
     private MainFragment mainFragment;
     private FindFragment findFragment;
-    private PersonFragment personFragment;
     private SettingFragment settingFragment;
+    private PersonFragment personFragment;
 
-    // 当前选中id,默认是主页
-//    private int currentId = R.id.nr_function;
-    private int currentId;
-    private TextView tabFunction;
-    private TextView tabFind;
-    private TextView tabPerson;
-    private TextView tabSetting;
+    private int currentId = R.id.nr_function;// 当前选中id,默认是主页
 
+    private TextView tabFunction, tabFind, tabPerson, tabSetting;//底部四个TextView
 
     private long lastBack = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         tabFunction = (TextView) findViewById(R.id.nr_function);
         tabFunction.setSelected(true);//首页默认选中
         tabFind = (TextView) findViewById(R.id.nr_find);
@@ -49,24 +43,12 @@ public class MainActivity extends FragmentActivity {
          */
         mainFragment = new MainFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, mainFragment).commit();
+
         tabFunction.setOnClickListener(tabClickListener);
         tabFind.setOnClickListener(tabClickListener);
         tabPerson.setOnClickListener(tabClickListener);
         tabSetting.setOnClickListener(tabClickListener);
-//        findViewById(R.id.txt_deal).setOnClickListener(onClickListener);
     }
-
-//    private View.OnClickListener onClickListener=new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            switch (v.getId()) {
-//                case R.id.txt_deal:
-//                    Intent intent=new Intent(MainActivity.this, SettingActivity.class);
-//                    startActivity(intent);
-//                    break;
-//            }
-//        }
-//    };
 
 
     private View.OnClickListener tabClickListener = new View.OnClickListener() {
@@ -80,16 +62,87 @@ public class MainActivity extends FragmentActivity {
         }
     };
 
+    /**
+     * 改变fragment的显示
+     *
+     * @param resId
+     */
+    private void changeFragment(int resId) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();//开启一个Fragment事务
 
-    //重置所有文本的选中状态
-//    public void selected() {
-//        tabFunction.setSelected(false);
-//        tabFind.setSelected(false);
-//        tabPerson.setSelected(false);
-//        tabSetting.setSelected(false);
-//    }
+        hideFragments(transaction);//隐藏所有fragment
+        if(resId==R.id.nr_function){//主页
+            if(mainFragment==null){//如果为空先添加进来.不为空直接显示
+                mainFragment = new MainFragment();
+                transaction.add(R.id.fragment_container,mainFragment);
+            }else {
+                transaction.show(mainFragment);
+            }
+        }else if(resId==R.id.nr_setting){//动态
+            if(settingFragment==null){
+                settingFragment = new SettingFragment();
+                transaction.add(R.id.fragment_container,settingFragment);
+            }else {
+                transaction.show(settingFragment);
+            }
+        }else if(resId==R.id.nr_find){//消息中心
+            if(findFragment==null){
+                findFragment = new FindFragment();
+                transaction.add(R.id.fragment_container,findFragment);
+            }else {
+                transaction.show(findFragment);
+            }
+        }else if(resId==R.id.nr_person){//我
+            if(personFragment==null){
+                personFragment = new PersonFragment();
+                transaction.add(R.id.fragment_container,personFragment);
+            }else {
+                transaction.show(personFragment);
+            }
+        }
+        transaction.commit();//一定要记得提交事务
+    }
 
+    /**
+     * 显示之前隐藏所有fragment
+     * @param transaction
+     */
+    private void hideFragments(FragmentTransaction transaction){
+        if (mainFragment != null)//不为空才隐藏,如果不判断第一次会有空指针异常
+            transaction.hide(mainFragment);
+        if (findFragment != null)
+            transaction.hide(findFragment);
+        if (settingFragment != null)
+            transaction.hide(settingFragment);
+        if (personFragment != null)
+            transaction.hide(personFragment);
+    }
 
+    /**
+     * 改变TextView选中颜色
+     * @param resId
+     */
+    private void changeSelect(int resId) {
+        tabFunction.setSelected(false);
+        tabFind.setSelected(false);
+        tabPerson.setSelected(false);
+        tabSetting.setSelected(false);
+
+        switch (resId) {
+            case R.id.nr_function:
+                tabFunction.setSelected(true);
+                break;
+            case R.id.nr_find:
+                tabFind.setSelected(true);
+                break;
+            case R.id.nr_setting:
+                tabSetting.setSelected(true);
+                break;
+            case R.id.nr_person:
+                tabPerson.setSelected(true);
+                break;
+        }
+    }
     //返回键提示
     @Override
     public void onBackPressed() {
@@ -101,92 +154,6 @@ public class MainActivity extends FragmentActivity {
         super.onBackPressed();
 
     }
-
-    /**
-     * 改变fragment的显示
-     *
-     * @param resId
-     */
-    private void changeFragment(int resId) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();//开启一个Fragment事务
-
-        hideFragments(transaction);
-        if (resId == R.id.nr_function) {
-            if (mainFragment == null) {
-                mainFragment = new MainFragment();
-                transaction.add(R.id.fragment_container, mainFragment);
-            } else {
-                transaction.show(mainFragment);
-            }
-        } else if (resId == R.id.nr_find) {
-            if (findFragment == null) {
-                findFragment = new FindFragment();
-                transaction.add(R.id.fragment_container, findFragment);
-            } else {
-                transaction.show(findFragment);
-            }
-        } else if (resId == R.id.nr_setting) {
-            if (settingFragment == null) {
-                settingFragment = new SettingFragment();
-                transaction.add(R.id.fragment_container, settingFragment);
-            } else {
-                transaction.show(settingFragment);
-            }
-        } else if (resId == R.id.nr_person) {
-            if (personFragment == null) {
-                personFragment = new PersonFragment();
-                transaction.add(R.id.fragment_container, personFragment);
-            } else {
-                transaction.show(personFragment);
-            }
-        }
-        transaction.commit();//一定要记得提交事务
-    }
-
-    /**
-     * 显示之前隐藏所有fragment
-     *
-     * @param transaction
-     */
-    private void hideFragments(FragmentTransaction transaction) {
-        if (mainFragment != null)//不为空才隐藏,如果不判断第一次会有空指针异常
-            transaction.hide(mainFragment);
-        if (personFragment != null)
-            transaction.hide(personFragment);
-        if (settingFragment != null)
-            transaction.hide(settingFragment);
-        if (personFragment != null)
-            transaction.hide(personFragment);
-    }
-
-    /**
-     * 改变TextView选中颜色
-     *
-     * @param resId
-     */
-    private void changeSelect(int resId) {
-        tabSetting.setSelected(false);
-        tabPerson.setSelected(false);
-        tabFind.setSelected(false);
-        tabFunction.setSelected(false);
-
-        switch (resId) {
-            case R.id.nr_function:
-                tabFunction.setSelected(true);
-                break;
-            case R.id.nr_find:
-                tabFind.setSelected(true);
-                break;
-            case R.id.nr_person:
-                tabPerson.setSelected(true);
-                break;
-            case R.id.nr_setting:
-                tabSetting.setSelected(true);
-                break;
-        }
-    }
-
-
 }
 
 

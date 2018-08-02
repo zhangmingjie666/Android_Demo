@@ -26,7 +26,7 @@ public class Api {
 
     public Api(Context aContext, final OnNetRequest listener) {
         this.mContext = aContext;
-        this.mClient = Client.getInstance(SharedPreference.getHost());
+        this.mClient = Client.getInstance(SharedPreference.getUrl());
         callback = new OnRequestCallback(mContext, listener.isShowLoading(), listener.getLoadingText()) {
             @Override
             public void onResponse(String response) {
@@ -64,6 +64,13 @@ public class Api {
             }
         };
     }
+    /**
+     * APP升级信息
+     */
+    public void upgrade() {
+        Map<String, String> params = new HashMap<>();
+        mClient.get("upgrade/info", params, callback);
+    }
 
     /**
      * 获取订单列表
@@ -74,7 +81,6 @@ public class Api {
         Map<String, String> params = new HashMap<>();
         params.put("status", status);
         params.put("code", customcode);
-
         mClient.get(GET_INDENTILIST, params, callback);
     }
 

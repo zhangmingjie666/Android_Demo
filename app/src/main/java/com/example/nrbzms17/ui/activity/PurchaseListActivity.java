@@ -69,7 +69,6 @@ public class PurchaseListActivity extends AppCompatActivity {
 
     TextView txtv_Name;
 
-    String str;
     private ArrayAdapter adapter;
 
 

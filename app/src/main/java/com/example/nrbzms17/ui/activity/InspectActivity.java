@@ -12,10 +12,13 @@ public class InspectActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_echarts);
-        webView = findViewById(R.id.echarts);
-        webView.getSettings().setAllowFileAccess(true);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("file:///android_asset/echart/index.html");
+//        webView = findViewById(R.id.echarts);
+//        webView.getSettings().setAllowFileAccess(true);
+//        webView.getSettings().setJavaScriptEnabled(true);
+//        webView.loadUrl("file:///android_asset/echart/index.html");
 //        webView.loadUrl("http://www.baidu.com");
+
+
+
     }
 }

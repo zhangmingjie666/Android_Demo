@@ -12,8 +12,30 @@ import com.example.nrbzms17.MyApplication;
  */
 public class SharedPreference {
     public static final SharedPreferences mSharedPreference = MyApplication.getInstance().getSharedPreferences("OutboundPreferences", Context.MODE_PRIVATE);
-
+    public static final String DOWNLOAD_TASK_ID = ".download_task_id";
     public static final String EmplyeeId = ".employee_id";
+
+    public static final String Host = ".host";
+    public static final String Project = ".project";
+
+    public static String getUrl() {
+        String host = mSharedPreference.getString(Host, AppConstant.Host);
+        String project = mSharedPreference.getString(Project, AppConstant.Project);
+        String http = TextUtils.isEmpty(AppConstant.Http) ? "http" : AppConstant.Http;
+        String api = TextUtils.isEmpty(AppConstant.Api) ? "restful.php" : AppConstant.Api;
+        String url = http + "://" + host + "/" + project + "/" + api + "/";
+        return url;
+    }
+
+    public static String getProject() {
+        return mSharedPreference.getString(Project, AppConstant.Project);
+    }
+
+    public static void setProject(String project) {
+        mSharedPreference.edit().putString(Project, project).apply();
+    }
+
+
     public static String getEmplyeeId(){
         return mSharedPreference.getString(EmplyeeId,"");
     }
@@ -40,7 +62,6 @@ public class SharedPreference {
         mSharedPreference.edit().putString(ClassesId,classesId).apply();
     }
 
-    public static final String Host = ".host";
 
     public static String getHost() {
         String host = mSharedPreference.getString(Host, AppConstant.Host);
@@ -50,6 +71,25 @@ public class SharedPreference {
     public static void setHost(String host){
         mSharedPreference.edit().putString(Host, host).apply();
     }
+    /**
+     * 保存的当前下载任务id
+     */
+    public static void setDownloadTaskId(long downloadTaskId) {
+        mSharedPreference.edit().putLong(DOWNLOAD_TASK_ID, downloadTaskId).apply();
+    }
 
+    /**
+     * 获取保存的当前下载任务id
+     */
+    public static long getDownloadTaskId() {
+        return mSharedPreference.getLong(DOWNLOAD_TASK_ID, -12306L);
+    }
+
+    /**
+     * 移除保存的下载任务id
+     */
+    public static void deleteDownloadTaskId() {
+        mSharedPreference.edit().remove(DOWNLOAD_TASK_ID);
+    }
 
 }

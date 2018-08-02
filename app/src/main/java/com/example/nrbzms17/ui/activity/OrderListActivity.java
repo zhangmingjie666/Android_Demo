@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,10 +16,10 @@ import android.widget.TextView;
 import com.example.nrbzms17.R;
 import com.example.nrbzms17.Utils.JSONUtils;
 import com.example.nrbzms17.data.Api;
-//import com.nrbzms17.Utils.JSONUtils;
+
+import com.example.nrbzms17.data.SharedPreference;
 import com.example.nrbzms17.data.listener.OnNetRequest;
 
-//import com.example.fragmentdemo.adapter.OrderListAdapter.java;
 import com.example.nrbzms17.data.model.OrderBean;
 import com.example.nrbzms17.data.model.OrderBeanResponse;
 import com.example.nrbzms17.data.model.OrderListBean;
@@ -27,11 +28,9 @@ import com.example.nrbzms17.data.model.StatusBeanResponse;
 import com.example.nrbzms17.ui.adapter.OrderDetailAdapter;
 import com.example.nrbzms17.ui.adapter.OrderListAdapter;
 import com.example.nrbzms17.ui.adapter.SpinnerStatusAdapter;
-//import com.nrbzms17.ui.widget.ClearEditText;
 import com.example.nrbzms17.ui.widget.ClearEditText;
 import com.jingchen.pulltorefresh.PullToRefreshLayout;
-//import com.example.fragmentdemo.widget.ClearEditText;
-//import com.jingchen.pulltorefresh.PullToRefreshLayout;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,47 +43,32 @@ public class OrderListActivity extends AppCompatActivity {
 
 
     private OrderBean order;
-    Spinner spinner;
+    Spinner order_status;
     TextView textView;
     OrderDetailAdapter orderadapter;
     ClearEditText etCode;
     PullToRefreshLayout pullToRefreshLayout;
-    String[] Items = {"待审核", "已审核"};
     SpinnerStatusAdapter statusAdapter;
+    private StatusBean statusBean;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_list);
 
-        spinner = (Spinner) findViewById(R.id.spinner_status);
+        order_status = (Spinner) findViewById(R.id.order_status);
         textView = (TextView) findViewById(R.id.txtv_status);
 
         etCode = (ClearEditText) findViewById(R.id.etCode);
-        spinner = findViewById(R.id.spinner_status);
 
+        statusAdapter = new SpinnerStatusAdapter();
+        order_status.setAdapter(statusAdapter);
         order = new OrderBean();
 
-
-        getOrderList("status");
-
-        //下拉列表
-        ArrayAdapter<String> statusAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Items);
-
-        statusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-
-        spinner.setAdapter(statusAdapter);
-
-        spinner.setSelection(0, true);
-
-        spinner.setOnItemSelectedListener(new com.example.nrbzms17.ui.activity.OrderListActivity.SpinnerSelectedListener());
-
         initViews();
-//        getStatus();
+        getOrderList();
 
-
-//        setClickListeners();
+        setClickListeners();
 
         Button button = (Button) findViewById(R.id.back_menu);
         button.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +78,7 @@ public class OrderListActivity extends AppCompatActivity {
             }
         });
 
-
+        getStatusInfo();
     }
 
 
@@ -103,7 +87,7 @@ public class OrderListActivity extends AppCompatActivity {
      */
     private void initViews() {
 
-        Button etSearch = (Button) findViewById(R.id.etSearch);
+            Button etSearch = (Button) findViewById(R.id.etSearch);
         pullToRefreshLayout = findViewById(R.id.pullToRefreshLayout);
         // 设置列表适配器
         ListView listView = (ListView) pullToRefreshLayout.getPullableView();
@@ -111,22 +95,19 @@ public class OrderListActivity extends AppCompatActivity {
         pullToRefreshLayout.setPullUpEnable(false);
 
 
-//
-
-
         etSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getOrderList("status");
-                spinner.setSelection(0, true);
+                getOrderList();
+
             }
         });
-//        // 下拉刷新事件
+        // 下拉刷新事件
         pullToRefreshLayout.setOnPullListener(new PullToRefreshLayout.OnPullListener() {
             @Override
             public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
-                getOrderList("status");
-                spinner.setSelection(0, true);
+                getOrderList();
+//                spinner.setSelection(0, true);
             }
 
             @Override
@@ -136,7 +117,7 @@ public class OrderListActivity extends AppCompatActivity {
 
         });
 
-      // 栏目点击事件
+        // 栏目点击事件
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -154,56 +135,37 @@ public class OrderListActivity extends AppCompatActivity {
         });
     }
 
-    //获取当前状态
-    public void getStatus() {
 
-        Api api = new Api(this, new OnNetRequest(this) {
+    //状态下拉
+    private void setClickListeners() {
 
+        order_status.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onSuccess(String msg) {
-
-                StatusBeanResponse response = JSONUtils.fromJson(msg, StatusBeanResponse.class);
-
-                if (response != null && response.result != null) {
-
-                    statusAdapter.refresh(response.result);
-
-                    for (int i = 0; i < statusAdapter.getCount(); i++) {
-
-                        StatusBean bean = (StatusBean) statusAdapter.getItem(i);
-
-                        spinner.setSelection(i);
-
-                        break;
-
-                    }
-                }
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                statusBean = (StatusBean) statusAdapter.getItem(position);
+                getOrderList();
             }
 
             @Override
-            public void onFail() {
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
-
         });
 
     }
 
     //获取订单列表
-    public void getOrderList(String status) {
-//        List<OrderBean> list = new ArrayList<>();
-//        adapter.refresh(list);
-//
-//        String barcode = etCode.getText().toString().trim();
-//
-//        if(barcode.equals("")){
-//            adapter.refresh(list);
-//        } else {
+    public void getOrderList() {
 
-//        adapter = new OrderListAdapter.java();
+        String status = "";
 
-//        listView.setAdapter(adapter);
+        if (statusBean != null) {
+            status = statusBean.id;
 
+            if (status == "-1") {
+                status = "";
+            }
+        }
 
         Api api = new Api(this, new OnNetRequest(this, true, "正在加载.....") {
             @Override
@@ -213,27 +175,15 @@ public class OrderListActivity extends AppCompatActivity {
 
                 if (response != null && response.result != null) {
 
-                    if (response.result.size() > 0) {
-
-                        OrderBeanList = response.result;
-
-                        adapter.refresh(OrderBeanList);
-
-
-//                        order = OrderBeanList.get(0);
-
-
-                    } else {
-
-                        OrderBeanList = new ArrayList<>();
-
-                        order = null;
-
-                    }
+                    OrderBeanList = response.result;
                     adapter.refresh(OrderBeanList);
 
-                    pullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);
                 }
+                else{
+                    OrderBeanList = new ArrayList<>();
+                }
+                adapter.refresh(OrderBeanList);
+                pullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);
             }
 
             @Override
@@ -250,75 +200,43 @@ public class OrderListActivity extends AppCompatActivity {
 
     }
 
-    //状态选择事件
-    class SpinnerSelectedListener implements AdapterView.OnItemSelectedListener {
 
-        public void onItemSelected(AdapterView<?> arg0, View view, int position, long id) {
+    // 获取状态信息
+    public void getStatusInfo() {
+        Api api = new Api(this, new OnNetRequest(this) {
+            @Override
+            public void onSuccess(String msg) {
+                StatusBeanResponse statusBeanResponse = JSONUtils.fromJson(msg, StatusBeanResponse.class);
+                if (statusBeanResponse != null && statusBeanResponse.result != null) {
 
-//            String data = (String) spinner.getItemAtPosition(position);
+                    statusAdapter.refresh(statusBeanResponse.result);
 
+                    String departmentId = SharedPreference.getDepartmentId();
+                    if (TextUtils.isEmpty(departmentId) || departmentId.equals("-1")) {
+                        return;
+                    }
+                    for (int i = 0; i < statusAdapter.getCount(); i++) {
+                        StatusBean bean = (StatusBean) statusAdapter.getItem(i);
+                    }
+                }
+            }
 
-//            Toast.makeText(OrderListActivity.this,str,Toast.LENGTH_SHORT).show();
+            @Override
+            public void onFail() {
 
+            }
+        });
 
-            String str;
-
-            str = position + "";
-
-            getOrderList(str);
-
-
-        }
-
-        public void onNothingSelected(AdapterView<?> arg0) {
-
-        }
+        api.getStatusInfo();
     }
-
-
-    // 删除
-//    public void deleteProcessPack(String id) {
-//        Api api = new Api(this, new OnNetRequest(this, true, "请稍等") {
-//            @Override
-//            public void onSuccess(String msg) {
-//                ProcessOrderPackListBean responseBean = JSONUtils.fromJson(msg, ProcessOrderPackListBean.class);
-//                if (responseBean != null && responseBean.result != null) {
-//                    if (responseBean.result.size() == 0) {
-//                    }
-//                    UIHelper.showShortToast(ProcessOrderPackActivity.this, "删除成功");
-//                    adapter.refresh(responseBean.result);
-//                } else {
-//                }
-//
-//                listView.turnNormal();
-//                calcQuantity();
-//            }
-//
-//            @Override
-//            public void onFail() {
-//
-//                listView.turnNormal();
-//            }
-//        });
-//
-//        api.deleteProcessPack(id);
-//    }
-
-
-//    @Override
-//    protected void onRestart() {
-//        super.onRestart();
-//        getOrderList("status");
-//    }
 
     @Override
     protected void onResume() {
 
         super.onResume();
 
-        getOrderList("status");
+//        getOrderList();
 
-        spinner.setSelection(0, true);
     }
 
 
