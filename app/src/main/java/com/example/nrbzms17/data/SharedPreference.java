@@ -14,7 +14,6 @@ public class SharedPreference {
     public static final SharedPreferences mSharedPreference = MyApplication.getInstance().getSharedPreferences("OutboundPreferences", Context.MODE_PRIVATE);
     public static final String DOWNLOAD_TASK_ID = ".download_task_id";
     public static final String EmplyeeId = ".employee_id";
-
     public static final String Host = ".host";
     public static final String Project = ".project";
 

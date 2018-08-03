@@ -71,7 +71,7 @@ public class PurchaseDetailActivity extends AppCompatActivity {
 
                 }
             });
-        } else {
+        } else if(purchase.status.toString().equals("已审核")){
              purchase_audit =  findViewById(R.id.purchase_audit);
             purchase_audit.setEnabled(false);
              purchase_noaudit =  findViewById(R.id.purchase_noaudit);
@@ -84,6 +84,11 @@ public class PurchaseDetailActivity extends AppCompatActivity {
 
                 }
             });
+        }else{
+            purchase_audit =  findViewById(R.id.purchase_audit);
+            purchase_audit.setEnabled(false);
+            purchase_noaudit =  findViewById(R.id.purchase_noaudit);
+            purchase_noaudit.setEnabled(false);
         }
         getPurchaseDetail();
     }

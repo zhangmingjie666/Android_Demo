@@ -63,13 +63,18 @@ public class OrderListAdapter extends BaseAdapter {
         viewHolder.txtv_billdate.setText(bean.billdate);
         viewHolder.txtv_company.setText(bean.company);
         //小范秀操作
-        if (bean.status.toString().equals("待审核")) {
+        if (bean.status.toString().equals("0")) {
             viewHolder.txtv_status.setTextColor(Color.parseColor("#FF0000"));
-        } else {
+            viewHolder.txtv_status.setText("待审核");
+        } else if(bean.status.toString().equals("1")) {
+            viewHolder.txtv_status.setText("已审核");
             viewHolder.txtv_status.setTextColor(Color.parseColor("#0000FF"));
+        }else{
+            viewHolder.txtv_status.setText("已完成");
+            viewHolder.txtv_status.setTextColor(Color.parseColor("#000000"));
         }
 
-        viewHolder.txtv_status.setText(bean.status);
+//        viewHolder.txtv_status.setText(bean.status);
         viewHolder.txtv_material.setText(bean.material);
         viewHolder.txtv_employee.setText(bean.employee);
         viewHolder.txtv_quantity.setText(bean.yquantity);

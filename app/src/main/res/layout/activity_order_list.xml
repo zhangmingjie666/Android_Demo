@@ -46,6 +46,16 @@
             android:layout_marginLeft="8dp"
             />
     </LinearLayout>
+
+    <com.example.nrbzms17.ui.view.SideslipListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:divider="@color/view_line"
+        android:dividerHeight="1dp"></com.example.nrbzms17.ui.view.SideslipListView>
+
     <!--<ListView-->
         <!--android:id="@+id/pullListView"-->
         <!--android:layout_width="match_parent"-->

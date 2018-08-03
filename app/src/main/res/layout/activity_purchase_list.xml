@@ -58,7 +58,7 @@
             android:id="@+id/choose_date"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:background="#FFFAF0"
+            android:background="#F8F8FF"
             android:entries="@array/timeChoose"
             android:scrollbarSize="20dp"></Spinner>
         <!--<TextView-->
@@ -104,22 +104,23 @@
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/purchaseView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/layer_list"
+    <!--<ListView-->
+        <!--android:id="@+id/purchaseView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@drawable/layer_list"-->
 
-        ></ListView>
-    <!--<com.jingchen.pulltorefresh.PullToRefreshLayout-->
-    <!--android:id="@+id/pullToRefreshLayout"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
-    <!--<com.jingchen.pulltorefresh.PullableListView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:padding="3dp"-->
-    <!--&gt;</com.jingchen.pulltorefresh.PullableListView>-->
-    <!--</com.jingchen.pulltorefresh.PullToRefreshLayout>-->
+        <!--&gt;</ListView>-->
+    <com.jingchen.pulltorefresh.PullToRefreshLayout
+        android:id="@+id/pullToRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.jingchen.pulltorefresh.PullableListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="3dp"
+            ></com.jingchen.pulltorefresh.PullableListView>
+    </com.jingchen.pulltorefresh.PullToRefreshLayout>
+
 
 </LinearLayout>

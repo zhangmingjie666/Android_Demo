@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.app.Fragment;
 import android.widget.TextView;
-
+import com.example.codescan.zxing.activity.CaptureActivity;
 import com.example.nrbzms17.R;
 import com.example.nrbzms17.ui.activity.InspectActivity;
 import com.example.nrbzms17.ui.activity.OrderListActivity;
 import com.example.nrbzms17.ui.activity.PurchaseListActivity;
-import com.example.nrbzms17.ui.activity.SettingActivity;
+
 
 public class MainFragment extends Fragment {
 
@@ -24,6 +24,7 @@ public class MainFragment extends Fragment {
         TextView order = view.findViewById(R.id.order);
         TextView purchase = view.findViewById(R.id.purchase);
         TextView inspect = view.findViewById(R.id.inspect);
+        TextView sale = view.findViewById(R.id.sale);
 
         //开启订单
         order.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +49,15 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), InspectActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //开启销售
+        sale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), CaptureActivity.class);
                 startActivity(intent);
             }
         });

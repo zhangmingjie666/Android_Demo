@@ -94,7 +94,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         txtv_ratio.setText(order.ratio);
         txtv_quantity.setText(order.yquantity);
 
-        if (order.status.toString().equals("待审核")) {
+        if (order.status.toString().equals("0")) {
             Button noaudit = (Button) findViewById(R.id.noaudit);
             noaudit.setEnabled(false);
             Button audit = (Button) findViewById(R.id.audit);
@@ -106,7 +106,7 @@ public class OrderDetailActivity extends AppCompatActivity {
 
                 }
             });
-        } else {
+        } else if(order.status.toString().equals("1")){
             Button audit = (Button) findViewById(R.id.audit);
             audit.setEnabled(false);
             Button noaudit = (Button) findViewById(R.id.noaudit);
@@ -119,6 +119,11 @@ public class OrderDetailActivity extends AppCompatActivity {
 
                 }
             });
+        }else{
+            Button noaudit = (Button) findViewById(R.id.noaudit);
+            noaudit.setEnabled(false);
+            Button audit = (Button) findViewById(R.id.audit);
+            audit.setEnabled(false);
         }
 
         getOrderListDetail(order.id);

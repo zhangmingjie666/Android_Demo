@@ -28,6 +28,7 @@ import com.example.nrbzms17.data.model.StatusBeanResponse;
 import com.example.nrbzms17.ui.adapter.PurchaseListAdapter;
 import com.example.nrbzms17.ui.adapter.SpinnerStatusAdapter;
 import com.example.nrbzms17.ui.widget.ClearEditText;
+import com.jingchen.pulltorefresh.PullToRefreshLayout;
 //import com.nrbzms17.ui.widget.ClearEditText;
 
 import java.text.ParseException;
@@ -70,6 +71,8 @@ public class PurchaseListActivity extends AppCompatActivity {
     TextView txtv_Name;
 
     private ArrayAdapter adapter;
+
+    PullToRefreshLayout pullToRefreshLayout;
 
 
     @Override
@@ -116,6 +119,14 @@ public class PurchaseListActivity extends AppCompatActivity {
     }
 
     public void initview() {
+
+        pullToRefreshLayout = findViewById(R.id.pullToRefreshLayout);
+        purchaseListAdapter = new PurchaseListAdapter();
+        // 设置列表适配器
+        ListView listView = (ListView) pullToRefreshLayout.getPullableView();
+        listView.setAdapter(purchaseListAdapter);
+        pullToRefreshLayout.setPullUpEnable(false);
+
         //返回
         purchase_menu = findViewById(R.id.purchase_menu);
         purchase_menu.setOnClickListener(new View.OnClickListener() {
@@ -125,11 +136,11 @@ public class PurchaseListActivity extends AppCompatActivity {
             }
         });
 
-        purchaseView = findViewById(R.id.purchaseView);
+//        purchaseView = findViewById(R.id.purchaseView);
 
-        purchaseListAdapter = new PurchaseListAdapter();
 
-        purchaseView.setAdapter(purchaseListAdapter);
+//
+//        purchaseView.setAdapter(purchaseListAdapter);
 
         purCode = (ClearEditText) findViewById(R.id.purCode);
 
@@ -147,6 +158,18 @@ public class PurchaseListActivity extends AppCompatActivity {
 
         txtv_Name = (TextView) findViewById(R.id.txtv_Name);
 
+        pullToRefreshLayout.setOnPullListener(new PullToRefreshLayout.OnPullListener() {
+            @Override
+            public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+                getPurchaseList("","");
+            }
+
+            @Override
+            public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
+
+            }
+
+        });
 
         final Calendar ca = Calendar.getInstance();
         mYear = ca.get(Calendar.YEAR);
@@ -190,7 +213,7 @@ public class PurchaseListActivity extends AppCompatActivity {
         });
 
         //栏目点击
-        purchaseView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 PurchaseBean.Data processOrder = (PurchaseBean.Data) purchaseListAdapter.getItem(position);
@@ -258,12 +281,14 @@ public class PurchaseListActivity extends AppCompatActivity {
                 }
 
                 purchaseListAdapter.refresh(PurchaseBean);
+                pullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);
             }
 
             @Override
             public void onFail() {
 
                 purchaseListAdapter.refresh(PurchaseBean);
+                pullToRefreshLayout.refreshFinish(PullToRefreshLayout.FAIL);
 
             }
         });
@@ -435,7 +460,7 @@ public class PurchaseListActivity extends AppCompatActivity {
                 String endtime;
 
                 starttime = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay).append(" ").toString();
-                endtime = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay -7).append(" ").toString();
+                endtime = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay -4).append(" ").toString();
                 getPurchaseList(starttime, endtime);
             }
 

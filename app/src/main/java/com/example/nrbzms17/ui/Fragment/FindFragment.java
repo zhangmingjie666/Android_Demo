@@ -25,7 +25,7 @@ public class FindFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_find,null);
-//         MainActivity activity = (MainActivity) getActivity();
+//         ScanActivity activity = (ScanActivity) getActivity();
         TextView demo =view.findViewById(R.id.demo);
         demo.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -176,7 +176,7 @@ public class OrderListActivity extends AppCompatActivity {
                 if (response != null && response.result != null) {
 
                     OrderBeanList = response.result;
-                    adapter.refresh(OrderBeanList);
+//                    adapter.refresh(OrderBeanList);
 
                 }
                 else{
@@ -235,7 +235,7 @@ public class OrderListActivity extends AppCompatActivity {
 
         super.onResume();
 
-//        getOrderList();
+        getOrderList();
 
     }
 

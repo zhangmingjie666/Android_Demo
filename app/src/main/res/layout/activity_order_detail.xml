@@ -168,11 +168,12 @@
             android:textColor="@color/black"
             android:textSize="16sp" />
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:background="#DCDCDC"
+        android:orientation="horizontal"
         android:padding="5dp">
 
         <TextView
@@ -192,6 +193,7 @@
             android:layout_toRightOf="@+id/txtv_ratio_tip"
             android:textColor="@color/black"
             android:textSize="15sp" />
+
         <TextView
             android:id="@+id/txtv_quantity_tip"
             android:layout_width="wrap_content"
@@ -211,7 +213,6 @@
             android:textSize="15sp" />
 
     </RelativeLayout>
-
 
     <ListView
         android:id="@+id/order_detail"
