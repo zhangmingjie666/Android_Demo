@@ -41,36 +41,49 @@ public class OrderListActivity extends AppCompatActivity {
 
     private List<OrderBean.Data> OrderBeanList = new ArrayList<>();
 
-
     private OrderBean order;
+
     Spinner order_status;
+
     TextView textView;
+
     OrderDetailAdapter orderadapter;
+
     ClearEditText etCode;
+
     PullToRefreshLayout pullToRefreshLayout;
+
     SpinnerStatusAdapter statusAdapter;
+
     private StatusBean statusBean;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_order_list);
 
         order_status = (Spinner) findViewById(R.id.order_status);
+
         textView = (TextView) findViewById(R.id.txtv_status);
 
         etCode = (ClearEditText) findViewById(R.id.etCode);
 
         statusAdapter = new SpinnerStatusAdapter();
+
         order_status.setAdapter(statusAdapter);
+
         order = new OrderBean();
 
         initViews();
+
         getOrderList();
 
         setClickListeners();
 
         Button button = (Button) findViewById(R.id.back_menu);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,11 +100,15 @@ public class OrderListActivity extends AppCompatActivity {
      */
     private void initViews() {
 
-            Button etSearch = (Button) findViewById(R.id.etSearch);
+        Button etSearch = (Button) findViewById(R.id.etSearch);
+
         pullToRefreshLayout = findViewById(R.id.pullToRefreshLayout);
+
         // 设置列表适配器
         ListView listView = (ListView) pullToRefreshLayout.getPullableView();
+
         listView.setAdapter(adapter);
+
         pullToRefreshLayout.setPullUpEnable(false);
 
 
@@ -106,8 +123,8 @@ public class OrderListActivity extends AppCompatActivity {
         pullToRefreshLayout.setOnPullListener(new PullToRefreshLayout.OnPullListener() {
             @Override
             public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+
                 getOrderList();
-//                spinner.setSelection(0, true);
             }
 
             @Override
@@ -178,8 +195,7 @@ public class OrderListActivity extends AppCompatActivity {
                     OrderBeanList = response.result;
 //                    adapter.refresh(OrderBeanList);
 
-                }
-                else{
+                } else {
                     OrderBeanList = new ArrayList<>();
                 }
                 adapter.refresh(OrderBeanList);

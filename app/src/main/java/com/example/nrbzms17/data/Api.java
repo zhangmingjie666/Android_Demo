@@ -194,4 +194,22 @@ public class Api {
         mClient.post(POST_PURCHASENOAUDIT, params, callback);
     }
 
+    /**
+     * 检验列表
+     */
+    public final static String GET_INSPECTLIST = "inspect/list";
+    public void getInspectList(String status) {
+        Map<String, String> params = new HashMap<>();
+        params.put("status", status);
+        mClient.get(GET_INSPECTLIST, params, callback);
+    }
+
+    /**
+     * 获取状态信息
+     */
+    public final static String GET_COMMENSTATUS = "status/commonList";
+    public void getCommenStatus(){
+        mClient.get(GET_COMMENSTATUS,null,callback);
+    }
+
 }

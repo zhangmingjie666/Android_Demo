@@ -93,12 +93,6 @@ public class PurchaseListActivity extends AppCompatActivity {
         endtime = new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay).append(" ").toString();
         getPurchaseList(starttime, endtime);
 
-//        initData();
-//        final Calendar ca = Calendar.getInstance();
-//        mYear = ca.get(Calendar.YEAR);
-//        mMonth = ca.get(Calendar.MONTH);
-//        mDay = ca.get(Calendar.DAY_OF_MONTH);
-
         getStatusInfo();
 
         choose_date = (Spinner) findViewById(R.id.choose_date);
@@ -136,11 +130,6 @@ public class PurchaseListActivity extends AppCompatActivity {
             }
         });
 
-//        purchaseView = findViewById(R.id.purchaseView);
-
-
-//
-//        purchaseView.setAdapter(purchaseListAdapter);
 
         purCode = (ClearEditText) findViewById(R.id.purCode);
 
@@ -150,7 +139,7 @@ public class PurchaseListActivity extends AppCompatActivity {
 
         end = (TextView) findViewById(R.id.end);
 
-//        dateDisplay = (TextView) findViewById(R.id.dateDisplay);
+
 
         purchase_status = (Spinner) findViewById(R.id.purchase_status);
 
@@ -187,21 +176,6 @@ public class PurchaseListActivity extends AppCompatActivity {
         deliverdate = DateToString(d);
 
 
-//        start.setText(date);
-//        end.setText(deliverdate);
-//        start.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                showDateDialog(1);
-//            }
-//        });
-//
-//        end.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                showDateDialog(2);
-//            }
-//        });
 
 
         //查询
@@ -293,7 +267,6 @@ public class PurchaseListActivity extends AppCompatActivity {
             }
         });
 
-//        api.getPurchaseList(status, purCode.getText().toString().trim(), start.getText().toString().trim(), end.getText().toString().trim());
         api.getPurchaseList(status, purCode.getText().toString().trim(), endtime, starttime);
     }
 
@@ -413,11 +386,7 @@ public class PurchaseListActivity extends AppCompatActivity {
                     }
                     for (int i = 0; i < statusAdapter.getCount(); i++) {
                         StatusBean bean = (StatusBean) statusAdapter.getItem(i);
-//                        if(bean.id.equals(departmentId))
-//                        {
-//                            statusBean.setSelection(i);
-//                            break;
-//                        }
+
                     }
                 }
             }

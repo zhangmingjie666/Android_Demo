@@ -35,7 +35,7 @@
         <activity android:name=".ui.activity.PurchaseListActivity" />
         <!-- <activity android:name=".ui.activity.ScanActivity" /> -->
         <activity android:name=".ui.activity.CheckActivity" />
-        <activity android:name=".ui.activity.InspectActivity" />
+        <activity android:name=".ui.activity.InspectListActivity" />
         <activity android:name=".ui.activity.PurchaseDetailActivity" />
         <activity android:name=".ui.activity.SettingActivity" />
         <activity android:name="com.example.codescan.zxing.activity.CaptureActivity" />

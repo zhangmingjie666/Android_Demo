@@ -1,9 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.nrbzms17.ui.activity.InspectActivity">
+    android:background="@color/content_bg"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <include layout="@layout/actionbar_ins"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/content_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="1dp"
+        android:weightSum="1">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+        <com.example.nrbzms17.ui.widget.ClearEditText
+            android:id="@+id/insCode"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/search_edittext_bg"
+            android:gravity="center_vertical"
+            android:hint="输入订单号"
+            android:inputType="numberDecimal"
+            android:maxLength="20"
+            android:paddingLeft="8dp"
+            android:paddingRight="5dp"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/insSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/button_bg_box"
+            android:gravity="center"
+            android:text="查询"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+
+    <com.jingchen.pulltorefresh.PullToRefreshLayout
+        android:id="@+id/pullToRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.jingchen.pulltorefresh.PullableListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="3dp"></com.jingchen.pulltorefresh.PullableListView>
+    </com.jingchen.pulltorefresh.PullToRefreshLayout>
+
+
+</LinearLayout>

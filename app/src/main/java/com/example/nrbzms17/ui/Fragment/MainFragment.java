@@ -11,7 +11,7 @@ import android.support.v4.app.Fragment;
 import android.widget.TextView;
 import com.example.codescan.zxing.activity.CaptureActivity;
 import com.example.nrbzms17.R;
-import com.example.nrbzms17.ui.activity.InspectActivity;
+import com.example.nrbzms17.ui.activity.InspectListActivity;
 import com.example.nrbzms17.ui.activity.OrderListActivity;
 import com.example.nrbzms17.ui.activity.PurchaseListActivity;
 
@@ -48,7 +48,7 @@ public class MainFragment extends Fragment {
         inspect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), InspectActivity.class);
+                Intent intent = new Intent(getActivity(), InspectListActivity.class);
                 startActivity(intent);
             }
         });

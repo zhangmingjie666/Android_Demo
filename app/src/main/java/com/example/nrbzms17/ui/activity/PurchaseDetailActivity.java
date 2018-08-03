@@ -8,7 +8,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.nrbzms17.R;
-//import com.nrbzms17.Utils.JSONUtils;
 import com.example.nrbzms17.Utils.JSONUtils;
 import com.example.nrbzms17.data.Api;
 import com.example.nrbzms17.data.listener.OnNetRequest;
@@ -24,25 +23,31 @@ import java.util.List;
 public class PurchaseDetailActivity extends AppCompatActivity {
 
     ListView purchasedetailView;
+
     PurchaseDetailAdapter purchaseDetailAdapter;
+
     private PurchaseBean.Data purchase;
 
     private List<PurchaseDetailBean.Data> PurchaseDetailBean = new ArrayList<>();
 
     PurchaseDetailBean purchasedetail = new PurchaseDetailBean();
+
     Button pur_back;
+
     Button purchase_noaudit;
+
     Button purchase_audit;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_purchasedetail);
 
-
-
         initview();
+
         pur_back = findViewById(R.id.pur_back);
 
         pur_back.setOnClickListener(new View.OnClickListener() {
@@ -51,49 +56,69 @@ public class PurchaseDetailActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 
-    public void initview(){
+    public void initview() {
 
         purchase = (PurchaseBean.Data) getIntent().getSerializableExtra(PurchaseBean.Data.class.getSimpleName());
 
-
         if (purchase.status.toString().equals("待审核")) {
-             purchase_noaudit = findViewById(R.id.purchase_noaudit);
+
+            purchase_noaudit = findViewById(R.id.purchase_noaudit);
+
             purchase_noaudit.setEnabled(false);
-           purchase_audit =  findViewById(R.id.purchase_audit);
+
+            purchase_audit = findViewById(R.id.purchase_audit);
+
             purchase_audit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
                     PurchaseAudit();
+
                     Toast.makeText(PurchaseDetailActivity.this, "审核成功", Toast.LENGTH_SHORT).show();
+
                     finish();
 
                 }
             });
-        } else if(purchase.status.toString().equals("已审核")){
-             purchase_audit =  findViewById(R.id.purchase_audit);
+        } else if (purchase.status.toString().equals("已审核")) {
+
+            purchase_audit = findViewById(R.id.purchase_audit);
+
             purchase_audit.setEnabled(false);
-             purchase_noaudit =  findViewById(R.id.purchase_noaudit);
+
+            purchase_noaudit = findViewById(R.id.purchase_noaudit);
+
             purchase_noaudit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
                     PurchaseNoaudit();
+
                     Toast.makeText(PurchaseDetailActivity.this, "反审成功", Toast.LENGTH_SHORT).show();
+
                     finish();
 
                 }
             });
-        }else{
-            purchase_audit =  findViewById(R.id.purchase_audit);
+
+        } else {
+
+            purchase_audit = findViewById(R.id.purchase_audit);
+
             purchase_audit.setEnabled(false);
-            purchase_noaudit =  findViewById(R.id.purchase_noaudit);
+
+            purchase_noaudit = findViewById(R.id.purchase_noaudit);
+
             purchase_noaudit.setEnabled(false);
+
         }
         getPurchaseDetail();
     }
 
-    public void getPurchaseDetail(){
+    public void getPurchaseDetail() {
 
         purchasedetailView = (ListView) findViewById(R.id.purchasedetailView);
 
@@ -115,10 +140,6 @@ public class PurchaseDetailActivity extends AppCompatActivity {
 
                         purchaseDetailAdapter.refresh(PurchaseDetailBean);
 
-
-//                        order = OrderBeanList.get(0);
-
-
                     } else {
 
                         PurchaseDetailBean = new ArrayList<>();
@@ -126,7 +147,6 @@ public class PurchaseDetailActivity extends AppCompatActivity {
                         purchasedetail = null;
 
                     }
-
 
                 }
             }
@@ -153,15 +173,6 @@ public class PurchaseDetailActivity extends AppCompatActivity {
                 StatusBean responseBean = JSONUtils.fromJson(msg, StatusBean.class);
                 if (responseBean != null) {
 
-
-//                    if (responseBean.result.size() == 0) {
-
-//                        OrderListBean = responseBean.result;
-//
-//                        adapter.refresh(OrderListBean);
-//                    }
-//                    adapter.refresh(responseBean.result);
-
                 } else {
                 }
             }
@@ -184,13 +195,6 @@ public class PurchaseDetailActivity extends AppCompatActivity {
             public void onSuccess(String msg) {
                 StatusBean responseBean = JSONUtils.fromJson(msg, StatusBean.class);
                 if (responseBean != null) {
-//                    if (responseBean.result.size() == 0) {
-
-//                        OrderListBean = responseBean.result;
-//
-//                        adapter.refresh(OrderListBean);
-//                    }
-//                    adapter.refresh(responseBean.result);
 
                 } else {
                 }
@@ -198,7 +202,7 @@ public class PurchaseDetailActivity extends AppCompatActivity {
 
             @Override
             public void onFail() {
-//                adapter.refresh(OrderListBean);
+
             }
         });
 

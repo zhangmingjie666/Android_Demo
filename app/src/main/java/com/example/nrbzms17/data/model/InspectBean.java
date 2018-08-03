@@ -29,6 +29,8 @@ public class InspectBean implements Serializable {
         public String status;
         public String checkunit;
         public String dyelot;
+        public String employee;
+        public String billdate;
 
     }
 }
