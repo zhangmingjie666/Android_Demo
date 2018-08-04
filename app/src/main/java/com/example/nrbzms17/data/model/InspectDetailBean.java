@@ -11,7 +11,7 @@ import java.util.List;
  * @descibe TODO
  * @email zhangmingjie@huansi.net
  */
-public class InspectBean implements Serializable {
+public class InspectDetailBean implements Serializable {
     public List<Data> result;
 
     public class Data implements Serializable {
@@ -32,6 +32,6 @@ public class InspectBean implements Serializable {
         public String dyelot;
         public String employee;
         public String billdate;
-
+        public String source;
     }
 }

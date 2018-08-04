@@ -62,7 +62,8 @@ public class PurchaseDetailActivity extends AppCompatActivity {
     public void initview() {
 
         purchase = (PurchaseBean.Data) getIntent().getSerializableExtra(PurchaseBean.Data.class.getSimpleName());
-
+        String i ="";
+        i =purchase.id;
         if (purchase.status.toString().equals("待审核")) {
 
             purchase_noaudit = findViewById(R.id.purchase_noaudit);
@@ -118,6 +119,7 @@ public class PurchaseDetailActivity extends AppCompatActivity {
         getPurchaseDetail();
     }
 
+    //获取详细列表
     public void getPurchaseDetail() {
 
         purchasedetailView = (ListView) findViewById(R.id.purchasedetailView);

@@ -1,6 +1,7 @@
 package com.example.nrbzms17.ui.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.text.TextUtils;
@@ -18,6 +19,7 @@ import com.example.nrbzms17.data.listener.OnNetRequest;
 import com.example.nrbzms17.data.model.InspectBean;
 import com.example.nrbzms17.data.model.InspectBeanResponse;
 
+import com.example.nrbzms17.data.model.PurchaseBean;
 import com.example.nrbzms17.data.model.StatusBean;
 import com.example.nrbzms17.data.model.StatusBeanResponse;
 import com.example.nrbzms17.ui.adapter.InspectListAdapter;
@@ -46,11 +48,6 @@ public class InspectListActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inspect);
-//        webView = findViewById(R.id.echarts);
-//        webView.getSettings().setAllowFileAccess(true);
-//        webView.getSettings().setJavaScriptEnabled(true);
-//        webView.loadUrl("file:///android_asset/echart/index.html");
-//        webView.loadUrl("http://www.baidu.com");
         getInspectList();
         initview();
         setClickListeners();
@@ -83,6 +80,24 @@ public class InspectListActivity extends Activity {
 
             }
 
+        });
+
+
+        //栏目点击
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                InspectBean.Data processOrder = (InspectBean.Data) inspectListAdapter.getItem(position);
+
+
+                Intent intent = new Intent(InspectListActivity.this, InspectDetailActivity.class);
+                Bundle bundle = new Bundle();
+
+                bundle.putSerializable(InspectBean.Data.class.getSimpleName(), processOrder);
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
         });
     }
     //状态下拉
@@ -172,5 +187,15 @@ public class InspectListActivity extends Activity {
         });
 
         api.getCommenStatus();
+    }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+
+        getInspectList();
+
+//        insCode.setText("");
     }
 }

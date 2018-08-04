@@ -8,15 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.app.Fragment;
+import android.webkit.WebView;
 import android.widget.TextView;
 import com.example.codescan.zxing.activity.CaptureActivity;
 import com.example.nrbzms17.R;
+import com.example.nrbzms17.ui.activity.CheckActivity;
 import com.example.nrbzms17.ui.activity.InspectListActivity;
 import com.example.nrbzms17.ui.activity.OrderListActivity;
 import com.example.nrbzms17.ui.activity.PurchaseListActivity;
 
 
 public class MainFragment extends Fragment {
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -25,7 +29,7 @@ public class MainFragment extends Fragment {
         TextView purchase = view.findViewById(R.id.purchase);
         TextView inspect = view.findViewById(R.id.inspect);
         TextView sale = view.findViewById(R.id.sale);
-
+        TextView check = view.findViewById(R.id.check);
         //开启订单
         order.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +65,17 @@ public class MainFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        //开启盘点
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), CheckActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         return view;
     }
 }

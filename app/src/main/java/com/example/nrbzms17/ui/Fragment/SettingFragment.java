@@ -6,10 +6,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.nrbzms17.R;
+import com.example.nrbzms17.Utils.APKVersionCodeUtils;
 import com.example.nrbzms17.ui.activity.SettingActivity;
+import com.example.nrbzms17.ui.activity.UpdateActivity;
 
 /**
  * @author MJ@ZHANG
@@ -24,6 +27,8 @@ public class SettingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_setting, null);
         TextView address = view.findViewById(R.id.address);
+        TextView updateOnline = view.findViewById(R.id.updateOnline);
+
         //开启地址
         address.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +37,16 @@ public class SettingFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        //开启升级
+        updateOnline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), UpdateActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 }

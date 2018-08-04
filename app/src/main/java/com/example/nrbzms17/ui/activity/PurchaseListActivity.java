@@ -192,7 +192,6 @@ public class PurchaseListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 PurchaseBean.Data processOrder = (PurchaseBean.Data) purchaseListAdapter.getItem(position);
 
-
                 Intent intent = new Intent(PurchaseListActivity.this, PurchaseDetailActivity.class);
                 Bundle bundle = new Bundle();
 

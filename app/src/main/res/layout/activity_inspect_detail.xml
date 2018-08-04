@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/pur_customcode_tip"
+            android:id="@+id/ins_customcode_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -26,11 +26,36 @@
             android:textSize="17sp" />
 
         <TextView
-            android:id="@+id/pur_customcode"
+            android:id="@+id/ins_customcode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_customcode_tip"
+            android:layout_toRightOf="@+id/ins_customcode_tip"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/pur_source_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="来源："
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/pur_source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/pur_source_tip"
             android:textColor="@color/black"
             android:textSize="17sp" />
     </RelativeLayout>
@@ -44,7 +69,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/pur_billdate_tip"
+            android:id="@+id/ins_billdate_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -53,11 +78,11 @@
             android:textSize="17sp" />
 
         <TextView
-            android:id="@+id/pur_billdate"
+            android:id="@+id/ins_billdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_billdate_tip"
+            android:layout_toRightOf="@+id/ins_billdate_tip"
             android:textColor="@color/black"
             android:textSize="17sp" />
     </RelativeLayout>
@@ -70,21 +95,21 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/pur_company_tip"
+            android:id="@+id/ins_company_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:text="供应商："
+            android:text="往来单位："
             android:textColor="@color/black"
             android:textSize="17sp" />
 
         <TextView
-            android:id="@+id/pur_company"
+            android:id="@+id/ins_company"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_company_tip"
+            android:layout_toRightOf="@+id/ins_company_tip"
             android:textColor="@color/black"
             android:textSize="17sp" />
     </RelativeLayout>
@@ -96,7 +121,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/pur_material_tip"
+            android:id="@+id/ins_material_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -106,11 +131,11 @@
             android:textSize="17sp" />
 
         <TextView
-            android:id="@+id/pur_material"
+            android:id="@+id/ins_material"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_material_tip"
+            android:layout_toRightOf="@+id/ins_material_tip"
             android:textColor="@color/black"
             android:textSize="17sp" />
     </RelativeLayout>
@@ -123,7 +148,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/pur_status_tip"
+            android:id="@+id/ins_status_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -133,11 +158,11 @@
             android:textSize="17sp" />
 
         <TextView
-            android:id="@+id/pur_status"
+            android:id="@+id/ins_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_status_tip"
+            android:layout_toRightOf="@+id/ins_status_tip"
             android:textColor="@color/black"
             android:textSize="17sp" />
     </RelativeLayout>
@@ -149,21 +174,21 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/pur_employee_tip"
+            android:id="@+id/ins_employee_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:text="业务员："
+            android:text="经手人："
             android:textColor="@color/black"
             android:textSize="17sp" />
 
         <TextView
-            android:id="@+id/pur_employee"
+            android:id="@+id/ins_employee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_employee_tip"
+            android:layout_toRightOf="@+id/ins_employee_tip"
             android:textColor="@color/black"
             android:textSize="17sp" />
     </RelativeLayout>
@@ -176,20 +201,20 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/pur_contcode_tip"
+            android:id="@+id/ins_code_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="合同号："
+            android:text="检验编号："
             android:textColor="@color/black"
             android:textSize="17sp" />
 
         <TextView
-            android:id="@+id/pur_contcode"
+            android:id="@+id/ins_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_contcode_tip"
+            android:layout_toRightOf="@+id/ins_code_tip"
             android:textColor="@color/black"
             android:textSize="17sp" />
     </RelativeLayout>
@@ -201,20 +226,20 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/pur_quantity_tip"
+            android:id="@+id/ins_quantity_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="成品数："
+            android:text="来货数："
             android:textColor="@color/black"
             android:textSize="17sp" />
 
         <TextView
-            android:id="@+id/pur_quantity"
+            android:id="@+id/ins_quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_quantity_tip"
+            android:layout_toRightOf="@+id/ins_quantity_tip"
             android:textColor="@color/black"
             android:textSize="17sp" />
     </RelativeLayout>
@@ -227,7 +252,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/pur_color_tip"
+            android:id="@+id/ins_color_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -236,11 +261,11 @@
             android:textSize="17sp" />
 
         <TextView
-            android:id="@+id/pur_color"
+            android:id="@+id/ins_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_color_tip"
+            android:layout_toRightOf="@+id/ins_color_tip"
             android:textColor="@color/black"
             android:textSize="17sp" />
     </RelativeLayout>
@@ -297,30 +322,6 @@
             android:textSize="17sp" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/pur_total_amount_tip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="金额："
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/pur_total_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_total_amount_tip"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -330,73 +331,20 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/pur_extra_tip"
+            android:id="@+id/ins_depot_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="额外类型："
+            android:text="仓库："
             android:textColor="@color/black"
             android:textSize="17sp" />
 
         <TextView
-            android:id="@+id/pur_extra"
+            android:id="@+id/ins_depot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_extra_tip"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:orientation="vertical"
-
-        >
-
-        <TextView
-            android:id="@+id/pur_extra_amount_tip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="额外费用："
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/pur_extra_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_extra_amount_tip"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:background="#FFF5EE"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/pur_linkman_tip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="联系人："
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/pur_linkman"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_linkman_tip"
+            android:layout_toRightOf="@+id/ins_depot_tip"
             android:textColor="@color/black"
             android:textSize="17sp" />
     </RelativeLayout>
@@ -408,7 +356,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/pur_craft_tip"
+            android:id="@+id/ins_craft_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -417,11 +365,11 @@
             android:textSize="17sp" />
 
         <TextView
-            android:id="@+id/pur_craft"
+            android:id="@+id/ins_craft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_craft_tip"
+            android:layout_toRightOf="@+id/ins_craft_tip"
             android:textColor="@color/black"
             android:textSize="17sp" />
     </RelativeLayout>
@@ -434,122 +382,20 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/pur_straight_tip"
+            android:id="@+id/ins_remark_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="去向："
+            android:text="备注："
             android:textColor="@color/black"
             android:textSize="17sp" />
 
         <TextView
-            android:id="@+id/pur_straight"
+            android:id="@+id/ins_remark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_straight_tip"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/pur_spec_tip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="规格："
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/pur_spec"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_spec_tip"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:background="#FFF5EE"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/pur_width_tip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="门幅："
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/pur_width"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_width_tip"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/pur_weight_tip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="克重："
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/pur_weight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_weight_tip"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:background="#FFF5EE"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/pur_trade_tip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="交易单位："
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/pur_trade"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_trade_tip"
+            android:layout_toRightOf="@+id/ins_remark_tip"
             android:textColor="@color/black"
             android:textSize="17sp" />
     </RelativeLayout>

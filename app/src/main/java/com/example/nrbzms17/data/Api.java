@@ -212,4 +212,38 @@ public class Api {
         mClient.get(GET_COMMENSTATUS,null,callback);
     }
 
+    /**
+     * 检验明细
+     */
+    public final static String GET_INSPECTDETAIL= "inspect/detail";
+
+    public void getInspectDetail( String id) {
+        Map<String, String> params = new HashMap<>();
+        params.put("id", id);
+        mClient.get(GET_INSPECTDETAIL, params, callback);
+    }
+
+    /**
+     * 审核检验
+     */
+    public final static String POST_INSPECTAUDIT = "inspect/inspectAudit";
+
+    public void InspectAudit(String id) {
+        Map<String, String> params = new HashMap<>();
+        params.put("id", id);
+        mClient.post(POST_INSPECTAUDIT, params, callback);
+    }
+
+
+    /**
+     * 反审检验
+     */
+    public final static String POST_INSPECTNOAUDIT = "inspect/inspectNoaudit";
+
+    public void InspectNoaudit(String id) {
+        Map<String, String> params = new HashMap<>();
+        params.put("id", id);
+        mClient.post(POST_INSPECTNOAUDIT, params, callback);
+    }
+
 }
