@@ -36,14 +36,15 @@
         android:id="@+id/inspectdetailView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"></ListView>
+        android:layout_weight="1"
+>
+        </ListView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#DCDCDC"
         android:orientation="horizontal"
-
         >
 
         <Button
@@ -53,6 +54,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="审核"
+            android:layout_gravity="bottom"
             android:textSize="18dp" />
 
         <Button
@@ -61,6 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:layout_gravity="bottom"
             android:text="反审"
             android:textSize="18dp" />
     </LinearLayout>

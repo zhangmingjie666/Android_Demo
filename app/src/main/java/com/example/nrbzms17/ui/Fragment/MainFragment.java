@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.codescan.zxing.activity.CaptureActivity;
 import com.example.nrbzms17.R;
 import com.example.nrbzms17.ui.activity.CheckActivity;
+import com.example.nrbzms17.ui.activity.EchartsActivity;
 import com.example.nrbzms17.ui.activity.InspectListActivity;
 import com.example.nrbzms17.ui.activity.OrderListActivity;
 import com.example.nrbzms17.ui.activity.PurchaseListActivity;
@@ -30,6 +31,8 @@ public class MainFragment extends Fragment {
         TextView inspect = view.findViewById(R.id.inspect);
         TextView sale = view.findViewById(R.id.sale);
         TextView check = view.findViewById(R.id.check);
+        TextView echarts = view.findViewById(R.id.echarts);
+
         //开启订单
         order.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +78,15 @@ public class MainFragment extends Fragment {
             }
         });
 
+
+        //开启分析
+        echarts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), EchartsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }

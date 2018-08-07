@@ -1,14 +1,16 @@
 package com.example.nrbzms17.ui.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 
 import com.example.nrbzms17.R;
@@ -24,12 +26,13 @@ import com.example.nrbzms17.data.model.StatusBean;
 import com.example.nrbzms17.data.model.StatusBeanResponse;
 import com.example.nrbzms17.ui.adapter.InspectListAdapter;
 import com.example.nrbzms17.ui.adapter.SpinnerStatusAdapter;
+import com.example.nrbzms17.ui.widget.ClearEditText;
 import com.jingchen.pulltorefresh.PullToRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class InspectListActivity extends Activity {
+public class InspectListActivity extends AppCompatActivity {
 
 
     PullToRefreshLayout pullToRefreshLayout;
@@ -44,15 +47,30 @@ public class InspectListActivity extends Activity {
 
     private StatusBean statusBean;
 
+    Button insSearch;
+
+    ClearEditText insCode;
+
+    TextView back_menu ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inspect);
-        getInspectList();
+        insCode = (ClearEditText)findViewById(R.id.insCode);
         initview();
+//        getInspectList();
+
         setClickListeners();
         getCommenStatus();
 
+        back_menu =findViewById(R.id.back_menu);
+        back_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public void initview() {
@@ -81,6 +99,15 @@ public class InspectListActivity extends Activity {
             }
 
         });
+        insSearch = (Button)findViewById(R.id.insSearch);
+
+        //查询
+        insSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getInspectList();
+            }
+        });
 
 
         //栏目点击
@@ -100,6 +127,7 @@ public class InspectListActivity extends Activity {
             }
         });
     }
+
     //状态下拉
     private void setClickListeners() {
 
@@ -141,9 +169,12 @@ public class InspectListActivity extends Activity {
                     InspectBeanList = response.result;
 
                 } else {
+
                     InspectBeanList = new ArrayList<>();
+
                 }
                 inspectListAdapter.refresh(InspectBeanList);
+
                 pullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);
             }
 
@@ -156,7 +187,7 @@ public class InspectListActivity extends Activity {
             }
         });
 
-        api.getInspectList(status);
+        api.getInspectList(status,insCode.getText().toString().trim());
     }
 
     // 获取状态信息
@@ -189,13 +220,10 @@ public class InspectListActivity extends Activity {
         api.getCommenStatus();
     }
 
+
     @Override
     protected void onResume() {
-
         super.onResume();
-
         getInspectList();
-
-//        insCode.setText("");
     }
 }

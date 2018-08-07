@@ -198,9 +198,10 @@ public class Api {
      * 检验列表
      */
     public final static String GET_INSPECTLIST = "inspect/list";
-    public void getInspectList(String status) {
+    public void getInspectList(String status,String customcode) {
         Map<String, String> params = new HashMap<>();
         params.put("status", status);
+        params.put("customcode", customcode);
         mClient.get(GET_INSPECTLIST, params, callback);
     }
 

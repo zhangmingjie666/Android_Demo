@@ -102,8 +102,6 @@ public class InspectDetailActivity extends AppCompatActivity {
 
                     InspectNoaudit();
 
-
-
                     finish();
 
                 }
@@ -178,7 +176,7 @@ public class InspectDetailActivity extends AppCompatActivity {
             public void onSuccess(String msg) {
                 StatusBean responseBean = JSONUtils.fromJson(msg, StatusBean.class);
                 if (responseBean != null ) {
-//                    UIHelper.showShortToast(responseBean);
+
                 } else {
                 }
             }
@@ -199,11 +197,12 @@ public class InspectDetailActivity extends AppCompatActivity {
         Api api = new Api(this, new OnNetRequest(this, true, "正在加载...") {
             @Override
             public void onSuccess(String msg) {
-                ResponseBean responseBean = JSONUtils.fromJson(msg, ResponseBean.class);
-                if (responseBean != null && responseBean.status) {
-                    UIHelper.showShortToast(InspectDetailActivity.this,responseBean.result );
+                StatusBean responseBean = JSONUtils.fromJson(msg, StatusBean.class);
+//                if (responseBean != null && responseBean.status) {
+                    if (responseBean != null ) {
+//                    UIHelper.showShortToast(InspectDetailActivity.this,responseBean.result );
                 } else {
-                    UIHelper.showShortToast(InspectDetailActivity.this,responseBean.result );
+//                    UIHelper.showShortToast(InspectDetailActivity.this,responseBean.result );
                 }
             }
 

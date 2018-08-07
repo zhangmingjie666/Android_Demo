@@ -252,7 +252,6 @@ public class OrderListActivity extends AppCompatActivity {
         super.onResume();
 
         getOrderList();
-
     }
 
 
