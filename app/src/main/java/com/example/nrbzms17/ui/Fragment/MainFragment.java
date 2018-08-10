@@ -17,6 +17,7 @@ import com.example.nrbzms17.ui.activity.EchartsActivity;
 import com.example.nrbzms17.ui.activity.InspectListActivity;
 import com.example.nrbzms17.ui.activity.OrderListActivity;
 import com.example.nrbzms17.ui.activity.PurchaseListActivity;
+import com.example.nrbzms17.ui.activity.SaleListActivity;
 
 
 public class MainFragment extends Fragment {
@@ -64,7 +65,7 @@ public class MainFragment extends Fragment {
         sale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), CaptureActivity.class);
+                Intent intent = new Intent(getActivity(), SaleListActivity.class);
                 startActivity(intent);
             }
         });

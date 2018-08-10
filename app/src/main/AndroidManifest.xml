@@ -32,7 +32,8 @@
         <activity android:name=".ui.activity.OrderDetailActivity" />
         <activity android:name=".ui.activity.PurchaseListActivity" />
         <activity android:name=".ui.activity.PurchaseDetailActivity" />
-        <activity android:name=".ui.activity.CheckActivity"
+        <activity
+            android:name=".ui.activity.CheckActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity android:name=".ui.activity.InspectListActivity" />
@@ -42,7 +43,10 @@
         <activity android:name="com.example.codescan.zxing.activity.ResultActivity" />
         <activity android:name=".ui.activity.UpdateActivity" />
         <activity android:name=".ui.activity.TransferActivity" />
-        <activity android:name=".ui.activity.EchartsActivity"></activity>
+        <activity android:name=".ui.activity.EchartsActivity" />
+        <activity android:name=".ui.activity.SaleListActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"></activity>
     </application>
 
 </manifest>

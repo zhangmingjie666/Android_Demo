@@ -18,12 +18,16 @@ public class BaseActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
+
+        ActivityCollector.addActivity(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+
+        ActivityCollector.removeActivity(this);
     }
 
     @Subscribe

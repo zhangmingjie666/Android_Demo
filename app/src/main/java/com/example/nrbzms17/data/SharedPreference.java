@@ -13,7 +13,6 @@ import com.example.nrbzms17.MyApplication;
 public class SharedPreference {
     public static final SharedPreferences mSharedPreference = MyApplication.getInstance().getSharedPreferences("OutboundPreferences", Context.MODE_PRIVATE);
     public static final String DOWNLOAD_TASK_ID = ".download_task_id";
-    public static final String EmplyeeId = ".employee_id";
     public static final String Host = ".host";
     public static final String Project = ".project";
 
@@ -34,13 +33,14 @@ public class SharedPreference {
         mSharedPreference.edit().putString(Project, project).apply();
     }
 
+    public static final String EmployeeId = ".employee_id";
 
-    public static String getEmplyeeId(){
-        return mSharedPreference.getString(EmplyeeId,"");
+    public static String getEmployeeId(){
+        return mSharedPreference.getString(EmployeeId,"");
     }
 
-    public static void setEmplyeeId(String emplyeeId){
-        mSharedPreference.edit().putString(EmplyeeId,emplyeeId).apply();
+    public static void setEmployeeId(String employeeId){
+        mSharedPreference.edit().putString(EmployeeId,employeeId).apply();
     }
 
     public static final String DepartmentId = ".department_id";
@@ -51,6 +51,7 @@ public class SharedPreference {
     public static void setDepartmentId(String departmentId){
         mSharedPreference.edit().putString(DepartmentId, departmentId).apply();
     }
+
 
     public static final String ClassesId = ".classes_id";
     public static String getClassesId(){

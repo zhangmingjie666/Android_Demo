@@ -247,4 +247,25 @@ public class Api {
         mClient.post(POST_INSPECTNOAUDIT, params, callback);
     }
 
+    /**
+     * 获取员工信息
+     */
+    public final static String GET_EMPLOYEE = "employee/list";
+
+    public void getEmployeeInfo(){
+        mClient.get(GET_EMPLOYEE,null,callback);
+    }
+
+
+    /**
+     * 获取员工信息
+     */
+    public final static String GET_SALELIST = "salesend/list";
+
+    public void getSaleInfoList(String status){
+        Map<String, String> params = new HashMap<>();
+        params.put("status", status);
+        mClient.get(GET_SALELIST,null,callback);
+    }
+
 }

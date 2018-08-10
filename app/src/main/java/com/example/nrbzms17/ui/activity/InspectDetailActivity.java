@@ -9,15 +9,13 @@ import android.widget.Toast;
 
 import com.example.nrbzms17.R;
 import com.example.nrbzms17.Utils.JSONUtils;
-import com.example.nrbzms17.Utils.UIHelper;
+
 import com.example.nrbzms17.data.Api;
 import com.example.nrbzms17.data.listener.OnNetRequest;
 import com.example.nrbzms17.data.model.InspectBean;
 import com.example.nrbzms17.data.model.InspectDetailBean;
 import com.example.nrbzms17.data.model.InspectDetailBeanResponse;
-import com.example.nrbzms17.data.model.ResponseBean;
 import com.example.nrbzms17.data.model.StatusBean;
-import com.example.nrbzms17.data.model.StatusBeanResponse;
 import com.example.nrbzms17.ui.adapter.InspectDetailAdapter;
 
 
@@ -103,6 +101,7 @@ public class InspectDetailActivity extends AppCompatActivity {
                     InspectNoaudit();
 
                     finish();
+
 
                 }
             });

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/sale_customcode_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="订单号："
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/sale_customcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/sale_customcode_tip"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/sale_billdate_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="160dp"
+            android:text="单据日期："
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/sale_billdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/sale_billdate_tip"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/sale_company_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="客户："
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/sale_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/sale_company_tip"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/sale_material_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="160dp"
+            android:text="产品："
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/sale_material"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/sale_material_tip"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/sale_style_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="款号："
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/sale_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/sale_style_tip"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/sale_status_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="160dp"
+            android:text="状态："
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/sale_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/sale_status_tip"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/sale_volume_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="匹数："
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/sale_volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/sale_volume_tip"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/sale_quantity_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="160dp"
+            android:text="成品数："
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/sale_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/sale_quantity_tip"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/sale_craft_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="工艺："
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/sale_craft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/sale_craft_tip"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -38,6 +38,8 @@ import com.example.codescan.zxing.utils.BeepManager;
 import com.example.codescan.zxing.utils.CaptureActivityHandler;
 import com.example.codescan.zxing.utils.InactivityTimer;
 import com.example.nrbzms17.R;
+import com.example.nrbzms17.ui.activity.BaseActivity;
+import com.example.nrbzms17.ui.activity.CheckActivity;
 import com.google.zxing.Result;
 
 import java.io.IOException;
@@ -53,7 +55,7 @@ import java.lang.reflect.Field;
  * @author dswitkin@google.com (Daniel Switkin)
  * @author Sean Owen
  */
-public final class CaptureActivity extends Activity implements SurfaceHolder.Callback {
+public final class CaptureActivity extends BaseActivity implements SurfaceHolder.Callback {
 
 	private static final String TAG = CaptureActivity.class.getSimpleName();
 
@@ -192,7 +194,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		bundle.putInt("height", mCropRect.height());
 		bundle.putString("result", rawResult.getText());
 
-		startActivity(new Intent(CaptureActivity.this, ResultActivity.class).putExtras(bundle));
+		startActivity(new Intent(CaptureActivity.this, CheckActivity.class).putExtras(bundle));
+		finish();
 	}
 
 	private void initCamera(SurfaceHolder surfaceHolder) {
