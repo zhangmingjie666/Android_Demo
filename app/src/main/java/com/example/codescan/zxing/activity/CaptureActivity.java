@@ -190,11 +190,14 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
 		inactivityTimer.onActivity();
 		beepManager.playBeepSoundAndVibrate();
 
-		bundle.putInt("width", mCropRect.width());
-		bundle.putInt("height", mCropRect.height());
-		bundle.putString("result", rawResult.getText());
-
-		startActivity(new Intent(CaptureActivity.this, CheckActivity.class).putExtras(bundle));
+//		bundle.putInt("width", mCropRect.width());
+//		bundle.putInt("height", mCropRect.height());
+//		bundle.putString("result", rawResult.getText());
+		Intent intent  = new Intent();
+		intent.putExtra("code_return",rawResult.getText());
+		setResult(RESULT_OK,intent);
+//		finish();
+//		startActivity(new Intent(CaptureActivity.this, CheckActivity.class).putExtras(bundle));
 		finish();
 	}
 
@@ -306,4 +309,5 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
 		}
 		return 0;
 	}
+
 }

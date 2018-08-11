@@ -1,29 +1,36 @@
 package com.example.nrbzms17.ui.activity;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.Spinner;
 
+import com.example.codescan.zxing.activity.CaptureActivity;
 import com.example.nrbzms17.R;
 import com.example.nrbzms17.Utils.JSONUtils;
 import com.example.nrbzms17.data.Api;
 import com.example.nrbzms17.data.listener.OnNetRequest;
-import com.example.nrbzms17.data.model.DateBean;
-import com.example.nrbzms17.data.model.DateBeanResponse;
+
 import com.example.nrbzms17.data.model.DepotBean;
 import com.example.nrbzms17.data.model.DepotBeanResponse;
-import com.example.nrbzms17.data.model.StatusBean;
-import com.example.nrbzms17.ui.adapter.SpinnerDepotAdapter;
 
-public class AllocationActivity extends AppCompatActivity {
+import com.example.nrbzms17.ui.adapter.SpinnerDepotAdapter;
+import com.example.nrbzms17.ui.widget.ClearEditText;
+
+public class AllocationActivity extends BaseActivity {
 
     Spinner spinner_depot;
 
     SpinnerDepotAdapter depotAdapter;
 
     DepotBean depotBean;
+
+    ClearEditText codeSearch;
+
+    Button codeScan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,17 @@ public class AllocationActivity extends AppCompatActivity {
 
     public void initview() {
 
+        //扫一扫
+        codeScan = findViewById(R.id.codeScan);
+        codeScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AllocationActivity.this, CaptureActivity.class);
+                startActivityForResult(intent, 1);
+            }
+        });
+
+
         //获取仓库
         spinner_depot = findViewById(R.id.spinner_depot);
         depotAdapter = new SpinnerDepotAdapter();
@@ -47,7 +65,7 @@ public class AllocationActivity extends AppCompatActivity {
 
     }
 
-
+    //状态下拉监听
     private void setClickListeners() {
 
         spinner_depot.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -65,6 +83,20 @@ public class AllocationActivity extends AppCompatActivity {
 
     }
 
+    //获取扫描返回的数据
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    String returnedData = data.getStringExtra("code_return");
+                    codeSearch = (ClearEditText) findViewById(R.id.codeSearch);
+                    codeSearch.setText(returnedData);
+                }
+                break;
+            default:
+        }
+    }
 
     //获取仓库信息
     public void getDepotinfo() {

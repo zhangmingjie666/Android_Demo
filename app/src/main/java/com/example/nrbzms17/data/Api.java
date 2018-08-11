@@ -64,6 +64,7 @@ public class Api {
             }
         };
     }
+
     /**
      * APP升级信息
      */
@@ -77,7 +78,7 @@ public class Api {
      */
     public final static String GET_INDENTILIST = "Indent/indentList";
 
-    public void getIndentInfoList(String status, String customcode,String date) {
+    public void getIndentInfoList(String status, String customcode, String date) {
         Map<String, String> params = new HashMap<>();
         params.put("status", status);
         params.put("code", customcode);
@@ -136,7 +137,7 @@ public class Api {
      */
     public final static String GET_PURCHASE = "purchase/list";
 
-    public void getPurchaseList(String name, String customcode,String date) {
+    public void getPurchaseList(String name, String customcode, String date) {
         Map<String, String> params = new HashMap<>();
         params.put("status", name);
         params.put("code", customcode);
@@ -145,13 +146,12 @@ public class Api {
     }
 
 
-
     /**
      * 采购明细
      */
-    public final static String GET_PURCHASEDETAIL= "purchase/detail";
+    public final static String GET_PURCHASEDETAIL = "purchase/detail";
 
-    public void getPurchasedetail( String id) {
+    public void getPurchasedetail(String id) {
         Map<String, String> params = new HashMap<>();
         params.put("id", id);
         mClient.get(GET_PURCHASEDETAIL, params, callback);
@@ -161,8 +161,9 @@ public class Api {
      * 获取状态信息
      */
     public final static String GET_STATUS = "status/list";
-    public void getStatusInfo(){
-        mClient.get(GET_STATUS,null,callback);
+
+    public void getStatusInfo() {
+        mClient.get(GET_STATUS, null, callback);
     }
 
     /**
@@ -192,7 +193,8 @@ public class Api {
      * 检验列表
      */
     public final static String GET_INSPECTLIST = "inspect/list";
-    public void getInspectList(String status,String customcode) {
+
+    public void getInspectList(String status, String customcode) {
         Map<String, String> params = new HashMap<>();
         params.put("status", status);
         params.put("customcode", customcode);
@@ -203,32 +205,35 @@ public class Api {
      * 获取状态信息
      */
     public final static String GET_COMMENSTATUS = "status/commonList";
-    public void getCommenStatus(){
-        mClient.get(GET_COMMENSTATUS,null,callback);
+
+    public void getCommenStatus() {
+        mClient.get(GET_COMMENSTATUS, null, callback);
     }
 
     /**
      * 获取日期信息
      */
     public final static String GET_DATE = "date/list";
-    public void getDateInfo(){
-        mClient.get(GET_DATE,null,callback);
+
+    public void getDateInfo() {
+        mClient.get(GET_DATE, null, callback);
     }
 
     /**
      * 获取仓库信息
      */
-    public final static String GET_DEPOT= "depot/list";
-    public void getDepotinfo(){
-        mClient.get(GET_DEPOT,null,callback);
+    public final static String GET_DEPOT = "depot/list";
+
+    public void getDepotinfo() {
+        mClient.get(GET_DEPOT, null, callback);
     }
 
     /**
      * 检验明细
      */
-    public final static String GET_INSPECTDETAIL= "inspect/detail";
+    public final static String GET_INSPECTDETAIL = "inspect/detail";
 
-    public void getInspectDetail( String id) {
+    public void getInspectDetail(String id) {
         Map<String, String> params = new HashMap<>();
         params.put("id", id);
         mClient.get(GET_INSPECTDETAIL, params, callback);
@@ -262,8 +267,8 @@ public class Api {
      */
     public final static String GET_EMPLOYEE = "employee/list";
 
-    public void getEmployeeInfo(){
-        mClient.get(GET_EMPLOYEE,null,callback);
+    public void getEmployeeInfo() {
+        mClient.get(GET_EMPLOYEE, null, callback);
     }
 
 
@@ -272,10 +277,35 @@ public class Api {
      */
     public final static String GET_SALELIST = "salesend/list";
 
-    public void getSaleInfoList(String status){
+    public void getSaleInfoList(String status) {
         Map<String, String> params = new HashMap<>();
         params.put("status", status);
-        mClient.get(GET_SALELIST,null,callback);
+        mClient.get(GET_SALELIST, null, callback);
     }
 
+    /**
+     * 获取员工信息
+     */
+    public final static String GET_CHECKLIST= "check/list";
+
+    public void getCheckList(String barcode) {
+        Map<String, String> params = new HashMap<>();
+        params.put("barcode", barcode);
+        mClient.get(GET_CHECKLIST, params, callback);
+    }
+
+    /**
+     * 仓库盘点
+     */
+    public final static String POST_ADD_CHECK= "check/add";
+
+    public void addCheck(String employee_,String barcode,String volume,String quantity,String remark) {
+        Map<String, String> params = new HashMap<>();
+        params.put("barcode",barcode);
+        params.put("volume",volume);
+        params.put("quantity",quantity);
+        params.put("remark",remark);
+        params.put("employee_",employee_);
+        mClient.post(POST_ADD_CHECK, params, callback);
+    }
 }
