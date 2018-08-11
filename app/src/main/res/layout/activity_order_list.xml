@@ -47,20 +47,13 @@
             />
     </LinearLayout>
 
-    <com.example.nrbzms17.ui.view.SideslipListView
-        android:id="@+id/listView"
+    <Spinner
+        android:id="@+id/order_date"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@color/white"
-        android:divider="@color/view_line"
-        android:dividerHeight="1dp"></com.example.nrbzms17.ui.view.SideslipListView>
+        android:layout_height="30dp"
+        android:background="#F8F8FF"
+        android:scrollbarSize="20dp"></Spinner>
 
-    <!--<ListView-->
-        <!--android:id="@+id/pullListView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--&gt;</ListView>-->
     <com.jingchen.pulltorefresh.PullToRefreshLayout
         android:id="@+id/pullToRefreshLayout"
         android:layout_width="match_parent"

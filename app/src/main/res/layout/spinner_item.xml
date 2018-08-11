@@ -9,8 +9,11 @@
         android:id="@+id/txtv_Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:textSize="18dp"
         android:textColor="@color/black"
+        android:gravity="left"
+        android:paddingLeft="8dip"
+        android:singleLine="true"
         />
 
 </LinearLayout>

@@ -20,6 +20,8 @@ import com.example.nrbzms17.data.Api;
 import com.example.nrbzms17.data.SharedPreference;
 import com.example.nrbzms17.data.listener.OnNetRequest;
 
+import com.example.nrbzms17.data.model.DateBean;
+import com.example.nrbzms17.data.model.DateBeanResponse;
 import com.example.nrbzms17.data.model.OrderBean;
 import com.example.nrbzms17.data.model.OrderBeanResponse;
 import com.example.nrbzms17.data.model.OrderListBean;
@@ -27,6 +29,7 @@ import com.example.nrbzms17.data.model.StatusBean;
 import com.example.nrbzms17.data.model.StatusBeanResponse;
 import com.example.nrbzms17.ui.adapter.OrderDetailAdapter;
 import com.example.nrbzms17.ui.adapter.OrderListAdapter;
+import com.example.nrbzms17.ui.adapter.SpinnerDateAdapter;
 import com.example.nrbzms17.ui.adapter.SpinnerStatusAdapter;
 import com.example.nrbzms17.ui.widget.ClearEditText;
 import com.jingchen.pulltorefresh.PullToRefreshLayout;
@@ -57,6 +60,11 @@ public class OrderListActivity extends AppCompatActivity {
 
     private StatusBean statusBean;
 
+    Spinner choose_date;
+
+    SpinnerDateAdapter dateAdapter;
+
+    private DateBean dateBean;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,6 +88,7 @@ public class OrderListActivity extends AppCompatActivity {
 
         getOrderList();
 
+
         setClickListeners();
 
         Button button = (Button) findViewById(R.id.back_menu);
@@ -92,6 +101,8 @@ public class OrderListActivity extends AppCompatActivity {
         });
 
         getStatusInfo();
+
+        getDateInfo();
     }
 
 
@@ -150,6 +161,10 @@ public class OrderListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //日期查询
+        choose_date = findViewById(R.id.order_date);
+        dateAdapter = new SpinnerDateAdapter();
+        choose_date.setAdapter(dateAdapter);
     }
 
 
@@ -160,6 +175,19 @@ public class OrderListActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 statusBean = (StatusBean) statusAdapter.getItem(position);
+                getOrderList();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        choose_date.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                dateBean = (DateBean) dateAdapter.getItem(position);
                 getOrderList();
             }
 
@@ -182,6 +210,11 @@ public class OrderListActivity extends AppCompatActivity {
             if (status == "-1") {
                 status = "";
             }
+        }
+
+        String date ="";
+        if(dateBean !=null){
+            date= dateBean.id;
         }
 
         Api api = new Api(this, new OnNetRequest(this, true, "正在加载.....") {
@@ -211,7 +244,7 @@ public class OrderListActivity extends AppCompatActivity {
             }
         });
 
-        api.getIndentInfoList(status, etCode.getText().toString().trim());
+        api.getIndentInfoList(status, etCode.getText().toString().trim(),date);
 //        }
 
     }
@@ -244,6 +277,28 @@ public class OrderListActivity extends AppCompatActivity {
         });
 
         api.getStatusInfo();
+    }
+
+    //获取查询日期
+    public void getDateInfo(){
+        Api api = new Api(this, new OnNetRequest(this) {
+            @Override
+            public void onSuccess(String msg) {
+                DateBeanResponse dateBeanResponse = JSONUtils.fromJson(msg, DateBeanResponse.class);
+                if (dateBeanResponse != null && dateBeanResponse.result != null) {
+                    dateAdapter.refresh(dateBeanResponse.result);
+                    for (int i = 0; i < statusAdapter.getCount(); i++) {
+                        DateBean bean = (DateBean) dateAdapter.getItem(i);
+                    }
+                }
+            }
+            @Override
+            public void onFail() {
+
+            }
+        });
+
+        api.getDateInfo();
     }
 
     @Override

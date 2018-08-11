@@ -44,9 +44,11 @@
         <activity android:name=".ui.activity.UpdateActivity" />
         <activity android:name=".ui.activity.TransferActivity" />
         <activity android:name=".ui.activity.EchartsActivity" />
-        <activity android:name=".ui.activity.SaleListActivity"
+        <activity
+            android:name=".ui.activity.SaleListActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden"></activity>
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity android:name=".ui.activity.AllocationActivity"></activity>
     </application>
 
 </manifest>

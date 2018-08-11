@@ -77,10 +77,11 @@ public class Api {
      */
     public final static String GET_INDENTILIST = "Indent/indentList";
 
-    public void getIndentInfoList(String status, String customcode) {
+    public void getIndentInfoList(String status, String customcode,String date) {
         Map<String, String> params = new HashMap<>();
         params.put("status", status);
         params.put("code", customcode);
+        params.put("select_date", date);
         mClient.get(GET_INDENTILIST, params, callback);
     }
 
@@ -135,20 +136,13 @@ public class Api {
      */
     public final static String GET_PURCHASE = "purchase/list";
 
-    public void getPurchaseList(String name, String customcode,String starttime,String endtime) {
+    public void getPurchaseList(String name, String customcode,String date) {
         Map<String, String> params = new HashMap<>();
         params.put("status", name);
         params.put("code", customcode);
-        params.put("start_time", starttime);
-        params.put("end_time", endtime);
+        params.put("select_date", date);
         mClient.get(GET_PURCHASE, params, callback);
     }
-//    public void getPurchaseList(String name, String customcode) {
-//        Map<String, String> params = new HashMap<>();
-//        params.put("status", name);
-//        params.put("code", customcode);
-//        mClient.get(GET_PURCHASE, params, callback);
-//    }
 
 
 
@@ -211,6 +205,22 @@ public class Api {
     public final static String GET_COMMENSTATUS = "status/commonList";
     public void getCommenStatus(){
         mClient.get(GET_COMMENSTATUS,null,callback);
+    }
+
+    /**
+     * 获取日期信息
+     */
+    public final static String GET_DATE = "date/list";
+    public void getDateInfo(){
+        mClient.get(GET_DATE,null,callback);
+    }
+
+    /**
+     * 获取仓库信息
+     */
+    public final static String GET_DEPOT= "depot/list";
+    public void getDepotinfo(){
+        mClient.get(GET_DEPOT,null,callback);
     }
 
     /**
