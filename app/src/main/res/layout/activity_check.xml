@@ -334,7 +334,13 @@
     <Button
         android:id="@+id/check_Submit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#97A4A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
         android:text="盘点完成"
-        android:textSize="20sp" />
+        android:textColor="#FFCF6E"
+        android:textSize="18sp" />
 </LinearLayout>

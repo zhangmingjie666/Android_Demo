@@ -114,7 +114,6 @@ public class InspectListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 InspectBean.Data processOrder = (InspectBean.Data) inspectListAdapter.getItem(position);
 
-
                 Intent intent = new Intent(InspectListActivity.this, InspectDetailActivity.class);
                 Bundle bundle = new Bundle();
 
@@ -227,8 +226,7 @@ public class InspectListActivity extends AppCompatActivity {
 
         super.onResume();
 
-        getInspectList();
-
+        inspectListAdapter.refresh(InspectBeanList);
 
         insCode.setText("");
 

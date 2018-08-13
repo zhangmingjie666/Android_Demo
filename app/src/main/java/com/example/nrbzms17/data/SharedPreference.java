@@ -43,6 +43,16 @@ public class SharedPreference {
         mSharedPreference.edit().putString(EmployeeId,employeeId).apply();
     }
 
+    public static final String DepotId = ".depot_id";
+
+    public static String getDepotId(){
+        return mSharedPreference.getString(DepotId,"");
+    }
+
+    public static void setDepotId(String depotId){
+        mSharedPreference.edit().putString(DepotId,depotId).apply();
+    }
+
     public static final String DepartmentId = ".department_id";
     public static String getDepartmentId(){
         return mSharedPreference.getString(DepartmentId,"");

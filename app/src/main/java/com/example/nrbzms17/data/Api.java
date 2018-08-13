@@ -273,18 +273,20 @@ public class Api {
 
 
     /**
-     * 获取员工信息
+     * 获取销售信息
      */
     public final static String GET_SALELIST = "salesend/list";
 
-    public void getSaleInfoList(String status) {
+    public void getSaleInfoList(String status,String billcode,String date) {
         Map<String, String> params = new HashMap<>();
         params.put("status", status);
-        mClient.get(GET_SALELIST, null, callback);
+        params.put("billcode", billcode);
+        params.put("select_date", date);
+        mClient.get(GET_SALELIST, params, callback);
     }
 
     /**
-     * 获取员工信息
+     * 获取盘点信息
      */
     public final static String GET_CHECKLIST= "check/list";
 
@@ -308,4 +310,30 @@ public class Api {
         params.put("employee_",employee_);
         mClient.post(POST_ADD_CHECK, params, callback);
     }
+
+
+    /**
+     * 获取调拨信息
+     */
+    public final static String GET_ALLOCATIONLIST= "allocate/list";
+
+    public void getAlloList(String barcode) {
+        Map<String, String> params = new HashMap<>();
+        params.put("barcode", barcode);
+        mClient.get(GET_ALLOCATIONLIST, params, callback);
+    }
+
+
+    /**
+     * 仓库调拨
+     */
+    public final static String POST_ADD_ALLOCATION= "allocate/edit";
+
+    public void addAllocation(String id,String depot_) {
+        Map<String, String> params = new HashMap<>();
+        params.put("id",id);
+        params.put("depot_",depot_);
+        mClient.post(POST_ADD_ALLOCATION, params, callback);
+    }
+
 }

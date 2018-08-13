@@ -16,7 +16,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PurchaseDetailAdapter extends BaseAdapter {
+public class SaleDetailAdapter extends BaseAdapter {
     List<PurchaseDetailBean.Data> listData = new ArrayList<>();
 
     public void refresh(List<PurchaseDetailBean.Data> ls) {

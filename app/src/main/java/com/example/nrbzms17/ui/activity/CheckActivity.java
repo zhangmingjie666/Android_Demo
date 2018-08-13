@@ -199,7 +199,7 @@ public class CheckActivity extends BaseActivity {
         api.getEmployeeInfo();
     }
 
-    //获取仓库
+    //获取条码信息
     public void getCheckList() {
 
         String barcode = codeSearch.getText().toString().trim();
@@ -250,10 +250,17 @@ public class CheckActivity extends BaseActivity {
 
         String quantity = check_quantity.getText().toString().trim();
 
-        if (checkbean == null) {
-            UIHelper.showShortToast(CheckActivity.this, "请扫描条形码");
-            return;
+        String barcode = codeSearch.getText().toString().trim();
+
+        if(barcode.equals("")){
+            UIHelper.showShortToast(CheckActivity.this,"请输入条码");
+            return ;
         }
+
+//        if (checkbean == null) {
+//            UIHelper.showShortToast(CheckActivity.this, "请扫描条形码");
+//            return;
+//        }
 
         Api api = new Api(this, new OnNetRequest(this, true, "请稍等...") {
             @Override
@@ -279,7 +286,7 @@ public class CheckActivity extends BaseActivity {
             public void onFail() {
             }
         });
-        api.addCheck(employee.id, checkbean.barcode, volume, quantity, "");
+        api.addCheck(employee.id, barcode, volume, quantity, "");
     }
 
     //利用活动管理器退出

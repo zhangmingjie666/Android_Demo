@@ -1,10 +1,12 @@
 package com.example.nrbzms17.ui.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -14,13 +16,18 @@ import com.example.nrbzms17.data.Api;
 import com.example.nrbzms17.data.SharedPreference;
 import com.example.nrbzms17.data.listener.OnNetRequest;
 
+import com.example.nrbzms17.data.model.DateBean;
+import com.example.nrbzms17.data.model.DateBeanResponse;
+import com.example.nrbzms17.data.model.InspectBean;
 import com.example.nrbzms17.data.model.SaleBean;
 import com.example.nrbzms17.data.model.SaleBeanResponse;
 
 import com.example.nrbzms17.data.model.StatusBean;
 import com.example.nrbzms17.data.model.StatusBeanResponse;
 import com.example.nrbzms17.ui.adapter.SaleListAdapter;
+import com.example.nrbzms17.ui.adapter.SpinnerDateAdapter;
 import com.example.nrbzms17.ui.adapter.SpinnerStatusAdapter;
+import com.example.nrbzms17.ui.widget.ClearEditText;
 import com.jingchen.pulltorefresh.PullToRefreshLayout;
 
 import java.util.ArrayList;
@@ -40,7 +47,17 @@ public class SaleListActivity extends AppCompatActivity {
 
     Spinner sale_status;
 
+    Spinner sale_date;
+
     private StatusBean statusBean;
+
+    ClearEditText saleCode;
+
+    Button saleSearch;
+
+    private DateBean dateBean;
+
+    SpinnerDateAdapter dateAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +67,7 @@ public class SaleListActivity extends AppCompatActivity {
         getSaleList();
         setClickListeners();
         getCommenStatus();
+        getDateInfo();
     }
 
     public void initview() {
@@ -79,6 +97,39 @@ public class SaleListActivity extends AppCompatActivity {
             }
 
         });
+
+        saleCode = findViewById(R.id.saleCode);
+
+        saleSearch =findViewById(R.id.saleSearch);
+        saleSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSaleList();
+            }
+        });
+
+
+        //日期查询
+        sale_date = findViewById(R.id.sale_date);
+        dateAdapter = new SpinnerDateAdapter();
+        sale_date.setAdapter(dateAdapter);
+
+        //栏目点击
+        //栏目点击
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                SaleBean.Data processOrder = (SaleBean.Data) adapter.getItem(position);
+
+                Intent intent = new Intent(SaleListActivity.this, SaleDetailActivity.class);
+                Bundle bundle = new Bundle();
+
+                bundle.putSerializable(SaleBean.Data.class.getSimpleName(), processOrder);
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
     }
 
     //状态下拉
@@ -92,6 +143,18 @@ public class SaleListActivity extends AppCompatActivity {
 
                 getSaleList();
 
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        sale_date.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                dateBean = (DateBean) dateAdapter.getItem(position);
+                getSaleList();
             }
 
             @Override
@@ -113,6 +176,15 @@ public class SaleListActivity extends AppCompatActivity {
             if (status == "-1") {
                 status = "";
             }
+        }
+
+        String billcode ;
+
+        billcode = saleCode.getText().toString().trim();
+
+        String date ="";
+        if(dateBean !=null){
+            date= dateBean.id;
         }
 
         Api api = new Api(this, new OnNetRequest(this, true, "正在加载.....") {
@@ -142,7 +214,7 @@ public class SaleListActivity extends AppCompatActivity {
             }
         });
 
-        api.getSaleInfoList(status);
+        api.getSaleInfoList(status,billcode,date);
 
     }
 
@@ -174,5 +246,27 @@ public class SaleListActivity extends AppCompatActivity {
         });
 
         api.getCommenStatus();
+    }
+
+    //获取查询日期
+    public void getDateInfo(){
+        Api api = new Api(this, new OnNetRequest(this) {
+            @Override
+            public void onSuccess(String msg) {
+                DateBeanResponse dateBeanResponse = JSONUtils.fromJson(msg, DateBeanResponse.class);
+                if (dateBeanResponse != null && dateBeanResponse.result != null) {
+                    dateAdapter.refresh(dateBeanResponse.result);
+                    for (int i = 0; i < statusAdapter.getCount(); i++) {
+                        DateBean bean = (DateBean) dateAdapter.getItem(i);
+                    }
+                }
+            }
+            @Override
+            public void onFail() {
+
+            }
+        });
+
+        api.getDateInfo();
     }
 }
