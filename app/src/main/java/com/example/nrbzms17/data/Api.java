@@ -336,4 +336,39 @@ public class Api {
         mClient.post(POST_ADD_ALLOCATION, params, callback);
     }
 
+
+    /**
+     * 获取销售明细
+     */
+    public final static String GET_SALEDERAILLIST = "salesend/item";
+
+    public void getSaleDetail(String id) {
+        Map<String, String> params = new HashMap<>();
+        params.put("id", id);
+        mClient.get(GET_SALEDERAILLIST, params, callback);
+    }
+
+    /**
+     * 审核发货
+     */
+    public final static String POST_SALEAUDIT = "salesend/saleAudit";
+
+    public void SaleAudit(String id) {
+        Map<String, String> params = new HashMap<>();
+        params.put("id", id);
+        mClient.post(POST_SALEAUDIT, params, callback);
+    }
+
+
+    /**
+     * 反审发货
+     */
+    public final static String POST_SALENOAUDIT = "salesend/saleNoaudit";
+
+    public void SaleNoaudit(String id) {
+        Map<String, String> params = new HashMap<>();
+        params.put("id", id);
+        mClient.post(POST_SALENOAUDIT, params, callback);
+    }
+
 }

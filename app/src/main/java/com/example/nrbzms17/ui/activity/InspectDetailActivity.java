@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.example.nrbzms17.R;
 import com.example.nrbzms17.Utils.JSONUtils;
 
+import com.example.nrbzms17.Utils.UIHelper;
 import com.example.nrbzms17.data.Api;
 import com.example.nrbzms17.data.listener.OnNetRequest;
 import com.example.nrbzms17.data.model.InspectBean;
@@ -80,7 +81,7 @@ public class InspectDetailActivity extends AppCompatActivity {
 
                     InspectAudit();
 
-                    Toast.makeText(InspectDetailActivity.this, "审核成功", Toast.LENGTH_SHORT).show();
+
 
                     finish();
 
@@ -175,7 +176,7 @@ public class InspectDetailActivity extends AppCompatActivity {
             public void onSuccess(String msg) {
                 StatusBean responseBean = JSONUtils.fromJson(msg, StatusBean.class);
                 if (responseBean != null ) {
-
+                    Toast.makeText(InspectDetailActivity.this, "审核成功", Toast.LENGTH_SHORT).show();
                 } else {
                 }
             }
@@ -199,7 +200,7 @@ public class InspectDetailActivity extends AppCompatActivity {
                 StatusBean responseBean = JSONUtils.fromJson(msg, StatusBean.class);
 //                if (responseBean != null && responseBean.status) {
                     if (responseBean != null ) {
-//                    UIHelper.showShortToast(InspectDetailActivity.this,responseBean.result );
+                    UIHelper.showShortToast(InspectDetailActivity.this,"反审成功");
                 } else {
 //                    UIHelper.showShortToast(InspectDetailActivity.this,responseBean.result );
                 }

@@ -34,7 +34,7 @@ public class MainActivity extends FragmentActivity {
 
         tabFunction = (TextView) findViewById(R.id.nr_function);
         tabFunction.setSelected(true);//首页默认选中
-        tabFind = (TextView) findViewById(R.id.nr_find);
+//        tabFind = (TextView) findViewById(R.id.nr_find);
         tabPerson = (TextView) findViewById(R.id.nr_person);
         tabSetting = (TextView) findViewById(R.id.nr_setting);
 
@@ -45,7 +45,7 @@ public class MainActivity extends FragmentActivity {
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, mainFragment).commit();
 
         tabFunction.setOnClickListener(tabClickListener);
-        tabFind.setOnClickListener(tabClickListener);
+//        tabFind.setOnClickListener(tabClickListener);
         tabPerson.setOnClickListener(tabClickListener);
         tabSetting.setOnClickListener(tabClickListener);
     }
@@ -85,14 +85,16 @@ public class MainActivity extends FragmentActivity {
             }else {
                 transaction.show(settingFragment);
             }
-        }else if(resId==R.id.nr_find){//消息中心
-            if(findFragment==null){
-                findFragment = new FindFragment();
-                transaction.add(R.id.fragment_container,findFragment);
-            }else {
-                transaction.show(findFragment);
-            }
-        }else if(resId==R.id.nr_person){//我
+        }
+// else if(resId==R.id.nr_find){//消息中心
+//            if(findFragment==null){
+//                findFragment = new FindFragment();
+//                transaction.add(R.id.fragment_container,findFragment);
+//            }else {
+//                transaction.show(findFragment);
+//            }
+//        }
+ else if(resId==R.id.nr_person){//我
             if(personFragment==null){
                 personFragment = new PersonFragment();
                 transaction.add(R.id.fragment_container,personFragment);
@@ -124,7 +126,7 @@ public class MainActivity extends FragmentActivity {
      */
     private void changeSelect(int resId) {
         tabFunction.setSelected(false);
-        tabFind.setSelected(false);
+//        tabFind.setSelected(false);
         tabPerson.setSelected(false);
         tabSetting.setSelected(false);
 
@@ -132,9 +134,9 @@ public class MainActivity extends FragmentActivity {
             case R.id.nr_function:
                 tabFunction.setSelected(true);
                 break;
-            case R.id.nr_find:
-                tabFind.setSelected(true);
-                break;
+//            case R.id.nr_find:
+//                tabFind.setSelected(true);
+//                break;
             case R.id.nr_setting:
                 tabSetting.setSelected(true);
                 break;

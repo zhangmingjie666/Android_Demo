@@ -59,6 +59,8 @@ public class InspectListActivity extends AppCompatActivity {
 
         initview();
 
+        getInspectList();
+
         setClickListeners();
 
         getCommenStatus();
@@ -70,6 +72,8 @@ public class InspectListActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
     }
 
     public void initview() {
@@ -226,7 +230,7 @@ public class InspectListActivity extends AppCompatActivity {
 
         super.onResume();
 
-        inspectListAdapter.refresh(InspectBeanList);
+        getInspectList();
 
         insCode.setText("");
 

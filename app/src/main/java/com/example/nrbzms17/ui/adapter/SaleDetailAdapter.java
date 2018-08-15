@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.nrbzms17.R;
 import com.example.nrbzms17.data.model.PurchaseDetailBean;
+import com.example.nrbzms17.data.model.SaleDetailBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +18,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SaleDetailAdapter extends BaseAdapter {
-    List<PurchaseDetailBean.Data> listData = new ArrayList<>();
+    List<SaleDetailBean.Data> listData = new ArrayList<>();
 
-    public void refresh(List<PurchaseDetailBean.Data> ls) {
+    public void refresh(List<SaleDetailBean.Data> ls) {
         if (ls == null) {
             listData = new ArrayList<>();
         } else {
@@ -48,91 +49,91 @@ public class SaleDetailAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_purchase_detail, null);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_sale_detail, null);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        PurchaseDetailBean.Data bean = listData.get(position);
-        viewHolder.pur_customcode.setText(bean.customcode);
-        viewHolder.pur_billdate.setText(bean.billdate);
-        viewHolder.pur_company.setText(bean.company);
+        SaleDetailBean.Data bean = listData.get(position);
+        viewHolder.sale_customcode.setText(bean.customcode);
+        viewHolder.sale_billdate.setText(bean.billdate);
+        viewHolder.sale_company.setText(bean.company);
         //小范秀操作
         if (bean.status.toString().equals("待审核")) {
-            viewHolder.pur_status.setTextColor(Color.parseColor("#FF0000"));
+            viewHolder.sale_status.setTextColor(Color.parseColor("#FF0000"));
         } else {
-            viewHolder.pur_status.setTextColor(Color.parseColor("#0000FF"));
+            viewHolder.sale_status.setTextColor(Color.parseColor("#0000FF"));
         }
 
-        viewHolder.pur_status.setText(bean.status);
-        viewHolder.pur_material.setText(bean.material);
-        viewHolder.pur_employee.setText(bean.employee);
-        viewHolder.pur_quantity.setText(bean.quantity);
-        viewHolder.pur_color.setText(bean.color);
-        viewHolder.pur_contcode.setText(bean.contcode);
+        viewHolder.sale_status.setText(bean.status);
+        viewHolder.sale_material.setText(bean.material);
+        viewHolder.sale_employee.setText(bean.employee);
+        viewHolder.sale_quantity.setText(bean.quantity);
+        viewHolder.sale_color.setText(bean.color);
+        viewHolder.sale_linkman.setText(bean.linkman);
 
-        viewHolder.pur_spec.setText(bean.spec);
-        viewHolder.pur_width.setText(bean.width);
-        viewHolder.pur_weight.setText(bean.weight);
-        viewHolder.pur_linkman.setText(bean.linkman);
-        viewHolder.pur_trade.setText(bean.trade);
-//        viewHolder.pur_sup_material_code.setText(bean.sup_material_code);
-        viewHolder.pur_craft.setText(bean.craft);
+        viewHolder.sale_billtrade.setText(bean.spec);
+        viewHolder.sale_remark.setText(bean.remark);
+        viewHolder.sale_style.setText(bean.style);
+        viewHolder.sale_address.setText(bean.address);
+        viewHolder.sale_express_code.setText(bean.sale_express_code);
+        viewHolder.sale_craft.setText(bean.craft);
+        viewHolder.sale_trade.setText(bean.trade);
 
         return convertView;
     }
 
 
     static class ViewHolder {
-        @BindView(R.id.pur_customcode)
-        TextView pur_customcode;
+        @BindView(R.id.sale_customcode)
+        TextView sale_customcode;
 
-        @BindView(R.id.pur_billdate)
-        TextView pur_billdate;
+        @BindView(R.id.sale_billdate)
+        TextView sale_billdate;
 
-        @BindView(R.id.pur_company)
-        TextView pur_company;
+        @BindView(R.id.sale_company)
+        TextView sale_company;
 
-        @BindView(R.id.pur_status)
-        TextView pur_status;
+        @BindView(R.id.sale_material)
+        TextView sale_material;
 
-        @BindView(R.id.pur_material)
-        TextView pur_material;
+        @BindView(R.id.sale_status)
+        TextView sale_status;
 
-        @BindView(R.id.pur_employee)
-        TextView pur_employee;
+        @BindView(R.id.sale_employee)
+        TextView sale_employee;
 
-        @BindView(R.id.pur_quantity)
-        TextView pur_quantity;
+        @BindView(R.id.sale_quantity)
+        TextView sale_quantity;
 
-        @BindView(R.id.pur_color)
-        TextView pur_color;
+        @BindView(R.id.sale_color)
+        TextView sale_color;
 
-        @BindView(R.id.pur_contcode)
-        TextView pur_contcode;
+        @BindView(R.id.sale_craft)
+        TextView sale_craft;
 
-        @BindView(R.id.pur_spec)
-        TextView pur_spec;
+        @BindView(R.id.sale_express_code)
+        TextView sale_express_code;
 
-        @BindView(R.id.pur_width)
-        TextView pur_width;
+        @BindView(R.id.sale_billtrade)
+        TextView sale_billtrade;
 
-        @BindView(R.id.pur_weight)
-        TextView pur_weight;
+        @BindView(R.id.sale_address)
+        TextView sale_address;
 
-        @BindView(R.id.pur_linkman)
-        TextView pur_linkman;
+        @BindView(R.id.sale_style)
+        TextView sale_style;
 
-        @BindView(R.id.pur_trade)
-        TextView pur_trade;
+        @BindView(R.id.sale_linkman)
+        TextView sale_linkman;
 
-//        @BindView(R.id.pur_sup_material_code)
-//        TextView pur_sup_material_code;
+        @BindView(R.id.sale_remark)
+        TextView sale_remark;
 
-        @BindView(R.id.pur_craft)
-        TextView pur_craft;
+        @BindView(R.id.sale_trade)
+        TextView sale_trade;
 
 
 

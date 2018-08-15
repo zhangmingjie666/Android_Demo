@@ -32,18 +32,18 @@
             android:text="功能"
             android:textColor="@drawable/tab_menu_deal_text" />
 
-        <TextView
-            android:id="@+id/nr_find"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0.8dp"
-            android:layout_weight="1"
-            android:background="@drawable/tab_menu_bg"
-            android:drawablePadding="0dp"
-            android:drawableTop="@drawable/tab_menu_poi"
-            android:gravity="center"
-            android:text="发现"
-            android:textColor="@drawable/tab_menu_poi_text" />
+        <!--<TextView-->
+            <!--android:id="@+id/nr_find"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="0.8dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/tab_menu_bg"-->
+            <!--android:drawablePadding="0dp"-->
+            <!--android:drawableTop="@drawable/tab_menu_poi"-->
+            <!--android:gravity="center"-->
+            <!--android:text="发现"-->
+            <!--android:textColor="@drawable/tab_menu_poi_text" />-->
 
         <TextView
             android:id="@+id/nr_person"

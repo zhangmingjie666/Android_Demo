@@ -269,4 +269,15 @@ public class SaleListActivity extends AppCompatActivity {
 
         api.getDateInfo();
     }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+
+        getSaleList();
+
+        saleCode.setText("");
+    }
+
 }
