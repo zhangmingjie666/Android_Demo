@@ -4,9 +4,11 @@ import android.content.Intent;
 
 import android.os.Bundle;
 import android.renderscript.Allocation;
+import android.renderscript.AllocationAdapter;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -24,9 +26,11 @@ import com.example.nrbzms17.data.model.DepotBean;
 import com.example.nrbzms17.data.model.DepotBeanResponse;
 
 import com.example.nrbzms17.data.model.ResponseBean;
+import com.example.nrbzms17.ui.adapter.AllocatAdapter;
 import com.example.nrbzms17.ui.adapter.SpinnerDepotAdapter;
 import com.example.nrbzms17.ui.widget.ClearEditText;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -51,6 +55,12 @@ public class AllocationActivity extends BaseActivity {
     Button back_menu;
 
     private AllocationBean allocationBean;
+
+    ListView allodetailView;
+
+    AllocatAdapter allocationAdapter;
+
+    private List<AllocationBean> allocationBeanList = new ArrayList<>();
 
 
     @Override
@@ -109,6 +119,12 @@ public class AllocationActivity extends BaseActivity {
                 });
             }
         });
+
+        //适配器
+        allodetailView = findViewById(R.id.allodetailView);
+        allocationAdapter = new AllocatAdapter();
+        allodetailView.setAdapter(allocationAdapter);
+
     }
 
     //状态下拉监听
@@ -148,19 +164,18 @@ public class AllocationActivity extends BaseActivity {
 
                 if (response != null && response.result.size() > 0) {
 
+                    allocationBeanList = response.result;
+
                     List<AllocationBean> allcationBeanList = response.result;
 
-                    if (allcationBeanList.size() == 1) {
 
-                        allocationBean = allcationBeanList.get(0);
+                    allocationBean = allcationBeanList.get(0);
 
-                        setAllcationinfo(allocationBean);
-
-                    }
 
                 } else {
-
+                    allocationBeanList = new ArrayList<>();
                 }
+                allocationAdapter.refresh(allocationBeanList);
             }
 
             @Override
@@ -218,75 +233,13 @@ public class AllocationActivity extends BaseActivity {
         api.getDepotinfo();
     }
 
-    @BindView(R.id.all_customcode)
-    TextView all_customcode;
-
-    @BindView(R.id.all_barcode)
-    TextView all_barcode;
-
-    @BindView(R.id.all_delot)
-    TextView all_delot;
-
-    @BindView(R.id.all_material)
-    TextView all_material;
-
-    @BindView(R.id.all_grade)
-    TextView all_grade;
-
-    @BindView(R.id.all_craft)
-    TextView all_craft;
-
-    @BindView(R.id.all_color)
-    TextView all_color;
-
-    @BindView(R.id.all_volum)
-    TextView all_volum;
-
-    @BindView(R.id.all_quantity)
-    TextView all_quantity;
-
-    @BindView(R.id.all_lot)
-    TextView all_lot;
-
-    @BindView(R.id.all_reel)
-    TextView all_reel;
-
-    //填充数据
-    public void setAllcationinfo(AllocationBean allocationBean) {
-        if (allocationBean == null) {
-            all_barcode.setText("");
-            all_delot.setText("");
-            all_grade.setText("");
-            all_material.setText("");
-            all_craft.setText("");
-            all_color.setText("");
-            all_volum.setText("");
-            all_quantity.setText("");
-            all_lot.setText("");
-            all_reel.setText("");
-            all_customcode.setText("");
-        } else {
-            all_barcode.setText(allocationBean.barcode);
-            all_delot.setText(allocationBean.depot);
-            all_grade.setText(allocationBean.grade);
-            all_material.setText(allocationBean.material);
-            all_craft.setText(allocationBean.craft);
-            all_color.setText(allocationBean.color);
-            all_volum.setText(allocationBean.volume);
-            all_quantity.setText(allocationBean.quantity);
-            all_lot.setText(allocationBean.lot);
-            all_reel.setText(allocationBean.reel);
-            all_customcode.setText(allocationBean.customcode);
-            codeSearch.requestFocus();
-        }
-    }
 
     //调拨完成
-    public void addAllocation(){
+    public void addAllocation() {
 
         String barcode = codeSearch.getText().toString().trim();
 
-        if( barcode.equals("")){
+        if (barcode.equals("")) {
             UIHelper.showShortToast(AllocationActivity.this, "请扫描条形码");
             return;
         }
@@ -317,7 +270,8 @@ public class AllocationActivity extends BaseActivity {
 
                 }
                 codeSearch.setText("");
-                setAllcationinfo(null);
+                allocationAdapter.refresh(null);
+                depotAdapter.refresh(null);
                 btnSubmit.setEnabled(false);
             }
 
@@ -325,7 +279,7 @@ public class AllocationActivity extends BaseActivity {
             public void onFail() {
             }
         });
-        api.addAllocation(allocationBean.id,depot_);
+        api.addAllocation(allocationBean.id, depot_);
     }
 
 }

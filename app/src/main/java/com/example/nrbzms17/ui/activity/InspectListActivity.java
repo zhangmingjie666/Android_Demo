@@ -16,11 +16,14 @@ import com.example.nrbzms17.Utils.JSONUtils;
 import com.example.nrbzms17.data.Api;
 import com.example.nrbzms17.data.SharedPreference;
 import com.example.nrbzms17.data.listener.OnNetRequest;
+import com.example.nrbzms17.data.model.DateBean;
+import com.example.nrbzms17.data.model.DateBeanResponse;
 import com.example.nrbzms17.data.model.InspectBean;
 import com.example.nrbzms17.data.model.InspectBeanResponse;
 import com.example.nrbzms17.data.model.StatusBean;
 import com.example.nrbzms17.data.model.StatusBeanResponse;
 import com.example.nrbzms17.ui.adapter.InspectListAdapter;
+import com.example.nrbzms17.ui.adapter.SpinnerDateAdapter;
 import com.example.nrbzms17.ui.adapter.SpinnerStatusAdapter;
 import com.example.nrbzms17.ui.widget.ClearEditText;
 import com.jingchen.pulltorefresh.PullToRefreshLayout;
@@ -49,6 +52,12 @@ public class InspectListActivity extends AppCompatActivity {
 
     TextView back_menu;
 
+    Spinner ins_date;
+
+    private DateBean dateBean;
+
+    SpinnerDateAdapter dateAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +65,8 @@ public class InspectListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_inspect);
 
         insCode = (ClearEditText) findViewById(R.id.insCode);
+
+
 
         initview();
 
@@ -73,7 +84,7 @@ public class InspectListActivity extends AppCompatActivity {
             }
         });
 
-
+        getDateInfo();
     }
 
     public void initview() {
@@ -127,6 +138,11 @@ public class InspectListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //日期查询
+        ins_date = findViewById(R.id.ins_date);
+        dateAdapter = new SpinnerDateAdapter();
+        ins_date.setAdapter(dateAdapter);
     }
 
     //状态下拉
@@ -147,7 +163,18 @@ public class InspectListActivity extends AppCompatActivity {
 
             }
         });
+        ins_date.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                dateBean = (DateBean) dateAdapter.getItem(position);
+                getInspectList();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
 
@@ -161,6 +188,12 @@ public class InspectListActivity extends AppCompatActivity {
             if (status == "-1") {
                 status = "";
             }
+        }
+
+
+        String date ="";
+        if(dateBean !=null){
+            date= dateBean.id;
         }
         Api api = new Api(this, new OnNetRequest(this, true, "正在加载.....") {
             @Override
@@ -191,7 +224,7 @@ public class InspectListActivity extends AppCompatActivity {
             }
         });
 
-        api.getInspectList(status, insCode.getText().toString().trim());
+        api.getInspectList(status, insCode.getText().toString().trim(),date);
     }
 
     // 获取状态信息
@@ -223,7 +256,27 @@ public class InspectListActivity extends AppCompatActivity {
 
         api.getCommenStatus();
     }
+    //获取查询日期
+    public void getDateInfo(){
+        Api api = new Api(this, new OnNetRequest(this) {
+            @Override
+            public void onSuccess(String msg) {
+                DateBeanResponse dateBeanResponse = JSONUtils.fromJson(msg, DateBeanResponse.class);
+                if (dateBeanResponse != null && dateBeanResponse.result != null) {
+                    dateAdapter.refresh(dateBeanResponse.result);
+                    for (int i = 0; i < statusAdapter.getCount(); i++) {
+                        DateBean bean = (DateBean) dateAdapter.getItem(i);
+                    }
+                }
+            }
+            @Override
+            public void onFail() {
 
+            }
+        });
+
+        api.getDateInfo();
+    }
 
     @Override
     protected void onResume() {

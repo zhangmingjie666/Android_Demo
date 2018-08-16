@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -25,11 +26,14 @@ import com.example.nrbzms17.data.model.CheckBeanResponse;
 import com.example.nrbzms17.data.model.EmployeeBean;
 import com.example.nrbzms17.data.model.EmployeeResponseBean;
 
+import com.example.nrbzms17.data.model.OrderBean;
 import com.example.nrbzms17.data.model.ResponseBean;
+import com.example.nrbzms17.ui.adapter.CheckAdapter;
 import com.example.nrbzms17.ui.adapter.EmployeeAdapter;
 import com.example.nrbzms17.ui.widget.ClearEditText;
 import com.squareup.okhttp.Response;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -62,6 +66,12 @@ public class CheckActivity extends BaseActivity {
     EditText check_reason;
 
     Button check_Submit;
+
+    ListView checkdetailView;
+
+    CheckAdapter checkAdapter;
+
+    private List<CheckBean> CheckBeanList = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -132,6 +142,13 @@ public class CheckActivity extends BaseActivity {
                 addCheck();
             }
         });
+
+
+        checkdetailView = findViewById(R.id.checkdetailView);
+
+        checkAdapter = new CheckAdapter();
+
+        checkdetailView.setAdapter(checkAdapter);
 
     }
 
@@ -215,20 +232,11 @@ public class CheckActivity extends BaseActivity {
                 CheckBeanResponse response = JSONUtils.fromJson(msg, CheckBeanResponse.class);
 
                 if (response != null && response.result.size() > 0) {
-
-                    List<CheckBean> checkBeanList = response.result;
-
-                    if (checkBeanList.size() == 1) {
-
-                        checkbean = checkBeanList.get(0);
-
-                        setCheckinfo(checkbean);
-
-                    }
-
+                    CheckBeanList = response.result;
                 } else {
-
+                    CheckBeanList = new ArrayList<>();
                 }
+                checkAdapter.refresh(CheckBeanList);
             }
 
             @Override
@@ -279,7 +287,7 @@ public class CheckActivity extends BaseActivity {
                 check_volume.setText("");
                 check_quantity.setText("");
                 check_reason.setText("");
-                setCheckinfo(null);
+                checkAdapter.refresh(null);
             }
 
             @Override
@@ -297,53 +305,6 @@ public class CheckActivity extends BaseActivity {
 
     }
 
-    @BindView(R.id.che_barcode)
-    TextView che_barcode;
 
-    @BindView(R.id.che_color)
-    TextView che_color;
-
-    @BindView(R.id.che_reel)
-    TextView che_reel;
-
-    @BindView(R.id.che_grade)
-    TextView che_grade;
-
-    @BindView(R.id.che_quantity_string)
-    TextView che_quantity_string;
-
-    @BindView(R.id.che_material)
-    TextView che_material;
-
-    @BindView(R.id.che_lot)
-    TextView che_lot;
-
-    @BindView(R.id.che_depot)
-    TextView che_depot;
-
-    private void setCheckinfo(CheckBean checkbean) {
-
-        if (checkbean == null) {
-            che_barcode.setText("");
-            che_color.setText("");
-            che_reel.setText("");
-            che_grade.setText("");
-            che_quantity_string.setText("");
-            che_material.setText("");
-            che_lot.setText("");
-            che_depot.setText("");
-        } else {
-            che_barcode.setText(checkbean.barcode);
-            che_color.setText(checkbean.color_name);
-            che_reel.setText(checkbean.reel);
-            che_grade.setText(checkbean.grade);
-            che_quantity_string.setText(checkbean.quantity_string);
-            che_material.setText(checkbean.material_name);
-            che_lot.setText(checkbean.lot);
-            che_depot.setText(checkbean.depot_name);
-            codeSearch.requestFocus();
-        }
-
-    }
 
 }

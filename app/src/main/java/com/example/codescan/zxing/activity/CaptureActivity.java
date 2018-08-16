@@ -15,6 +15,7 @@
  */
 package com.example.codescan.zxing.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -22,6 +23,7 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -58,6 +60,14 @@ import java.lang.reflect.Field;
 public final class CaptureActivity extends BaseActivity implements SurfaceHolder.Callback {
 
 	private static final String TAG = CaptureActivity.class.getSimpleName();
+
+	//修改
+	private String AllPermissions[] = {
+			Manifest.permission.CAMERA,
+			Manifest.permission.WAKE_LOCK,
+			Manifest.permission.VIBRATE,
+	};
+	private static final int MY_PERMISSION_REQUEST_CODE = 10000;
 
 	private CameraManager cameraManager;
 	private CaptureActivityHandler handler;
@@ -231,25 +241,26 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
 
 	private void displayFrameworkBugMessageAndExit() {
 		// camera error
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle(getString(R.string.app_name));
-		builder.setMessage("相机打开出错，请稍后重试");
-		builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				finish();
-			}
-
-		});
-		builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
-
-			@Override
-			public void onCancel(DialogInterface dialog) {
-				finish();
-			}
-		});
-		builder.show();
+//		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//		builder.setTitle(getString(R.string.app_name));
+//		builder.setMessage("相机打开出错，请稍后重试");
+//		builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//
+//			@Override
+//			public void onClick(DialogInterface dialog, int which) {
+//				finish();
+//			}
+//
+//		});
+//		builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+//
+//			@Override
+//			public void onCancel(DialogInterface dialog) {
+//				finish();
+//			}
+//		});
+//		builder.show();
+		ActivityCompat.requestPermissions(CaptureActivity.this, AllPermissions, MY_PERMISSION_REQUEST_CODE);
 	}
 
 	public void restartPreviewAfterDelay(long delayMS) {

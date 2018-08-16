@@ -1,0 +1,13 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/take_photo"
+        android:title="拍照"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/ablum"
+        android:title="相册"
+        app:showAsAction="always"
+        />
+</menu>

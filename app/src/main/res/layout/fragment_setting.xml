@@ -30,6 +30,7 @@
             android:padding="8dp"
             android:text="关于我们"
             android:textColor="@color/black"
+            android:background="?android:attr/selectableItemBackground"
             android:textSize="20dp" />
         <View
             android:layout_width="match_parent"
@@ -43,6 +44,7 @@
             android:drawableLeft="@drawable/update"
             android:drawablePadding="30dp"
             android:drawableRight="@drawable/go"
+            android:background="?android:attr/selectableItemBackground"
             android:gravity=""
             android:padding="8dp"
             android:text="在线升级"
@@ -65,6 +67,7 @@
             android:padding="8dp"
             android:text="地址更换"
             android:textColor="@color/black"
+            android:background="?android:attr/selectableItemBackground"
             android:textSize="20dp" />
         <View
             android:layout_width="match_parent"

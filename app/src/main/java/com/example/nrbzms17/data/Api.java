@@ -194,10 +194,11 @@ public class Api {
      */
     public final static String GET_INSPECTLIST = "inspect/list";
 
-    public void getInspectList(String status, String customcode) {
+    public void getInspectList(String status, String customcode,String date) {
         Map<String, String> params = new HashMap<>();
         params.put("status", status);
         params.put("customcode", customcode);
+        params.put("select_date", date);
         mClient.get(GET_INSPECTLIST, params, callback);
     }
 
@@ -369,6 +370,16 @@ public class Api {
         Map<String, String> params = new HashMap<>();
         params.put("id", id);
         mClient.post(POST_SALENOAUDIT, params, callback);
+    }
+
+    /**
+     * 采购收货列表
+     */
+    public final static String GET_PURCHASEING = "purchase/porder";
+
+    public void getPurchasing() {
+        Map<String, String> params = new HashMap<>();
+        mClient.get(GET_PURCHASEING, params, callback);
     }
 
 }

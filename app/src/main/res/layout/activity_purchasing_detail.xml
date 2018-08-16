@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="130dp"
-            android:text="明细列表"
+            android:text="收货列表"
             android:textColor="@color/black"
             android:textSize="@dimen/textsize_actionbar_title" />
 

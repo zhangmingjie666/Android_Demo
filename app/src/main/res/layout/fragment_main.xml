@@ -186,7 +186,7 @@
     android:layout_height="match_parent"
     android:id="@+id/root_layout"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="?android:attr/selectableItemBackground"
 >
 
 </LinearLayout>
