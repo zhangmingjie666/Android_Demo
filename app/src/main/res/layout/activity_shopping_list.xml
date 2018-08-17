@@ -121,20 +121,19 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/pur_sup_material_code_tip"
+            android:id="@+id/pur_factory_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="坯布代号："
+            android:text="加工厂："
             android:textColor="@color/black"
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/pur_sup_material_code"
+            android:id="@+id/pur_factory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/pur_sup_material_code_tip"
+            android:layout_toRightOf="@+id/pur_factory_tip"
             android:textColor="@color/black"
             android:textSize="15sp" />
 
@@ -144,7 +143,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="180dp"
-            android:text="加工厂："
+            android:text="业务员："
             android:textColor="@color/black"
             android:textSize="15sp" />
 
@@ -226,9 +225,26 @@
             android:textColor="@color/black"
             android:textSize="15sp" />
 
+        <TextView
+            android:id="@+id/pur_sup_material_code_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="180dp"
+            android:text="坯布代号："
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/pur_sup_material_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/pur_sup_material_code_tip"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
     </RelativeLayout>
-
-
 
 
 </LinearLayout>

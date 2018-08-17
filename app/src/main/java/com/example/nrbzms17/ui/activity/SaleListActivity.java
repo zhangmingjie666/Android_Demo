@@ -114,7 +114,7 @@ public class SaleListActivity extends AppCompatActivity {
         dateAdapter = new SpinnerDateAdapter();
         sale_date.setAdapter(dateAdapter);
 
-        //栏目点击
+
         //栏目点击
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

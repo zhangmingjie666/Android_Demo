@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/content_bg"
+
+    >
+
+    <include layout="@layout/actionbar_shop"></include>
+
+    <ScrollView
+        android:id="@+id/scr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:background="#DCDCDC">
+
+                <TextView
+                    android:id="@+id/pur_customcode_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="订单号："/>
+
+                <TextView
+                    android:id="@+id/pur_customcode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/pur_customcode_tip"
+                    android:layout_centerVertical="true"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:background="#DCDCDC">
+
+                <TextView
+                    android:id="@+id/pur_billdate_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="单据日期："/>
+
+                <TextView
+                    android:id="@+id/pur_billdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/pur_billdate_tip"
+                    android:layout_centerVertical="true"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/pur_deliverdate_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="180dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="交货日期："/>
+
+                <TextView
+                    android:id="@+id/pur_deliverdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/pur_deliverdate_tip"
+                    android:layout_centerVertical="true"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:background="#DCDCDC">
+
+                <TextView
+                    android:id="@+id/pur_company_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="供应商："/>
+
+                <TextView
+                    android:id="@+id/pur_company"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/pur_company_tip"
+                    android:layout_centerVertical="true"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/pur_material_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="180dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="产品："/>
+
+                <TextView
+                    android:id="@+id/pur_material"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/pur_material_tip"
+                    android:layout_centerVertical="true"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:background="#DCDCDC">
+
+                <TextView
+                    android:id="@+id/pur_quantity_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="计划数："/>
+
+                <TextView
+                    android:id="@+id/pur_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/pur_quantity_tip"
+                    android:layout_centerVertical="true"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/pur_rquantity_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="180dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="已收数："/>
+
+                <TextView
+                    android:id="@+id/pur_rquantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/pur_rquantity_tip"
+                    android:layout_centerVertical="true"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:orientation="vertical"
+                android:background="#DCDCDC">
+
+                <TextView
+                    android:id="@+id/pur_straight_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"
+                    android:text="去向："/>
+
+                <TextView
+                    android:id="@+id/pur_straight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/pur_straight_tip"
+                    android:layout_centerVertical="true"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:orientation="vertical"
+                android:background="#FFF5EE">
+
+                <TextView
+                    android:id="@+id/pur_factory_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"
+                    android:text="加工厂："/>
+
+                <TextView
+                    android:id="@+id/pur_factory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/pur_factory_tip"
+                    android:layout_centerVertical="true"
+                    android:drawableRight="@mipmap/go"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:orientation="vertical"
+                android:background="#FFF5EE">
+
+                <TextView
+                    android:id="@+id/pur_next_craft_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"
+                    android:text="下步工艺："/>
+
+                <TextView
+                    android:id="@+id/pur_next_craft"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/pur_next_craft_tip"
+                    android:layout_centerVertical="true"
+                    android:drawableRight="@mipmap/go"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"/>
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="#aa000000"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:orientation="vertical"
+                android:background="#FFF5EE">
+
+                <TextView
+                    android:id="@+id/pur_sup_material_code_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"
+                    android:text="坯布代号："/>
+
+                <EditText
+                    style="?android:attr/textViewStyle"
+                    android:id="@+id/pur_sup_material_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_toRightOf="@+id/pur_sup_material_code_tip"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="40dp"
+                    android:gravity=""
+                    android:background="@null"
+                    android:drawableRight="@mipmap/pen"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"/>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="#aa000000"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:orientation="vertical"
+                android:background="#FFF5EE">
+
+                <TextView
+                    android:id="@+id/pur_taskcode_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="8dp"
+                    android:gravity=""
+                    android:textSize="17sp"
+                    android:textColor="@color/black"
+                    android:text="任务号："/>
+
+                <EditText
+                    style="?android:attr/textViewStyle"
+                    android:id="@+id/pur_taskcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/pur_taskcode_tip"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="40dp"
+                    android:gravity=""
+                    android:background="@null"
+                    android:drawableRight="@mipmap/pen"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"/>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="#aa000000"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:orientation="vertical"
+                android:background="#FFF5EE">
+
+                <TextView
+                    android:id="@+id/pur_volume_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="8dp"
+                    android:gravity=""
+                    android:textSize="17sp"
+                    android:textColor="@color/black"
+                    android:text="收货匹数："/>
+
+                <EditText
+                    style="?android:attr/textViewStyle"
+                    android:id="@+id/pur_volume"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/pur_volume_tip"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="40dp"
+                    android:gravity=""
+                    android:background="@null"
+                    android:drawableRight="@mipmap/pen"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"/>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="#aa000000"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:orientation="vertical"
+                android:background="#FFF5EE">
+
+                <TextView
+                    android:id="@+id/pur_shquantity_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="8dp"
+                    android:gravity=""
+                    android:textSize="17sp"
+                    android:textColor="@color/black"
+                    android:text="收货数量："/>
+
+                <EditText
+                    style="?android:attr/textViewStyle"
+                    android:id="@+id/pur_shquantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/pur_shquantity_tip"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="40dp"
+                    android:gravity=""
+                    android:background="@null"
+                    android:drawableRight="@mipmap/pen"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"/>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="#aa000000"/>
+
+            <Button
+                android:id="@+id/check_Submit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:shadowRadius="5"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:text="新增并审核"/>
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,9 +1,11 @@
 package com.example.nrbzms17.ui.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,6 +17,7 @@ import com.example.nrbzms17.data.model.OrderBean;
 import com.example.nrbzms17.data.model.OrderBeanResponse;
 import com.example.nrbzms17.data.model.PurchasingBean;
 import com.example.nrbzms17.data.model.PurchasingBeanResponse;
+import com.example.nrbzms17.data.model.SaleBean;
 import com.example.nrbzms17.ui.adapter.PurchasingAdapter;
 import com.jingchen.pulltorefresh.PullToRefreshLayout;
 import com.squareup.okhttp.Response;
@@ -46,7 +49,8 @@ public class ShoppingActivity extends AppCompatActivity {
 
         getPurchasing();
     }
-    public void initview(){
+
+    public void initview() {
         purchasingAdapter = new PurchasingAdapter();
 
         pullToRefreshLayout = findViewById(R.id.pullToRefreshLayout);
@@ -73,6 +77,22 @@ public class ShoppingActivity extends AppCompatActivity {
             }
 
         });
+
+        //栏目点击
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                PurchasingBean.Data processOrder = (PurchasingBean.Data) purchasingAdapter.getItem(position);
+
+                Intent intent = new Intent(ShoppingActivity.this, ShoppingDetailActivity.class);
+                Bundle bundle = new Bundle();
+
+                bundle.putSerializable(SaleBean.Data.class.getSimpleName(), processOrder);
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
     }
 
     //获取订单列表
@@ -87,7 +107,7 @@ public class ShoppingActivity extends AppCompatActivity {
             @Override
             public void onSuccess(String msg) {
 
-                    PurchasingBeanResponse response = JSONUtils.fromJson(msg, PurchasingBeanResponse.class);
+                PurchasingBeanResponse response = JSONUtils.fromJson(msg, PurchasingBeanResponse.class);
 
                 if (response != null && response.result != null) {
 
@@ -115,7 +135,7 @@ public class ShoppingActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main,menu);
+        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 }

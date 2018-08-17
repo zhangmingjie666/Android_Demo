@@ -382,4 +382,15 @@ public class Api {
         mClient.get(GET_PURCHASEING, params, callback);
     }
 
+    /**
+     * 采购收货列表
+     */
+    public final static String GET_PURCHASEINGBYID = "purchase/porder";
+
+    public void getPurchasingDetail(String id) {
+        Map<String, String> params = new HashMap<>();
+        params.put("id", id);
+        mClient.get(GET_PURCHASEINGBYID, params, callback);
+    }
+
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:background="@color/colorPrimaryDark"
+    android:paddingRight="5dp"
+    android:paddingLeft="5dp"
+    >
+    <Button
+        android:drawableLeft="@drawable/back4"
+        android:id="@+id/set_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:drawablePadding="-20dp"
+        android:text="返回"
+        android:textSize="@dimen/activity_vertical_margin"
+        />
+    <ImageView
+        android:id="@+id/camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:onClick="show"
+        android:src="@mipmap/camera3"/>
+
+</RelativeLayout>

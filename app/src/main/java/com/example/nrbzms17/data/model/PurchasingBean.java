@@ -25,10 +25,13 @@ public class PurchasingBean implements Serializable {
         public String quantity;
         public String sup_material_code;
         public String deliverydate;
+        public String factory;
 
         public String spec;
         public String rquantity;
         public String iquantity;
         public String comp;
+        public String remark;
+        public String next_craft;
     }
 }

@@ -71,7 +71,8 @@ public class PurchasingAdapter extends BaseAdapter {
         viewHolder.pur_sup_material_code.setText(purchasingBean.sup_material_code);
         viewHolder.pur_rquantity.setText(purchasingBean.rquantity);
         viewHolder.pur_iquantity.setText(purchasingBean.iquantity);
-
+        viewHolder.pur_factory.setText(purchasingBean.factory);
+        viewHolder.pur_deliverdate.setText(purchasingBean.deliverydate);
         return convertView;
     }
 
@@ -103,6 +104,12 @@ public class PurchasingAdapter extends BaseAdapter {
 
         @BindView(R.id.pur_iquantity)
         TextView pur_iquantity;
+
+        @BindView(R.id.pur_factory)
+        TextView pur_factory;
+
+        @BindView(R.id.pur_deliverdate)
+        TextView pur_deliverdate;
 
 
         ViewHolder(View view) {
