@@ -33,5 +33,7 @@ public class PurchasingBean implements Serializable {
         public String comp;
         public String remark;
         public String next_craft;
+        public String next_craft_;
+        public String factory_;
     }
 }

@@ -11,7 +11,7 @@
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".MyApplication"
@@ -58,22 +58,22 @@
             android:name=".ui.activity.ShoppingActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
-        <activity android:name=".ui.activity.ShoppingDetailActivity"
+        <activity
+            android:name=".ui.activity.ShoppingDetailActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden"></activity>
-        <!--<provider-->
-            <!--android:name="android.support.v4.content.FileProvider"-->
-            <!--android:authorities="com.example.nrbzms17.fileprovider"-->
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
 
-            <!--android:exported="false">-->
-            <!--&lt;!&ndash;必须为false ，意思是不可被分享，这是fileprovide要求&ndash;&gt;-->
-            <!--android:grantUriPermissions="true">-->
-            <!--<meta-data-->
-                <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
-                <!--android:resource="@xml/file_paths" />-->
-            <!--&lt;!&ndash;meta指定uri的共享路径，并且引用了一个叫@xml/file_paths资源&ndash;&gt;-->
-        <!--</provider>-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.nrbzms17.ui.activity.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
+        <activity android:name=".ui.activity.DyeingActivity"></activity>
     </application>
 
 </manifest>

@@ -377,8 +377,10 @@ public class Api {
      */
     public final static String GET_PURCHASEING = "purchase/porder";
 
-    public void getPurchasing() {
+    public void getPurchasing(String customcode,String date) {
         Map<String, String> params = new HashMap<>();
+        params.put("code", customcode);
+        params.put("select_date", date);
         mClient.get(GET_PURCHASEING, params, callback);
     }
 
@@ -391,6 +393,32 @@ public class Api {
         Map<String, String> params = new HashMap<>();
         params.put("id", id);
         mClient.get(GET_PURCHASEINGBYID, params, callback);
+    }
+
+    /**
+     * 新增并审核采购收货
+     */
+    public final static String POST_PURCHASEINGBYID = "purchase/padd";
+
+    public void addPurchasingDetail(String id,
+                                    String next_craft_,
+                                    String factory_,
+                                    String volume,
+                                    String quantity,
+                                    String taskcode,
+                                    String sup_material_code,
+                                    String imageBase64
+    ) {
+        Map<String, String> params = new HashMap<>();
+        params.put("id", id);
+        params.put("next_craft_", next_craft_);
+        params.put("factory_", factory_);
+        params.put("volume", volume);
+        params.put("quantity", quantity);
+        params.put("taskcode", taskcode);
+        params.put("sup_material_code", sup_material_code);
+        params.put("imagebase64", imageBase64);
+        mClient.post(POST_PURCHASEINGBYID, params, callback);
     }
 
 }

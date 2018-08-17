@@ -5,15 +5,15 @@
     android:orientation="vertical"
     android:padding="5dp"
     >
+
     <TextView
         android:id="@+id/txtv_Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:textColor="@color/black"
         android:gravity="left"
         android:paddingLeft="8dip"
         android:singleLine="true"
-        />
+        android:textColor="@color/black"
+        android:textSize="18dp" />
 
 </LinearLayout>

@@ -46,12 +46,6 @@
             android:layout_marginLeft="8dp"
             />
     </LinearLayout>
-    <Spinner
-        android:id="@+id/pur_date"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="#F8F8FF"
-        android:scrollbarSize="20dp"></Spinner>
 
     <com.jingchen.pulltorefresh.PullToRefreshLayout
         android:id="@+id/pullToRefreshLayout"

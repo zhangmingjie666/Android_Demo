@@ -22,6 +22,7 @@ import com.example.nrbzms17.R;
 import com.example.nrbzms17.data.model.MenuBean;
 import com.example.nrbzms17.ui.activity.AllocationActivity;
 import com.example.nrbzms17.ui.activity.CheckActivity;
+import com.example.nrbzms17.ui.activity.DyeingActivity;
 import com.example.nrbzms17.ui.activity.EchartsActivity;
 import com.example.nrbzms17.ui.activity.InspectListActivity;
 import com.example.nrbzms17.ui.activity.OrderListActivity;
@@ -55,10 +56,12 @@ public class MainFragment extends Fragment {
 
             R.drawable.analyse,
 
-            R.drawable.shouhuo
+            R.drawable.shouhuo,
+
+            R.drawable.ranchang
     };
 
-    private String menuNames[] = {"订单", "采购", "检验", "销售", "盘点", "调拨", "检验", "分析","采购收货"};
+    private String menuNames[] = {"订单", "采购", "检验", "销售", "盘点", "调拨", "检验", "分析","采购收货","染厂收货"};
 
 //    private List<MenuBean> list = new ArrayList<>();
 
@@ -88,6 +91,8 @@ public class MainFragment extends Fragment {
     TextView fourthview;
 
     Button purchasing;
+
+    Button dye_works;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -188,6 +193,7 @@ public class MainFragment extends Fragment {
         sale1 = new Button(getActivity());
         echarts = new Button(getActivity());
         purchasing = new Button(getActivity());
+        dye_works = new Button(getActivity());
 
         titleview = new TextView(getActivity());
         titleview.setText("工作区");
@@ -253,6 +259,11 @@ public class MainFragment extends Fragment {
         purchasing.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
         purchasing.setBackgroundColor(getResources().getColor(R.color.white));
 
+        dye_works.setText(menuNames[9]);
+        top = getResources().getDrawable(menuIcons[9]);
+        dye_works.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
+        dye_works.setBackgroundColor(getResources().getColor(R.color.white));
+
 
         //root控件
         LinearLayout.LayoutParams relativeLayout_parent_params
@@ -269,7 +280,7 @@ public class MainFragment extends Fragment {
         //四个按钮
         LinearLayout.LayoutParams button_parent_params
                 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        button_parent_params.setMargins(0,1,0,0);
+        button_parent_params.weight = 1.0f;
 
 
         //仓库标题
@@ -280,8 +291,7 @@ public class MainFragment extends Fragment {
         //四个按钮
         LinearLayout.LayoutParams button_second
                 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
-        button_second.setMargins(0,1,0,0);
+        button_second.weight = 1.0f;
 
         //收货标题
         LinearLayout.LayoutParams fourtitle
@@ -291,7 +301,7 @@ public class MainFragment extends Fragment {
         //目前一个按钮
         LinearLayout.LayoutParams button_puchasing
                 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        button_puchasing.setMargins(0,1,0,0);
+        button_puchasing.weight =1.0f;
 
 
         titleLayout.addView(titleview, title);
@@ -307,15 +317,16 @@ public class MainFragment extends Fragment {
         SecondbutrLayout.addView(echarts, button_second);
         purchaseLayout.addView(fourthview, fourtitle);
         shouhuoLayout.addView(purchasing, button_puchasing);
+        shouhuoLayout.addView(dye_works, button_puchasing);
 
 
-        rootLayout.addView(titleLayout, title);
-        rootLayout.addView(secondLayout, sectitle);
-        rootLayout.addView(linearrLayout, button_parent_params);
-        rootLayout.addView(thirdrLayout, thirdtitle);
-        rootLayout.addView(SecondbutrLayout, button_second);
-        rootLayout.addView(purchaseLayout, fourtitle);
-        rootLayout.addView(shouhuoLayout, button_puchasing);
+        rootLayout.addView(titleLayout);
+        rootLayout.addView(secondLayout);
+        rootLayout.addView(linearrLayout);
+        rootLayout.addView(thirdrLayout);
+        rootLayout.addView(SecondbutrLayout);
+        rootLayout.addView(purchaseLayout);
+        rootLayout.addView(shouhuoLayout);
 
 
         //开启订单
@@ -387,6 +398,15 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ShoppingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //开启染厂收货
+        dye_works.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DyeingActivity.class);
                 startActivity(intent);
             }
         });

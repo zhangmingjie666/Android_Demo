@@ -15,7 +15,7 @@ public class AppConstant {
 //            "/xm_2018/restful.php/";
 
     public final static String Http = "http";
-    public final static String Host = "192.168.1.41";
+    public final static String Host = "192.168.1.44";
     public final static String Project = "nr_bzms17";
     public final static String Api = "restful.php";
 }

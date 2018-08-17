@@ -41,11 +41,20 @@ public class SaleDetailActivity extends AppCompatActivity {
 
     Button sale_audit;
 
+    Button sale_back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saledetail);
         initview();
+        sale_back =findViewById(R.id.sale_back);
+        sale_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public void initview() {

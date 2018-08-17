@@ -214,7 +214,7 @@
     <!--android:textSize="18sp"-->
     <!--android:background="#e53935"-->
     <!--android:textColor="#eeeeee"-->
-    <!--android:text="删除" />-->
+    <!--android:text="删除"/>-->
 
 
 </LinearLayout>

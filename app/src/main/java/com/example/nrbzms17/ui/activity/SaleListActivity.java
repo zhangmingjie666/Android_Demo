@@ -3,7 +3,9 @@ package com.example.nrbzms17.ui.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -32,6 +34,8 @@ import com.jingchen.pulltorefresh.PullToRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SaleListActivity extends AppCompatActivity {
 
@@ -68,6 +72,7 @@ public class SaleListActivity extends AppCompatActivity {
         setClickListeners();
         getCommenStatus();
         getDateInfo();
+
     }
 
     public void initview() {
@@ -100,7 +105,7 @@ public class SaleListActivity extends AppCompatActivity {
 
         saleCode = findViewById(R.id.saleCode);
 
-        saleSearch =findViewById(R.id.saleSearch);
+        saleSearch = findViewById(R.id.saleSearch);
         saleSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,7 +135,9 @@ public class SaleListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
+
 
     //状态下拉
     private void setClickListeners() {
@@ -140,6 +147,7 @@ public class SaleListActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 statusBean = (StatusBean) statusAdapter.getItem(position);
+
 
                 getSaleList();
 
@@ -178,13 +186,13 @@ public class SaleListActivity extends AppCompatActivity {
             }
         }
 
-        String billcode ;
+        String billcode;
 
         billcode = saleCode.getText().toString().trim();
 
-        String date ="";
-        if(dateBean !=null){
-            date= dateBean.id;
+        String date = "";
+        if (dateBean != null) {
+            date = dateBean.id;
         }
 
         Api api = new Api(this, new OnNetRequest(this, true, "正在加载.....") {
@@ -196,7 +204,6 @@ public class SaleListActivity extends AppCompatActivity {
                 if (response != null && response.result != null) {
 
                     SaleBeanList = response.result;
-//                    adapter.refresh(OrderBeanList);
 
                 } else {
                     SaleBeanList = new ArrayList<>();
@@ -214,7 +221,7 @@ public class SaleListActivity extends AppCompatActivity {
             }
         });
 
-        api.getSaleInfoList(status,billcode,date);
+        api.getSaleInfoList(status, billcode, date);
 
     }
 
@@ -249,7 +256,7 @@ public class SaleListActivity extends AppCompatActivity {
     }
 
     //获取查询日期
-    public void getDateInfo(){
+    public void getDateInfo() {
         Api api = new Api(this, new OnNetRequest(this) {
             @Override
             public void onSuccess(String msg) {
@@ -261,6 +268,7 @@ public class SaleListActivity extends AppCompatActivity {
                     }
                 }
             }
+
             @Override
             public void onFail() {
 

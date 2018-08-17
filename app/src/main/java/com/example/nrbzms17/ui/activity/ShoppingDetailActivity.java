@@ -1,37 +1,55 @@
 package com.example.nrbzms17.ui.activity;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Dialog;
+import android.content.ContentUris;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nrbzms17.R;
+import com.example.nrbzms17.Utils.JSONUtils;
+import com.example.nrbzms17.Utils.UIHelper;
+import com.example.nrbzms17.data.Api;
+import com.example.nrbzms17.data.listener.OnNetRequest;
 import com.example.nrbzms17.data.model.PurchasingBean;
+import com.example.nrbzms17.data.model.ResponseBean;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * @author MJ@ZHANG
@@ -44,13 +62,12 @@ import butterknife.ButterKnife;
 public class ShoppingDetailActivity extends AppCompatActivity implements View.OnClickListener {
     //拍照
     private ImageView imageView;
-    private static final int CROP_PHOTO = 2;
-    private static final int REQUEST_CODE_PICK_IMAGE = 3;
-    private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 6;
-    private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE2 = 7;
-    private File output;
+    public static final int TAKE_PHOTO = 1;
+
+    public static final int CHOOSE_PHOTO = 2;
     private Uri imageUri;
 
+    static String imageBase64;
     //弹窗
     private View inflate;
     private TextView choosePhoto;
@@ -88,9 +105,23 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
     @BindView(R.id.pur_rquantity)
     TextView pur_rquantity;
 
+    @BindView(R.id.pur_taskcode)
+    TextView pur_taskcode;
+
     @BindView(R.id.pur_next_craft)
     TextView pur_next_craft;
 
+    @BindView(R.id.pur_volume)
+    TextView pur_volume;
+
+    @BindView(R.id.pur_shquantity)
+    TextView pur_shquantity;
+
+    @BindView(R.id.check_Submit)
+    Button check_Submit;
+
+    @BindView(R.id.set_back)
+    Button set_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +131,13 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
         ButterKnife.bind(this);
         imageView = findViewById(R.id.imageView);
         initview();
+
+        set_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public void initview() {
@@ -114,171 +152,12 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
         pur_quantity.setText(purchase.quantity);
         pur_rquantity.setText(purchase.rquantity);
         pur_next_craft.setText(purchase.next_craft);
-    }
-
-    /**
-     * 拍照
-     */
-    void takePhoto() {
-        /**
-         * 最后一个参数是文件夹的名称，可以随便起
-         */
-        File file = new File(Environment.getExternalStorageDirectory(), "拍照");
-        if (!file.exists()) {
-            file.mkdir();
-        }
-        /**
-         * 这里将时间作为不同照片的名称
-         */
-        output = new File(file, System.currentTimeMillis() + ".jpg");
-
-        /**
-         * 如果该文件夹已经存在，则删除它，否则创建一个
-         */
-        try {
-            if (output.exists()) {
-                output.delete();
+        check_Submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addPurchasingDetail();
             }
-            output.createNewFile();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        /**
-         * 隐式打开拍照的Activity，并且传入CROP_PHOTO常量作为拍照结束后回调的标志
-         */
-        imageUri = Uri.fromFile(output);
-        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-        startActivityForResult(intent, CROP_PHOTO);
-
-    }
-
-    /**
-     * 从相册选取图片
-     */
-    void choosePhoto() {
-        /**
-         * 打开选择图片的界面
-         */
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");//相片类型
-        startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
-
-    }
-
-    public void onActivityResult(int req, int res, Intent data) {
-        switch (req) {
-            /**
-             * 拍照的请求标志
-             */
-            case CROP_PHOTO:
-                if (res == RESULT_OK) {
-                    try {
-                        /**
-                         * 该uri就是照片文件夹对应的uri
-                         */
-                        Bitmap bit = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
-                        imageView.setMaxWidth(800);
-                        imageView.setMaxHeight(1000);
-                        imageView.setImageBitmap(bit);
-                        imageView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingDetailActivity.this);
-                                builder.setMessage("确认删除吗?");
-                                builder.setTitle("提示");
-                                builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.dismiss();
-                                        // 删除照片
-                                        imageView.setImageDrawable(null);
-                                    }
-                                });
-                                builder.setNegativeButton("取消", null);
-                                builder.create().show();
-                            }
-                        });
-
-                    } catch (Exception e) {
-                        Toast.makeText(this, "程序崩溃", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Log.i("tag", "失败");
-                }
-
-                break;
-            /**
-             * 从相册中选取图片的请求标志
-             */
-
-            case REQUEST_CODE_PICK_IMAGE:
-                if (res == RESULT_OK) {
-                    try {
-                        /**
-                         * 该uri是上一个Activity返回的
-                         */
-                        Uri uri = data.getData();
-                        Bitmap bit = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
-                        imageView.setMaxWidth(800);
-                        imageView.setMaxHeight(1000);
-                        imageView.setImageBitmap(bit);
-                        imageView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingDetailActivity.this);
-                                builder.setMessage("确认删除吗?");
-                                builder.setTitle("提示");
-                                builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.dismiss();
-                                        // 删除照片
-                                        imageView.setImageDrawable(null);
-                                    }
-                                });
-                                builder.setNegativeButton("取消", null);
-                                builder.create().show();
-                            }
-                        });
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        Log.d("tag", e.getMessage());
-                        Toast.makeText(this, "程序崩溃", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Log.i("liang", "失败");
-                }
-
-                break;
-
-            default:
-                break;
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-
-        if (requestCode == MY_PERMISSIONS_REQUEST_CALL_PHONE) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                takePhoto();
-            } else {
-                // Permission Denied
-                Toast.makeText(ShoppingDetailActivity.this, "Permission Denied", Toast.LENGTH_SHORT).show();
-            }
-        }
-
-
-        if (requestCode == MY_PERMISSIONS_REQUEST_CALL_PHONE2) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                choosePhoto();
-            } else {
-                // Permission Denied
-                Toast.makeText(ShoppingDetailActivity.this, "Permission Denied", Toast.LENGTH_SHORT).show();
-            }
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        });
     }
 
     public void show(View view) {
@@ -304,36 +183,238 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
         dialog.show();//显示对话框
     }
 
-    //选择
+    //弹窗选择
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.takePhoto:
-                if (ContextCompat.checkSelfPermission(ShoppingDetailActivity.this,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(ShoppingDetailActivity.this,
-                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                            MY_PERMISSIONS_REQUEST_CALL_PHONE2);
-
-                } else {
-                    takePhoto();
+                File outputImage = new File(getExternalCacheDir(), "output_image.jpg");
+                try {
+                    if (outputImage.exists()) {
+                        outputImage.delete();
+                    }
+                    outputImage.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
+                if (Build.VERSION.SDK_INT < 24) {
+                    imageUri = Uri.fromFile(outputImage);
+                } else {
+                    imageUri = FileProvider.getUriForFile(ShoppingDetailActivity.this, "com.example.nrbzms17.ui.activity.fileprovider", outputImage);
+                }
+
+                if (Build.VERSION.SDK_INT >= 23) {
+                    int checkCallPhonePermission = ContextCompat.checkSelfPermission(ShoppingDetailActivity.this, Manifest.permission.CAMERA);
+                    if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(ShoppingDetailActivity.this, new String[]{Manifest.permission.CAMERA}, 222);
+                        return;
+                    } else {
+
+                        // 启动相机程序
+                        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                        startActivityForResult(intent, TAKE_PHOTO);
+                    }
+                }
+
+                // 启动相机程序
+                Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                startActivityForResult(intent, TAKE_PHOTO);
+
                 break;
             case R.id.choosePhoto:
-                if (ContextCompat.checkSelfPermission(ShoppingDetailActivity.this,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(ShoppingDetailActivity.this,
-                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                            MY_PERMISSIONS_REQUEST_CALL_PHONE2);
-
+                if (ContextCompat.checkSelfPermission(ShoppingDetailActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(ShoppingDetailActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                 } else {
-                    choosePhoto();
+                    openAlbum();
                 }
                 break;
         }
         dialog.dismiss();
+    }
+
+    private void openAlbum() {
+        Intent intent = new Intent("android.intent.action.GET_CONTENT");
+        intent.setType("image/*");
+        startActivityForResult(intent, CHOOSE_PHOTO); // 打开相册
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case 1:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    openAlbum();
+                } else {
+                    Toast.makeText(this, "You denied the permission", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case TAKE_PHOTO:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        // 将拍摄的照片显示出来
+                        Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
+                        imageView.setImageBitmap(bitmap);
+                        imageView.setMaxWidth(800);
+                        imageView.setMaxHeight(1000);
+                        imageView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingDetailActivity.this);
+                                builder.setMessage("确认删除吗?");
+                                builder.setTitle("提示");
+                                builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                        // 删除照片
+                                        imageView.setImageDrawable(null);
+                                    }
+                                });
+                                builder.setNegativeButton("取消", null);
+                                builder.create().show();
+                            }
+                        });
+
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//                        bitmap.compress(Bitmap.CompressFormat.PNG, 5, baos);
+
+                        byte[] bytes = baos.toByteArray();
+
+                        //base64 encode
+                        byte[] encode = Base64.encode(bytes,Base64.DEFAULT);
+                        imageBase64 = new String(encode);
+                        Log.d("zhangmingjie",imageBase64);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            case CHOOSE_PHOTO:
+                if (resultCode == RESULT_OK) {
+                    // 判断手机系统版本号
+                    if (Build.VERSION.SDK_INT >= 19) {
+                        // 4.4及以上系统使用这个方法处理图片
+                        handleImageOnKitKat(data);
+                    } else {
+                        // 4.4以下系统使用这个方法处理图片
+                        handleImageBeforeKitKat(data);
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    @TargetApi(19)
+    private void handleImageOnKitKat(Intent data) {
+        String imagePath = null;
+        Uri uri = data.getData();
+        Log.d("TAG", "handleImageOnKitKat: uri is " + uri);
+        if (DocumentsContract.isDocumentUri(this, uri)) {
+            // 如果是document类型的Uri，则通过document id处理
+            String docId = DocumentsContract.getDocumentId(uri);
+            if ("com.android.providers.media.documents".equals(uri.getAuthority())) {
+                String id = docId.split(":")[1]; // 解析出数字格式的id
+                String selection = MediaStore.Images.Media._ID + "=" + id;
+                imagePath = getImagePath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, selection);
+            } else if ("com.android.providers.downloads.documents".equals(uri.getAuthority())) {
+                Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"), Long.valueOf(docId));
+                imagePath = getImagePath(contentUri, null);
+            }
+        } else if ("content".equalsIgnoreCase(uri.getScheme())) {
+            // 如果是content类型的Uri，则使用普通方式处理
+            imagePath = getImagePath(uri, null);
+        } else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            // 如果是file类型的Uri，直接获取图片路径即可
+            imagePath = uri.getPath();
+        }
+        displayImage(imagePath); // 根据图片路径显示图片
+    }
+
+    private void handleImageBeforeKitKat(Intent data) {
+        Uri uri = data.getData();
+        String imagePath = getImagePath(uri, null);
+        displayImage(imagePath);
+    }
+
+    private String getImagePath(Uri uri, String selection) {
+        String path = null;
+        // 通过Uri和selection来获取真实的图片路径
+        Cursor cursor = getContentResolver().query(uri, null, selection, null, null);
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+            }
+            cursor.close();
+        }
+        return path;
+    }
+
+    private void displayImage(String imagePath) {
+        if (imagePath != null) {
+            Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
+            imageView.setImageBitmap(bitmap);
+            imageView.setMaxWidth(800);
+            imageView.setMaxHeight(1000);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingDetailActivity.this);
+                    builder.setMessage("确认删除吗?");
+                    builder.setTitle("提示");
+                    builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            // 删除照片
+                            imageView.setImageDrawable(null);
+                        }
+                    });
+                    builder.setNegativeButton("取消", null);
+                    builder.create().show();
+                }
+            });
+        } else {
+            Toast.makeText(this, "failed to get image", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    //新增并审核
+    public void addPurchasingDetail() {
+        String factory_ = purchase.factory_;
+        String next_craft_ = purchase.next_craft_;
+        String sup_material_code = pur_sup_material_code.getText().toString().trim();
+        String taskcode = pur_taskcode.getText().toString().trim();
+        String volume = pur_volume.getText().toString().trim();
+        String quantity = pur_shquantity.getText().toString().trim();
+
+        Api api = new Api(this, new OnNetRequest(this, true, "请稍等...") {
+            @Override
+            public void onSuccess(String msg) {
+                ResponseBean responseBean = JSONUtils.fromJson(msg, ResponseBean.class);
+                if (responseBean != null && responseBean.status) {
+                    UIHelper.showShortToast(ShoppingDetailActivity.this, "新增成功");
+                    finish();
+                } else {
+                    UIHelper.showShortToast(ShoppingDetailActivity.this, responseBean.result);
+                }
+            }
+
+            @Override
+            public void onFail() {
+            }
+        });
+        api.addPurchasingDetail(purchase.id,next_craft_,factory_,volume,quantity,taskcode,sup_material_code, imageBase64);
     }
 
 
