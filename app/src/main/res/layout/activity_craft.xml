@@ -14,8 +14,7 @@
         android:background="@color/content_bg"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="1dp"
-        android:weightSum="1">
+        android:padding="1dp">
 
         <EditText
             android:layout_width="0dp"
@@ -35,34 +34,10 @@
             android:paddingRight="5dp"
             android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/etSearch"
-            android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            android:layout_marginLeft="8dp"
-            android:background="@drawable/button_bg_box"
-            android:gravity="center"
-            android:text="查询"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/pur_date"
+    <ListView
+        android:id="@+id/craft_list"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="#F8F8FF"
-        android:scrollbarSize="20dp"></Spinner>
-
-    <com.jingchen.pulltorefresh.PullToRefreshLayout
-        android:id="@+id/pullToRefreshLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.jingchen.pulltorefresh.PullableListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="3dp"></com.jingchen.pulltorefresh.PullableListView>
-    </com.jingchen.pulltorefresh.PullToRefreshLayout>
-
+        android:layout_height="wrap_content"></ListView>
 </LinearLayout>

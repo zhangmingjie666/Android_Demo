@@ -238,8 +238,8 @@
             android:layout_weight="1"
             android:gravity="center"
 
-            android:text="审核"
 
+            android:text="审核"
             android:textSize="18dp" />
 
         <Button

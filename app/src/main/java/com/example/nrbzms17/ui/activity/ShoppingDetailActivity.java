@@ -2,6 +2,7 @@ package com.example.nrbzms17.ui.activity;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.ContentUris;
 import android.content.DialogInterface;
@@ -40,6 +41,7 @@ import com.example.nrbzms17.Utils.JSONUtils;
 import com.example.nrbzms17.Utils.UIHelper;
 import com.example.nrbzms17.data.Api;
 import com.example.nrbzms17.data.listener.OnNetRequest;
+import com.example.nrbzms17.data.model.CraftBean;
 import com.example.nrbzms17.data.model.PurchasingBean;
 import com.example.nrbzms17.data.model.ResponseBean;
 
@@ -65,6 +67,10 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
     public static final int TAKE_PHOTO = 1;
 
     public static final int CHOOSE_PHOTO = 2;
+
+    public static final int CRAFT_BACK = 3;
+
+    public static final int FACTORY_BACK = 4;
     private Uri imageUri;
 
     static String imageBase64;
@@ -73,6 +79,7 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
     private TextView choosePhoto;
     private TextView takePhoto;
     private Dialog dialog;
+
 
     //业务
     private PurchasingBean.Data purchase;
@@ -158,6 +165,24 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
                 addPurchasingDetail();
             }
         });
+
+        //选择下步工艺
+        pur_next_craft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ShoppingDetailActivity.this, CraftActivity.class);
+                startActivityForResult(intent,CRAFT_BACK);
+            }
+        });
+
+        //选择加工厂
+        pur_factory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ShoppingDetailActivity.this, FactoryActivity.class);
+                startActivityForResult(intent,FACTORY_BACK);
+            }
+        });
     }
 
     public void show(View view) {
@@ -189,6 +214,7 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
         switch (view.getId()) {
             case R.id.takePhoto:
                 File outputImage = new File(getExternalCacheDir(), "output_image.jpg");
+//                outputImage = new File(getExternalCacheDir(), "output_image.jpg");
                 try {
                     if (outputImage.exists()) {
                         outputImage.delete();
@@ -199,8 +225,12 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
                 }
                 if (Build.VERSION.SDK_INT < 24) {
                     imageUri = Uri.fromFile(outputImage);
+
+
                 } else {
+
                     imageUri = FileProvider.getUriForFile(ShoppingDetailActivity.this, "com.example.nrbzms17.ui.activity.fileprovider", outputImage);
+
                 }
 
                 if (Build.VERSION.SDK_INT >= 23) {
@@ -216,6 +246,7 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
                         startActivityForResult(intent, TAKE_PHOTO);
                     }
                 }
+
 
                 // 启动相机程序
                 Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
@@ -284,15 +315,15 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
                             }
                         });
 
-                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
 //                        bitmap.compress(Bitmap.CompressFormat.PNG, 5, baos);
 
-                        byte[] bytes = baos.toByteArray();
+//                        byte[] bytes = baos.toByteArray();
 
                         //base64 encode
-                        byte[] encode = Base64.encode(bytes,Base64.DEFAULT);
-                        imageBase64 = new String(encode);
-                        Log.d("zhangmingjie",imageBase64);
+//                        byte[] encode = Base64.encode(bytes,Base64.DEFAULT);
+//                        imageBase64 = new String(encode);
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -308,6 +339,24 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
                         // 4.4以下系统使用这个方法处理图片
                         handleImageBeforeKitKat(data);
                     }
+                }
+                break;
+
+            //返回工艺
+            case CRAFT_BACK:
+                if(resultCode == RESULT_OK){
+                    String returnedData =  data.getStringExtra("name");
+                    pur_next_craft.setText(returnedData);
+
+                }
+                break;
+
+            //返回加工厂
+            case FACTORY_BACK:
+                if(resultCode == RESULT_OK){
+                    String returnedData =  data.getStringExtra("name");
+                    pur_factory.setText(returnedData);
+
                 }
                 break;
             default:
@@ -337,13 +386,16 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
         } else if ("file".equalsIgnoreCase(uri.getScheme())) {
             // 如果是file类型的Uri，直接获取图片路径即可
             imagePath = uri.getPath();
+
         }
         displayImage(imagePath); // 根据图片路径显示图片
+        Log.d("zhangmingjie", imagePath);
     }
 
     private void handleImageBeforeKitKat(Intent data) {
         Uri uri = data.getData();
         String imagePath = getImagePath(uri, null);
+
         displayImage(imagePath);
     }
 
@@ -357,7 +409,9 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
             }
             cursor.close();
         }
+
         return path;
+
     }
 
     private void displayImage(String imagePath) {
@@ -391,12 +445,13 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
 
     //新增并审核
     public void addPurchasingDetail() {
-        String factory_ = purchase.factory_;
-        String next_craft_ = purchase.next_craft_;
+
+
         String sup_material_code = pur_sup_material_code.getText().toString().trim();
         String taskcode = pur_taskcode.getText().toString().trim();
         String volume = pur_volume.getText().toString().trim();
         String quantity = pur_shquantity.getText().toString().trim();
+
 
         Api api = new Api(this, new OnNetRequest(this, true, "请稍等...") {
             @Override
@@ -414,8 +469,15 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
             public void onFail() {
             }
         });
-        api.addPurchasingDetail(purchase.id,next_craft_,factory_,volume,quantity,taskcode,sup_material_code, imageBase64);
+        api.addPurchasingDetail(purchase.id,pur_next_craft.getText().toString().trim(), pur_factory.getText().toString().trim(), volume, quantity, taskcode, sup_material_code);
     }
 
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+
+    }
 
 }

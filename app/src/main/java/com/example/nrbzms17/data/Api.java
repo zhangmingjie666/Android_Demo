@@ -7,6 +7,7 @@ import android.util.Log;
 //import com.nrbzms17.Utils.OnRequestCallback;
 //import com.nrbzms17.Utils.UIHelper;
 import com.example.nrbzms17.Utils.Client;
+import com.example.nrbzms17.Utils.OnDownloadCallback;
 import com.example.nrbzms17.Utils.OnRequestCallback;
 import com.example.nrbzms17.Utils.UIHelper;
 import com.example.nrbzms17.data.listener.OnNetRequest;
@@ -14,6 +15,7 @@ import com.squareup.okhttp.Request;
 
 import org.json.JSONObject;
 
+import java.io.File;
 import java.net.ConnectException;
 import java.util.HashMap;
 import java.util.Map;
@@ -401,24 +403,65 @@ public class Api {
     public final static String POST_PURCHASEINGBYID = "purchase/padd";
 
     public void addPurchasingDetail(String id,
-                                    String next_craft_,
+                                    String next_craft,
                                     String factory_,
                                     String volume,
                                     String quantity,
                                     String taskcode,
-                                    String sup_material_code,
-                                    String imageBase64
+                                    String sup_material_code
     ) {
         Map<String, String> params = new HashMap<>();
         params.put("id", id);
-        params.put("next_craft_", next_craft_);
-        params.put("factory_", factory_);
+        params.put("next_craft", next_craft);
+        params.put("factory", factory_);
         params.put("volume", volume);
         params.put("quantity", quantity);
         params.put("taskcode", taskcode);
         params.put("sup_material_code", sup_material_code);
-        params.put("imagebase64", imageBase64);
         mClient.post(POST_PURCHASEINGBYID, params, callback);
     }
 
+
+//    public final static String POST_PURCHASEINGBY = "purchase/padd";
+//
+//    public void addPurchasing(String id,
+//                                    String next_craft_,
+//                                    String factory_,
+//                                    String volume,
+//                                    String quantity,
+//                                    String taskcode,
+//                                    String sup_material_code,
+//                                    String imageBase64
+//    ) {
+//        Map<String, String> params = new HashMap<>();
+//        Map<String, String> fileParams = new HashMap<>();
+//        params.put("id", id);
+//        params.put("next_craft_", next_craft_);
+//        params.put("factory_", factory_);
+//        params.put("volume", volume);
+//        params.put("quantity", quantity);
+//        params.put("taskcode", taskcode);
+//        params.put("sup_material_code", sup_material_code);
+//        fileParams.put("imagebase64", imageBase64);
+//        mClient.postFile(POST_PURCHASEINGBY, params,fileParams,loadCallback);
+//    }
+
+
+    /**
+     * 获取工艺信息
+     */
+    public final static String GET_CRAFT = "craft/list";
+
+    public void getCraftList() {
+        mClient.get(GET_CRAFT, null, callback);
+    }
+
+    /**
+     * 获取加工厂信息
+     */
+    public final static String GET_FACTORY = "factory/list";
+
+    public void getFactoryList() {
+        mClient.get(GET_FACTORY, null, callback);
+    }
 }
