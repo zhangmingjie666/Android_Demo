@@ -36,6 +36,41 @@
 
     </LinearLayout>
 
+    <RadioGroup
+        android:id="@+id/rg_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_title_select"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_title_bg_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:text="染厂"
+            android:textColor="@drawable/btn_title_text_selector"
+            android:textSize="35dp" />
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_title_bg_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:text="后整理厂"
+            android:textColor="@drawable/btn_title_text_selector"
+            android:textSize="35dp" />
+    </RadioGroup>
+
+
     <ListView
         android:id="@+id/factory_list"
         android:layout_width="match_parent"
