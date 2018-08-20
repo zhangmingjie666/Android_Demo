@@ -46,6 +46,9 @@ public class ShoppingActivity extends AppCompatActivity {
     @BindView(R.id.etSearch)
     Button etSearch;
 
+    @BindView(R.id.back_menu)
+    TextView back_menu;
+
     PullToRefreshLayout pullToRefreshLayout;
     PurchasingAdapter purchasingAdapter;
 
@@ -57,6 +60,9 @@ public class ShoppingActivity extends AppCompatActivity {
 
     private DateBean dateBean;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +73,12 @@ public class ShoppingActivity extends AppCompatActivity {
         getPurchasing();
         setClickListeners();
         getDateInfo();
+        back_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public void initview() {

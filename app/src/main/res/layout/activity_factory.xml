@@ -21,18 +21,18 @@
             android:layout_height="0dp" />
 
         <com.example.nrbzms17.ui.widget.ClearEditText
-            android:id="@+id/etCode"
+            android:id="@+id/SearchCode"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/search_edittext_bg"
             android:gravity="center_vertical"
-            android:hint="输入订单号"
-            android:inputType="numberDecimal"
+            android:hint=""
             android:maxLength="20"
             android:paddingLeft="8dp"
             android:paddingRight="5dp"
             android:textSize="20sp" />
+
 
     </LinearLayout>
 
@@ -43,7 +43,7 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/rb_title_select"
+            android:id="@+id/dying_select"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -54,9 +54,10 @@
             android:paddingStart="20dp"
             android:text="染厂"
             android:textColor="@drawable/btn_title_text_selector"
-            android:textSize="35dp" />
+            android:textSize="25dp" />
 
         <RadioButton
+            android:id="@+id/after_select"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -67,7 +68,7 @@
             android:paddingStart="20dp"
             android:text="后整理厂"
             android:textColor="@drawable/btn_title_text_selector"
-            android:textSize="35dp" />
+            android:textSize="25dp" />
     </RadioGroup>
 
 

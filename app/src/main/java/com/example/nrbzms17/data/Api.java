@@ -78,7 +78,7 @@ public class Api {
     /**
      * 获取订单列表
      */
-    public final static String GET_INDENTILIST = "Indent/indentList";
+    public final static String GET_INDENTILIST = "Indent_info/indentList";
 
     public void getIndentInfoList(String status, String customcode, String date) {
         Map<String, String> params = new HashMap<>();
@@ -91,7 +91,7 @@ public class Api {
     /**
      * 获取明细列表
      */
-    public final static String GET_INDENTITEMILIST = "Indent/indentItemList";
+    public final static String GET_INDENTITEMILIST = "Indent_info/indentItemList";
 
     public void getOrderList(String id) {
         Map<String, String> params = new HashMap<>();
@@ -102,7 +102,7 @@ public class Api {
     /**
      * 审核订单
      */
-    public final static String POST_INDENTAUDIT = "Indent/indentAudit";
+    public final static String POST_INDENTAUDIT = "Indent_info/indentAudit";
 
     public void IndentAudit(String id) {
         Map<String, String> params = new HashMap<>();
@@ -114,7 +114,7 @@ public class Api {
     /**
      * 反审订单
      */
-    public final static String POST_INDENTNOAUDIT = "Indent/indentNoaudit";
+    public final static String POST_INDENTNOAUDIT = "Indent_info/indentNoaudit";
 
     public void IndentNoaudit(String id) {
         Map<String, String> params = new HashMap<>();
@@ -194,7 +194,7 @@ public class Api {
     /**
      * 检验列表
      */
-    public final static String GET_INSPECTLIST = "inspect/list";
+    public final static String GET_INSPECTLIST = "inspect_info/list";
 
     public void getInspectList(String status, String customcode,String date) {
         Map<String, String> params = new HashMap<>();
@@ -234,7 +234,7 @@ public class Api {
     /**
      * 检验明细
      */
-    public final static String GET_INSPECTDETAIL = "inspect/detail";
+    public final static String GET_INSPECTDETAIL = "inspect_info/detail";
 
     public void getInspectDetail(String id) {
         Map<String, String> params = new HashMap<>();
@@ -245,7 +245,7 @@ public class Api {
     /**
      * 审核检验
      */
-    public final static String POST_INSPECTAUDIT = "inspect/inspectAudit";
+    public final static String POST_INSPECTAUDIT = "inspect_info/inspectAudit";
 
     public void InspectAudit(String id) {
         Map<String, String> params = new HashMap<>();
@@ -257,7 +257,7 @@ public class Api {
     /**
      * 反审检验
      */
-    public final static String POST_INSPECTNOAUDIT = "inspect/inspectNoaudit";
+    public final static String POST_INSPECTNOAUDIT = "inspect_info/inspectNoaudit";
 
     public void InspectNoaudit(String id) {
         Map<String, String> params = new HashMap<>();
@@ -278,7 +278,7 @@ public class Api {
     /**
      * 获取销售信息
      */
-    public final static String GET_SALELIST = "salesend/list";
+    public final static String GET_SALELIST = "salesend_info/list";
 
     public void getSaleInfoList(String status,String billcode,String date) {
         Map<String, String> params = new HashMap<>();
@@ -343,7 +343,7 @@ public class Api {
     /**
      * 获取销售明细
      */
-    public final static String GET_SALEDERAILLIST = "salesend/item";
+    public final static String GET_SALEDERAILLIST = "salesend_info/item";
 
     public void getSaleDetail(String id) {
         Map<String, String> params = new HashMap<>();
@@ -354,7 +354,7 @@ public class Api {
     /**
      * 审核发货
      */
-    public final static String POST_SALEAUDIT = "salesend/saleAudit";
+    public final static String POST_SALEAUDIT = "salesend_info/saleAudit";
 
     public void SaleAudit(String id) {
         Map<String, String> params = new HashMap<>();
@@ -366,7 +366,7 @@ public class Api {
     /**
      * 反审发货
      */
-    public final static String POST_SALENOAUDIT = "salesend/saleNoaudit";
+    public final static String POST_SALENOAUDIT = "salesend_info/saleNoaudit";
 
     public void SaleNoaudit(String id) {
         Map<String, String> params = new HashMap<>();
@@ -461,7 +461,9 @@ public class Api {
      */
     public final static String GET_FACTORY = "factory/list";
 
-    public void getFactoryList() {
-        mClient.get(GET_FACTORY, null, callback);
+    public void getFactoryList(String type) {
+        Map<String, String> params = new HashMap<>();
+        params.put("categoryid", type);
+        mClient.get(GET_FACTORY, params, callback);
     }
 }

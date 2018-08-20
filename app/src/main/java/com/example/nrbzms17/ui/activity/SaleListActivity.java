@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.nrbzms17.R;
 import com.example.nrbzms17.Utils.JSONUtils;
@@ -59,6 +60,8 @@ public class SaleListActivity extends AppCompatActivity {
 
     Button saleSearch;
 
+    TextView back_menu;
+
     private DateBean dateBean;
 
     SpinnerDateAdapter dateAdapter;
@@ -72,7 +75,13 @@ public class SaleListActivity extends AppCompatActivity {
         setClickListeners();
         getCommenStatus();
         getDateInfo();
-
+        back_menu =findViewById(R.id.back_menu);
+        back_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public void initview() {

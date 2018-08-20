@@ -31,7 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="订单号："
+                    android:text="订  单  号："
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -104,7 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="供应商："
+                    android:text="供  应  商："
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -123,7 +123,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="180dp"
-                    android:text="产品："
+                    android:text="产        品："
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -148,7 +148,7 @@
                     android:id="@+id/pur_quantity_tip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="计划数："
+                    android:text="计  划  数："
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -166,7 +166,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="180dp"
-                    android:text="已收数："
+                    android:text="已  收  数："
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -193,9 +193,9 @@
                     android:id="@+id/pur_straight_tip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="去向："
+                    android:text="去         向:"
                     android:textColor="@color/black"
-                    android:textSize="17sp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/pur_straight"
@@ -204,7 +204,7 @@
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/pur_straight_tip"
                     android:textColor="@color/black"
-                    android:textSize="17sp" />
+                    android:textSize="16sp" />
 
             </RelativeLayout>
 
@@ -222,7 +222,7 @@
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
                     android:gravity="center_vertical"
-                    android:text="加工厂："
+                    android:text="加  工  厂："
                     android:textColor="@color/black"
                     android:textSize="17sp" />
 
@@ -333,7 +333,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     android:gravity="center_vertical"
-                    android:text="任务号："
+                    android:text="任  务  号："
                     android:textColor="@color/black"
                     android:textSize="17sp" />
 

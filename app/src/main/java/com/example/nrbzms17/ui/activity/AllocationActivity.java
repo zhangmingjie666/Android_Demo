@@ -109,14 +109,19 @@ public class AllocationActivity extends BaseActivity {
         txtvConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getAlloList();
-                btnSubmit.setEnabled(true);
-                btnSubmit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        addAllocation();
-                    }
-                });
+
+                if(codeSearch.getText().toString().trim().equals("")){
+                    getAlloList();
+                }else{
+                    btnSubmit.setEnabled(true);
+                    btnSubmit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            addAllocation();
+                        }
+                    });
+                }
+
             }
         });
 
@@ -135,7 +140,7 @@ public class AllocationActivity extends BaseActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 depotBean = (DepotBean) depotAdapter.getItem(position);
                 SharedPreference.setDepotId(depotBean.id);
-//                getOrderList();
+
             }
 
             @Override
@@ -173,7 +178,7 @@ public class AllocationActivity extends BaseActivity {
 
 
                 } else {
-                    allocationBeanList = new ArrayList<>();
+                    UIHelper.showShortToast(AllocationActivity.this,"请正确输入条码");
                 }
                 allocationAdapter.refresh(allocationBeanList);
             }
