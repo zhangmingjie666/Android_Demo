@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/content_bg"
+    android:background="#ffffff"
     android:orientation="vertical"
 
     >
@@ -214,7 +214,6 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="2dp"
-                android:background="#FFF5EE"
                 android:orientation="vertical">
 
                 <TextView
@@ -232,8 +231,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/pur_factory_tip"
-                    android:drawableRight="@mipmap/go"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginRight="10dp"
+                    android:drawableRight="@mipmap/factory"
+                    android:background="@null"
                     android:gravity="center_vertical"
                     android:textColor="@color/black"
                     android:textSize="17sp" />
@@ -251,7 +252,6 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="2dp"
-                android:background="#FFF5EE"
                 android:orientation="vertical">
 
                 <TextView
@@ -269,8 +269,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/pur_next_craft_tip"
-                    android:drawableRight="@mipmap/go"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@null"
+                    android:drawableRight="@mipmap/craft"
                     android:gravity="center_vertical"
                     android:textColor="@color/black"
                     android:textSize="17sp" />
@@ -288,7 +290,6 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="2dp"
-                android:background="#FFF5EE"
                 android:orientation="vertical">
 
                 <TextView
@@ -306,11 +307,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/pur_sup_material_code_tip"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginRight="10dp"
                     android:background="@null"
-                    android:drawableRight="@mipmap/pen"
+                    android:drawableRight="@mipmap/pen2"
                     android:gravity="center_vertical"
-                    android:paddingLeft="40dp"
                     android:textColor="@color/black"
                     android:textSize="17sp" />
             </RelativeLayout>
@@ -327,7 +328,6 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="2dp"
-                android:background="#FFF5EE"
                 android:orientation="vertical">
 
                 <TextView
@@ -346,11 +346,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/pur_taskcode_tip"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginRight="10dp"
                     android:background="@null"
-                    android:drawableRight="@mipmap/pen"
+                    android:drawableRight="@mipmap/pen2"
                     android:gravity="center_vertical"
-                    android:paddingLeft="40dp"
                     android:textColor="@color/black"
                     android:textSize="17sp" />
             </RelativeLayout>
@@ -367,7 +367,6 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="2dp"
-                android:background="#FFF5EE"
                 android:orientation="vertical">
 
                 <TextView
@@ -386,12 +385,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/pur_volume_tip"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginRight="10dp"
                     android:background="@null"
-                    android:drawableRight="@mipmap/pen"
+                    android:drawableRight="@mipmap/pen2"
                     android:gravity="center_vertical"
                     android:inputType="numberDecimal"
-                    android:paddingLeft="40dp"
                     android:textColor="@color/black"
                     android:textSize="17sp" />
             </RelativeLayout>
@@ -408,7 +407,6 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="2dp"
-                android:background="#FFF5EE"
                 android:orientation="vertical">
 
                 <TextView
@@ -427,12 +425,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/pur_shquantity_tip"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginRight="10dp"
                     android:background="@null"
-                    android:drawableRight="@mipmap/pen"
+                    android:drawableRight="@mipmap/pen2"
                     android:gravity="center_vertical"
                     android:inputType="numberDecimal"
-                    android:paddingLeft="40dp"
                     android:textColor="@color/black"
                     android:textSize="17sp" />
             </RelativeLayout>
@@ -448,9 +446,12 @@
                 android:id="@+id/check_Submit"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:shadowRadius="5"
+                android:layout_marginTop="@dimen/dp_3"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_large"
                 android:text="新增并审核"
-                android:textColor="#000000"
+                android:background="#1E90FF"
+                android:textColor="#ffffff"
                 android:textSize="18sp" />
 
 

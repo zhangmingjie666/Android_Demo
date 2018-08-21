@@ -1,192 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:background="#ffffff">-->
+<?xml version="1.0" encoding="utf-8"?><!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:background="#ffffff">-->
 
-    <!--<LinearLayout-->
-        <!--android:id="@+id/menu"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="vertical">-->
+<!--<LinearLayout--><!--android:id="@+id/menu"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:orientation="vertical">-->
 
-        <!--<TextView-->
-            <!--android:id="@+id/text_view"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="@color/colorPrimaryDark"-->
-            <!--android:gravity="center_horizontal"-->
-            <!--android:text="工作区"-->
-            <!--android:textColor="@color/black"-->
-            <!--android:textSize="20dp" />-->
+<!--<TextView--><!--android:id="@+id/text_view"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:background="@color/colorPrimaryDark"--><!--android:gravity="center_horizontal"--><!--android:text="工作区"--><!--android:textColor="@color/black"--><!--android:textSize="20dp" />-->
 
-        <!--<TextView-->
-            <!--android:id="@+id/text"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--android:background="#F5F5F5"-->
-            <!--android:paddingLeft="5dp"-->
-            <!--android:text="审核"-->
-            <!--android:textColor="@color/black"-->
-            <!--android:textSize="16dp" />-->
+<!--<TextView--><!--android:id="@+id/text"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:layout_marginTop="10dp"--><!--android:background="#F5F5F5"--><!--android:paddingLeft="5dp"--><!--android:text="审核"--><!--android:textColor="@color/black"--><!--android:textSize="16dp" />-->
 
-    <!--</LinearLayout>-->
+<!--</LinearLayout>-->
 
-    <!--<LinearLayout-->
-        <!--android:id="@+id/menu_top"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="85dp"-->
-        <!--android:orientation="horizontal"-->
+<!--<LinearLayout--><!--android:id="@+id/menu_top"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:layout_marginTop="85dp"--><!--android:orientation="horizontal"-->
 
-        <!--&gt;-->
+<!--&gt;-->
 
-        <!--<TextView-->
-            <!--android:id="@+id/order"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:drawablePadding="5dp"-->
-            <!--android:drawableTop="@mipmap/order"-->
-            <!--android:gravity="center"-->
-            <!--android:text="订单"-->
-            <!--android:textColor="@android:color/black"-->
-            <!--android:textSize="15sp" />-->
+<!--<TextView--><!--android:id="@+id/order"--><!--android:layout_width="0dp"--><!--android:layout_height="wrap_content"--><!--android:layout_weight="1"--><!--android:drawablePadding="5dp"--><!--android:drawableTop="@mipmap/order"--><!--android:gravity="center"--><!--android:text="订单"--><!--android:textColor="@android:color/black"--><!--android:textSize="15sp" />-->
 
-        <!--<TextView-->
-            <!--android:id="@+id/purchase"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_toRightOf="@+id/inspect"-->
-            <!--android:layout_weight="1"-->
-            <!--android:drawablePadding="5dp"-->
-            <!--android:drawableTop="@mipmap/purchase"-->
-            <!--android:gravity="center"-->
-            <!--android:text="采购"-->
-            <!--android:textColor="@android:color/black"-->
-            <!--android:textSize="15sp" />-->
+<!--<TextView--><!--android:id="@+id/purchase"--><!--android:layout_width="0dp"--><!--android:layout_height="wrap_content"--><!--android:layout_toRightOf="@+id/inspect"--><!--android:layout_weight="1"--><!--android:drawablePadding="5dp"--><!--android:drawableTop="@mipmap/purchase"--><!--android:gravity="center"--><!--android:text="采购"--><!--android:textColor="@android:color/black"--><!--android:textSize="15sp" />-->
 
 
-        <!--<TextView-->
-            <!--android:id="@+id/inspect"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_toRightOf="@id/order"-->
-            <!--android:layout_weight="1"-->
-            <!--android:drawablePadding="5dp"-->
-            <!--android:drawableTop="@mipmap/inspect"-->
-            <!--android:gravity="center"-->
-            <!--android:text="检验"-->
-            <!--android:textColor="@android:color/black"-->
-            <!--android:textSize="15sp" />-->
+<!--<TextView--><!--android:id="@+id/inspect"--><!--android:layout_width="0dp"--><!--android:layout_height="wrap_content"--><!--android:layout_toRightOf="@id/order"--><!--android:layout_weight="1"--><!--android:drawablePadding="5dp"--><!--android:drawableTop="@mipmap/inspect"--><!--android:gravity="center"--><!--android:text="检验"--><!--android:textColor="@android:color/black"--><!--android:textSize="15sp" />-->
 
-        <!--<TextView-->
-            <!--android:id="@+id/sale"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_toRightOf="@id/purchase"-->
-            <!--android:layout_weight="1"-->
-            <!--android:drawablePadding="5dp"-->
-            <!--android:drawableTop="@mipmap/sale"-->
-            <!--android:gravity="center"-->
-            <!--android:text="销售"-->
-            <!--android:textColor="@android:color/black"-->
-            <!--android:textSize="15sp" />-->
+<!--<TextView--><!--android:id="@+id/sale"--><!--android:layout_width="0dp"--><!--android:layout_height="wrap_content"--><!--android:layout_toRightOf="@id/purchase"--><!--android:layout_weight="1"--><!--android:drawablePadding="5dp"--><!--android:drawableTop="@mipmap/sale"--><!--android:gravity="center"--><!--android:text="销售"--><!--android:textColor="@android:color/black"--><!--android:textSize="15sp" />-->
 
 
-    <!--</LinearLayout>-->
+<!--</LinearLayout>-->
 
 
-    <!--<LinearLayout-->
-        <!--android:id="@+id/menu_middle"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="vertical">-->
+<!--<LinearLayout--><!--android:id="@+id/menu_middle"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:orientation="vertical">-->
 
-        <!--<TextView-->
-            <!--android:id="@+id/depot"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="152dp"-->
-            <!--android:background="#F5F5F5"-->
-            <!--android:paddingLeft="5dp"-->
-            <!--android:text="仓库"-->
-            <!--android:textColor="@color/black"-->
-            <!--android:textSize="16dp" />-->
+<!--<TextView--><!--android:id="@+id/depot"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:layout_marginTop="152dp"--><!--android:background="#F5F5F5"--><!--android:paddingLeft="5dp"--><!--android:text="仓库"--><!--android:textColor="@color/black"--><!--android:textSize="16dp" />-->
 
-    <!--</LinearLayout>-->
+<!--</LinearLayout>-->
 
-    <!--<LinearLayout-->
-        <!--android:id="@+id/menu_top1"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="188dp"-->
-        <!--android:orientation="horizontal">-->
+<!--<LinearLayout--><!--android:id="@+id/menu_top1"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:layout_marginTop="188dp"--><!--android:orientation="horizontal">-->
 
-        <!--<TextView-->
-            <!--android:id="@+id/check"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:drawablePadding="5dp"-->
-            <!--android:drawableTop="@mipmap/check"-->
-            <!--android:gravity="center"-->
-            <!--android:text="盘点"-->
-            <!--android:textColor="@android:color/black"-->
-            <!--android:textSize="15sp" />-->
+<!--<TextView--><!--android:id="@+id/check"--><!--android:layout_width="0dp"--><!--android:layout_height="wrap_content"--><!--android:layout_weight="1"--><!--android:drawablePadding="5dp"--><!--android:drawableTop="@mipmap/check"--><!--android:gravity="center"--><!--android:text="盘点"--><!--android:textColor="@android:color/black"--><!--android:textSize="15sp" />-->
 
-        <!--<TextView-->
-            <!--android:id="@+id/allocation"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_toRightOf="@+id/inspect"-->
-            <!--android:layout_weight="1"-->
-            <!--android:drawablePadding="5dp"-->
-            <!--android:drawableTop="@mipmap/allocation"-->
+<!--<TextView--><!--android:id="@+id/allocation"--><!--android:layout_width="0dp"--><!--android:layout_height="wrap_content"--><!--android:layout_toRightOf="@+id/inspect"--><!--android:layout_weight="1"--><!--android:drawablePadding="5dp"--><!--android:drawableTop="@mipmap/allocation"-->
 
-            <!--android:gravity="center"-->
-            <!--android:text="调拨"-->
-            <!--android:textColor="@android:color/black"-->
-            <!--android:textSize="15sp" />-->
+<!--android:gravity="center"--><!--android:text="调拨"--><!--android:textColor="@android:color/black"--><!--android:textSize="15sp" />-->
 
 
-        <!--<TextView-->
-            <!--android:id="@+id/inspect1"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_toRightOf="@id/order"-->
-            <!--android:layout_weight="1"-->
-            <!--android:drawablePadding="5dp"-->
-            <!--android:drawableTop="@mipmap/inspect"-->
-            <!--android:gravity="center"-->
-            <!--android:text="检验"-->
-            <!--android:textColor="@android:color/black"-->
-            <!--android:textSize="15sp" />-->
+<!--<TextView--><!--android:id="@+id/inspect1"--><!--android:layout_width="0dp"--><!--android:layout_height="wrap_content"--><!--android:layout_toRightOf="@id/order"--><!--android:layout_weight="1"--><!--android:drawablePadding="5dp"--><!--android:drawableTop="@mipmap/inspect"--><!--android:gravity="center"--><!--android:text="检验"--><!--android:textColor="@android:color/black"--><!--android:textSize="15sp" />-->
 
-        <!--<TextView-->
-            <!--android:id="@+id/echarts"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_toRightOf="@id/purchase"-->
-            <!--android:layout_weight="1"-->
-            <!--android:drawablePadding="5dp"-->
-            <!--android:drawableTop="@mipmap/analyse"-->
+<!--<TextView--><!--android:id="@+id/echarts"--><!--android:layout_width="0dp"--><!--android:layout_height="wrap_content"--><!--android:layout_toRightOf="@id/purchase"--><!--android:layout_weight="1"--><!--android:drawablePadding="5dp"--><!--android:drawableTop="@mipmap/analyse"-->
 
-            <!--android:gravity="center"-->
-            <!--android:text="分析"-->
-            <!--android:textColor="@android:color/black"-->
-            <!--android:textSize="15sp" />-->
-    <!--</LinearLayout>-->
+<!--android:gravity="center"--><!--android:text="分析"--><!--android:textColor="@android:color/black"--><!--android:textSize="15sp" />--><!--</LinearLayout>-->
 
 <!--</RelativeLayout>-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/root_layout"
-    android:orientation="vertical"
     android:background="?android:attr/selectableItemBackground"
->
+    android:orientation="vertical">
 
 </LinearLayout>

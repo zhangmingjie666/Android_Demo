@@ -38,4 +38,5 @@ dependencies {
     implementation project(':pullToRefreshlibrary')
     implementation 'me.imid.swipebacklayout.lib:library:1.1.0'
     implementation files('libs/zxing.jar')
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
 }

@@ -67,9 +67,6 @@ public class SpinnerStatusAdapter extends BaseAdapter {
 
             viewHolder.txtvName.setText(managerBean.name);
 
-
-
-
         return convertView;
     }
 

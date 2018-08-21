@@ -16,7 +16,7 @@
             android:background="@color/colorPrimaryDark"
             android:gravity="center_horizontal"
             android:text="设置"
-            android:textColor="#708090"
+            android:textColor="#ffffff"
             android:textSize="25dp" />
 
         <TextView

@@ -17,19 +17,20 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
             android:background="@null"
-            android:drawableLeft="@drawable/back4"
+            android:drawableLeft="@drawable/back"
             android:drawablePadding="-20dp"
             android:text="返回"
+            android:textColor="@color/white"
             android:textSize="@dimen/activity_vertical_margin" />
 
         <TextView
             android:id="@+id/txtvTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="130dp"
+            android:gravity="center"
             android:text="明细列表"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="@dimen/textsize_actionbar_title" />
 
     </RelativeLayout>

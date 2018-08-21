@@ -1,42 +1,42 @@
 package com.example.nrbzms17.ui.Fragment;
 
 
+
 import android.content.Intent;
-import android.content.res.TypedArray;
+
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
-import android.util.TypedValue;
+
 import android.view.Gravity;
 import android.view.LayoutInflater;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.app.Fragment;
-import android.webkit.WebView;
+
 import android.widget.Button;
+
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.codescan.zxing.activity.CaptureActivity;
+
 import com.example.nrbzms17.R;
-import com.example.nrbzms17.data.model.MenuBean;
+
 import com.example.nrbzms17.ui.activity.AllocationActivity;
 import com.example.nrbzms17.ui.activity.CheckActivity;
 import com.example.nrbzms17.ui.activity.DyeingActivity;
 import com.example.nrbzms17.ui.activity.EchartsActivity;
 import com.example.nrbzms17.ui.activity.InspectListActivity;
+
 import com.example.nrbzms17.ui.activity.OrderListActivity;
 import com.example.nrbzms17.ui.activity.PurchaseListActivity;
 import com.example.nrbzms17.ui.activity.SaleListActivity;
 import com.example.nrbzms17.ui.activity.ShoppingActivity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment{
 
 
     private int menuIcons[] = {
@@ -58,10 +58,14 @@ public class MainFragment extends Fragment {
 
             R.drawable.shouhuo,
 
-            R.drawable.ranchang
+            R.drawable.ranchang,
+
+            R.drawable.houzhengli,
+
+            R.drawable.buzhidao
     };
 
-    private String menuNames[] = {"订单", "采购", "检验", "销售", "盘点", "调拨", "检验", "分析","采购收货","染厂收货"};
+    private String menuNames[] = {"订单", "采购", "检验", "销售", "盘点", "调拨", "检验", "分析","采购收货","染厂收货","后整收货","定制"};
 
 //    private List<MenuBean> list = new ArrayList<>();
 
@@ -93,6 +97,13 @@ public class MainFragment extends Fragment {
     Button purchasing;
 
     Button dye_works;
+
+    Button houzhengli;
+
+    Button buzhidao;
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -184,6 +195,8 @@ public class MainFragment extends Fragment {
 
         LinearLayout shouhuoLayout = new LinearLayout(getActivity());
 
+        titleLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+
         order = new Button(getActivity());
         purchase = new Button(getActivity());
         inspect = new Button(getActivity());
@@ -194,9 +207,14 @@ public class MainFragment extends Fragment {
         echarts = new Button(getActivity());
         purchasing = new Button(getActivity());
         dye_works = new Button(getActivity());
+        houzhengli = new Button(getActivity());
+        buzhidao = new Button(getActivity());
+
+
 
         titleview = new TextView(getActivity());
         titleview.setText("工作区");
+        titleview.setTextColor(getResources().getColor(R.color.white));
         titleview.setGravity(Gravity.CENTER);
         titleview.setTextSize(25);
 
@@ -264,6 +282,16 @@ public class MainFragment extends Fragment {
         dye_works.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
         dye_works.setBackgroundColor(getResources().getColor(R.color.white));
 
+        houzhengli.setText(menuNames[10]);
+        top = getResources().getDrawable(menuIcons[10]);
+        houzhengli.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
+        houzhengli.setBackgroundColor(getResources().getColor(R.color.white));
+
+        buzhidao.setText(menuNames[11]);
+        top = getResources().getDrawable(menuIcons[11]);
+        buzhidao.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
+        buzhidao.setBackgroundColor(getResources().getColor(R.color.white));
+
 
         //root控件
         LinearLayout.LayoutParams relativeLayout_parent_params
@@ -318,7 +346,8 @@ public class MainFragment extends Fragment {
         purchaseLayout.addView(fourthview, fourtitle);
         shouhuoLayout.addView(purchasing, button_puchasing);
         shouhuoLayout.addView(dye_works, button_puchasing);
-
+        shouhuoLayout.addView(houzhengli, button_puchasing);
+        shouhuoLayout.addView(buzhidao, button_puchasing);
 
         rootLayout.addView(titleLayout);
         rootLayout.addView(secondLayout);
