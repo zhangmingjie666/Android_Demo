@@ -3,6 +3,8 @@ package com.example.nrbzms17.ui.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -26,8 +28,16 @@ public class CraftActivity extends AppCompatActivity {
 
     @BindView(R.id.txtvActionbarTitle)
     TextView txtvActionbarTitle;
-    CraftAdapter craftAdapter;
 
+    @BindView(R.id.back_menu)
+    TextView back_menu;
+
+    @BindView(R.id.etCode)
+    TextView etCode;
+
+
+    CraftAdapter craftAdapter;
+    String search = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +46,12 @@ public class CraftActivity extends AppCompatActivity {
         initview();
         getCraftList();
         txtvActionbarTitle.setText("工艺列表");
+        back_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public void initview() {
@@ -55,6 +71,23 @@ public class CraftActivity extends AppCompatActivity {
                 finish();
             }
         });
+        etCode.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                search = etCode.getText().toString().trim();
+                getCraftList();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     //获取工艺信息
@@ -67,11 +100,10 @@ public class CraftActivity extends AppCompatActivity {
                     craftAdapter.refresh(craftBeanResponse.result);
                 }
             }
-
             @Override
             public void onFail() {
             }
         });
-        api.getCraftList();
+        api.getCraftList(search);
     }
 }

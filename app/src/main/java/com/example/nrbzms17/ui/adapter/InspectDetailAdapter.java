@@ -77,6 +77,11 @@ public class InspectDetailAdapter extends BaseAdapter {
         viewHolder.ins_craft.setText(bean.craftname);
         viewHolder.pur_source.setText(bean.source);
 
+        if (position % 2 == 1) {
+            convertView.setBackgroundColor(Color.parseColor("#F5F5F5"));
+        } else {
+            convertView.setBackgroundColor(Color.parseColor("#FFFAFA"));
+        }
         return convertView;
     }
 

@@ -75,7 +75,11 @@ public class PurchaseListAdapter extends BaseAdapter {
         viewHolder.pur_quantity.setText(bean.quantity);
         viewHolder.pur_color.setText(bean.color);
         viewHolder.pur_contcode.setText(bean.contcode);
-
+        if (position % 2 == 1) {
+            convertView.setBackgroundColor(Color.parseColor("#F5F5F5"));
+        } else {
+            convertView.setBackgroundColor(Color.parseColor("#FFFAFA"));
+        }
         return convertView;
     }
 

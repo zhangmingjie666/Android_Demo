@@ -1,5 +1,6 @@
 package com.example.nrbzms17.ui.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,7 +75,11 @@ public class AllocatAdapter extends BaseAdapter {
         viewHolder.all_lot.setText(allocationBean.lot);
         viewHolder.all_reel.setText(allocationBean.reel);
         viewHolder.all_customcode.setText(allocationBean.customcode);
-
+        if (position % 2 == 1) {
+            convertView.setBackgroundColor(Color.parseColor("#DCDCDC"));
+        } else {
+            convertView.setBackgroundColor(Color.parseColor("#FFFAFA"));
+        }
         return convertView;
     }
 

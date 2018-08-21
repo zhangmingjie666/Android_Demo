@@ -3,49 +3,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/content_bg"
-    >
+    android:orientation="vertical">
 
     <include layout="@layout/actionbar_sal"></include>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
         android:background="@color/content_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:padding="1dp"
         android:weightSum="1">
+
         <EditText
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            />
+            android:layout_height="0dp" />
+
         <com.example.nrbzms17.ui.widget.ClearEditText
             android:id="@+id/saleCode"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
-            android:hint="输入订单号"
             android:background="@drawable/search_edittext_bg"
-            android:maxLength="20"
             android:gravity="center_vertical"
-            android:inputType="numberDecimal"
+            android:hint="输入订单号"
+            android:maxLength="20"
             android:paddingLeft="8dp"
             android:paddingRight="5dp"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
+
         <Button
             android:id="@+id/saleSearch"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/button_bg_box"
+            android:gravity="center"
             android:text="查询"
             android:textColor="@color/black"
-            android:gravity="center"
-            android:background="@drawable/button_bg_box"
-            android:textSize="20sp"
-            android:layout_marginLeft="8dp"
-            />
+            android:textSize="20sp" />
     </LinearLayout>
+
     <Spinner
         android:id="@+id/sale_date"
         android:layout_width="match_parent"
@@ -57,11 +57,11 @@
         android:id="@+id/pullToRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <com.jingchen.pulltorefresh.PullableListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="3dp"
-            ></com.jingchen.pulltorefresh.PullableListView>
+            android:padding="3dp"></com.jingchen.pulltorefresh.PullableListView>
     </com.jingchen.pulltorefresh.PullToRefreshLayout>
 
 </LinearLayout>

@@ -452,8 +452,10 @@ public class Api {
      */
     public final static String GET_CRAFT = "craft/list";
 
-    public void getCraftList() {
-        mClient.get(GET_CRAFT, null, callback);
+    public void getCraftList(String search) {
+        Map<String, String> params = new HashMap<>();
+        params.put("craft", search);
+        mClient.get(GET_CRAFT, params, callback);
     }
 
     /**
@@ -461,9 +463,10 @@ public class Api {
      */
     public final static String GET_FACTORY = "factory/list";
 
-    public void getFactoryList(String type) {
+    public void getFactoryList(String type,String search) {
         Map<String, String> params = new HashMap<>();
         params.put("categoryid", type);
+        params.put("company", search);
         mClient.get(GET_FACTORY, params, callback);
     }
 }

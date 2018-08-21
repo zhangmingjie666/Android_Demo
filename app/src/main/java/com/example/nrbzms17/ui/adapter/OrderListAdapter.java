@@ -80,7 +80,11 @@ public class OrderListAdapter extends BaseAdapter {
         viewHolder.txtv_quantity.setText(bean.yquantity);
         viewHolder.txtv_ratio.setText(bean.ratio);
         viewHolder.txtv_contcode.setText(bean.contcode);
-
+        if (position % 2 == 1) {
+            convertView.setBackgroundColor(Color.parseColor("#F5F5F5"));
+        } else {
+            convertView.setBackgroundColor(Color.parseColor("#FFFAFA"));
+        }
         return convertView;
     }
 

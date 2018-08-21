@@ -73,7 +73,11 @@ public class InspectListAdapter extends BaseAdapter {
         viewHolder.ins_quantity.setText(bean.quantity);
         viewHolder.ins_color.setText(bean.colorname);
         viewHolder.ins_code.setText(bean.code);
-
+        if (position % 2 == 1) {
+            convertView.setBackgroundColor(Color.parseColor("#F5F5F5"));
+        } else {
+            convertView.setBackgroundColor(Color.parseColor("#FFFAFA"));
+        }
         return convertView;
     }
 

@@ -1,5 +1,6 @@
 package com.example.nrbzms17.ui.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +63,11 @@ public class OrderDetailAdapter extends BaseAdapter {
         viewHolder.txtv_amount.setText(data.amount);
         viewHolder.txtv_quantity.setText(data.quantity);
 
-
+        if (position % 2 == 1) {
+            convertView.setBackgroundColor(Color.parseColor("#F5F5F5"));
+        } else {
+            convertView.setBackgroundColor(Color.parseColor("#FFFAFA"));
+        }
         return convertView;
     }
 

@@ -81,7 +81,11 @@ public class SaleDetailAdapter extends BaseAdapter {
         viewHolder.sale_express_code.setText(bean.sale_express_code);
         viewHolder.sale_craft.setText(bean.craft);
         viewHolder.sale_trade.setText(bean.trade);
-
+        if (position % 2 == 1) {
+            convertView.setBackgroundColor(Color.parseColor("#F5F5F5"));
+        } else {
+            convertView.setBackgroundColor(Color.parseColor("#FFFAFA"));
+        }
         return convertView;
     }
 

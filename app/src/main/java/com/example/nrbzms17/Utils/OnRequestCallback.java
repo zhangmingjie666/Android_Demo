@@ -49,20 +49,20 @@ public abstract class OnRequestCallback extends Callback<String> {
         return response.body().string();
     }
 
-
-    @Override
-    public void onBefore(Request request) {
-        super.onBefore(request);
-        if (showLoading) {
-            if (mProgressDialog == null) {
-                mProgressDialog = new ProgressDialog(mContext);
-            } else {
-                mProgressDialog.cancel();
-            }
-            mProgressDialog.setMessage(showText);
-            mProgressDialog.setCancelable(false);
-            mProgressDialog.show();
-        }
+        //页面多绕一个圈
+//    @Override
+//    public void onBefore(Request request) {
+//        super.onBefore(request);
+//        if (showLoading) {
+//            if (mProgressDialog == null) {
+//                mProgressDialog = new ProgressDialog(mContext);
+//            } else {
+//                mProgressDialog.cancel();
+//            }
+//            mProgressDialog.setMessage(showText);
+//            mProgressDialog.setCancelable(false);
+//            mProgressDialog.show();
+//        }
 
 //        if(isShowProgress){
 //            View view = LayoutInflater.from(mContext).inflate(R.layout.dialog_progress_view,null);
@@ -78,7 +78,7 @@ public abstract class OnRequestCallback extends Callback<String> {
 //            progressDialog.setCancelable(false);
 //            progressDialog.show();
 //        }
-    }
+//    }
 
     @Override
     public void onResponse(String response) {

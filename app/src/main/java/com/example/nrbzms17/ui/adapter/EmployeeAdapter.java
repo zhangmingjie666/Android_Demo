@@ -1,5 +1,6 @@
 package com.example.nrbzms17.ui.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,6 +61,7 @@ public class EmployeeAdapter extends BaseAdapter {
         }
         EmployeeBean managerBean = listData.get(position);
         viewHolder.txtvName.setText(managerBean.name);
+
         return convertView;
     }
 

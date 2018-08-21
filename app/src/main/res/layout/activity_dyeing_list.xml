@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="180dp"
+            android:layout_marginLeft="170dp"
             android:text="点坯编号："
             android:textColor="@color/black"
             android:textSize="15sp" />
@@ -75,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="180dp"
+            android:layout_marginLeft="170dp"
             android:text="交货日期："
             android:textColor="@color/black"
             android:textSize="15sp" />
@@ -101,6 +101,7 @@
             android:id="@+id/dye_company_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="170dp"
             android:layout_centerVertical="true"
             android:text="供应商："
             android:textColor="@color/black"
@@ -120,7 +121,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="180dp"
             android:text="产品："
             android:textColor="@color/black"
             android:textSize="15sp" />
@@ -161,7 +161,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="180dp"
+            android:layout_marginLeft="170dp"
             android:text="业务员："
             android:textColor="@color/black"
             android:textSize="15sp" />
@@ -205,7 +205,7 @@
             android:id="@+id/dye_rquantity_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="180dp"
+            android:layout_marginLeft="170dp"
             android:text="已收数："
             android:textColor="@color/black"
             android:textSize="15sp" />
@@ -249,7 +249,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="180dp"
+            android:layout_marginLeft="170dp"
             android:text="任务号："
             android:textColor="@color/black"
             android:textSize="15sp" />

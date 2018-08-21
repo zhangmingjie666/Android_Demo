@@ -3,13 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="5dp"
+
     android:background="@color/content_bg"
+
+
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="2dp"
         android:background="#FFF5EE"
@@ -18,18 +20,20 @@
         <TextView
             android:id="@+id/ins_customcode_tip"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
+            android:gravity="center"
             android:layout_marginLeft="10dp"
-            android:text="订单号："
+            android:text="订  单  号："
             android:textColor="@color/black"
             android:textSize="17sp" />
 
         <TextView
             android:id="@+id/ins_customcode"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
+            android:gravity="center"
             android:layout_toRightOf="@+id/ins_customcode_tip"
             android:textColor="@color/black"
             android:textSize="17sp" />
@@ -46,7 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="来源："
+            android:gravity="center"
+            android:text="来        源："
             android:textColor="@color/black"
             android:textSize="17sp" />
 
@@ -55,6 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:gravity="center"
             android:layout_toRightOf="@+id/pur_source_tip"
             android:textColor="@color/black"
             android:textSize="17sp" />
@@ -126,7 +132,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:text="产品："
+            android:text="产         品："
             android:textColor="@color/black"
             android:textSize="17sp" />
 
@@ -153,7 +159,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:text="状态："
+            android:text="状         态："
             android:textColor="@color/black"
             android:textSize="17sp" />
 
@@ -179,7 +185,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:text="经手人："
+            android:text="经   手  人："
             android:textColor="@color/black"
             android:textSize="17sp" />
 
@@ -230,7 +236,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="来货数："
+            android:text="来   货  数："
             android:textColor="@color/black"
             android:textSize="17sp" />
 
@@ -256,7 +262,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="颜色："
+            android:text="颜         色："
             android:textColor="@color/black"
             android:textSize="17sp" />
 
@@ -335,7 +341,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="仓库："
+            android:text="仓         库："
             android:textColor="@color/black"
             android:textSize="17sp" />
 
@@ -360,7 +366,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="工艺："
+            android:text="工         艺："
             android:textColor="@color/black"
             android:textSize="17sp" />
 
@@ -386,7 +392,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="备注："
+            android:text="备         注："
             android:textColor="@color/black"
             android:textSize="17sp" />
 

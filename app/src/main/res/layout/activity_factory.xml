@@ -52,9 +52,10 @@
             android:gravity="center"
             android:paddingEnd="20dp"
             android:paddingStart="20dp"
+            android:layout_marginLeft="10dp"
             android:text="染厂"
             android:textColor="@drawable/btn_title_text_selector"
-            android:textSize="25dp" />
+            android:textSize="20dp" />
 
         <RadioButton
             android:id="@+id/after_select"
@@ -66,9 +67,10 @@
             android:gravity="center"
             android:paddingEnd="20dp"
             android:paddingStart="20dp"
+            android:layout_marginRight="10dp"
             android:text="后整理厂"
             android:textColor="@drawable/btn_title_text_selector"
-            android:textSize="25dp" />
+            android:textSize="20dp" />
     </RadioGroup>
 
 

@@ -104,6 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="180dp"
                     android:text="供  应  商："
                     android:textColor="@color/black"
                     android:textSize="16sp" />
@@ -122,7 +123,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="180dp"
                     android:text="产        品："
                     android:textColor="@color/black"
                     android:textSize="16sp" />
@@ -203,6 +203,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/pur_straight_tip"
+                    android:text="   直 发"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -231,18 +232,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
-                    android:gravity="center_vertical"
                     android:layout_toRightOf="@+id/pur_factory_tip"
                     android:drawableRight="@mipmap/go"
+                    android:gravity="center_vertical"
                     android:textColor="@color/black"
                     android:textSize="17sp" />
             </RelativeLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:background="#aa000000" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -266,9 +269,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
-                    android:gravity="center_vertical"
                     android:layout_toRightOf="@+id/pur_next_craft_tip"
                     android:drawableRight="@mipmap/go"
+                    android:gravity="center_vertical"
                     android:textColor="@color/black"
                     android:textSize="17sp" />
             </RelativeLayout>
@@ -292,8 +295,8 @@
                     android:id="@+id/pur_sup_material_code_tip"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="坯布代号："
                     android:gravity="center_vertical"
+                    android:text="坯布代号："
                     android:textColor="@color/black"
                     android:textSize="17sp" />
 
@@ -303,10 +306,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
-                    android:gravity="center_vertical"
                     android:layout_toRightOf="@+id/pur_sup_material_code_tip"
                     android:background="@null"
                     android:drawableRight="@mipmap/pen"
+                    android:gravity="center_vertical"
                     android:paddingLeft="40dp"
                     android:textColor="@color/black"
                     android:textSize="17sp" />
@@ -385,9 +388,9 @@
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/pur_volume_tip"
                     android:background="@null"
-                    android:inputType="numberDecimal"
                     android:drawableRight="@mipmap/pen"
                     android:gravity="center_vertical"
+                    android:inputType="numberDecimal"
                     android:paddingLeft="40dp"
                     android:textColor="@color/black"
                     android:textSize="17sp" />
@@ -426,9 +429,9 @@
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/pur_shquantity_tip"
                     android:background="@null"
-                    android:inputType="numberDecimal"
                     android:drawableRight="@mipmap/pen"
                     android:gravity="center_vertical"
+                    android:inputType="numberDecimal"
                     android:paddingLeft="40dp"
                     android:textColor="@color/black"
                     android:textSize="17sp" />

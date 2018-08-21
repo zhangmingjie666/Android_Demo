@@ -30,7 +30,6 @@
             android:background="@drawable/search_edittext_bg"
             android:gravity="center_vertical"
             android:hint="输入订单号"
-            android:inputType="numberDecimal"
             android:maxLength="20"
             android:paddingLeft="8dp"
             android:paddingRight="5dp"

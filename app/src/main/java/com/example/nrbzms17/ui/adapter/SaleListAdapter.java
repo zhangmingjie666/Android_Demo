@@ -86,6 +86,11 @@ public class SaleListAdapter extends BaseAdapter {
         viewHolder.sale_volume.setText(bean.volume);
         viewHolder.sale_style.setText(bean.style);
         viewHolder.sale_company.setText(bean.customer_name);
+        if (position % 2 == 1) {
+            convertView.setBackgroundColor(Color.parseColor("#F5F5F5"));
+        } else {
+            convertView.setBackgroundColor(Color.parseColor("#FFFAFA"));
+        }
         return convertView;
     }
 

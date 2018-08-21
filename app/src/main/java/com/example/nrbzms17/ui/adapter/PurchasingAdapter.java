@@ -1,5 +1,6 @@
 package com.example.nrbzms17.ui.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,6 +74,11 @@ public class PurchasingAdapter extends BaseAdapter {
         viewHolder.pur_iquantity.setText(purchasingBean.iquantity);
         viewHolder.pur_factory.setText(purchasingBean.factory);
         viewHolder.pur_deliverdate.setText(purchasingBean.deliverydate);
+        if (position % 2 == 1) {
+            convertView.setBackgroundColor(Color.parseColor("#F5F5F5"));
+        } else {
+            convertView.setBackgroundColor(Color.parseColor("#FFFAFA"));
+        }
         return convertView;
     }
 

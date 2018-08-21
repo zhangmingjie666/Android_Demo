@@ -6,7 +6,9 @@ import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +56,7 @@ public class FactoryActivity extends AppCompatActivity {
     FactoryAdapter factoryAdapter;
 
     String type = "4";
-
+    String search = "";
     private List<FactoryBean> factoryBeanList;
 
     @Override
@@ -76,7 +78,6 @@ public class FactoryActivity extends AppCompatActivity {
     public void initview() {
         factoryAdapter = new FactoryAdapter();
         factory_list.setAdapter(factoryAdapter);
-        factory_list.setTextFilterEnabled(true);
 
         //切换染厂和后整理厂
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.rg_title);
@@ -108,6 +109,23 @@ public class FactoryActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        SearchCode.addTextChangedListener(new TextWatcher(){
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                search = SearchCode.getText().toString().trim();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                getFactoryList();
+            }
+        });
     }
 
     //获取工加工厂信息
@@ -119,6 +137,7 @@ public class FactoryActivity extends AppCompatActivity {
                 FactoryBeanResponse factoryBeanResponse = JSONUtils.fromJson(msg, FactoryBeanResponse.class);
                 if (factoryBeanResponse != null && factoryBeanResponse.result != null) {
                     factoryAdapter.refresh(factoryBeanResponse.result);
+
                 }
             }
 
@@ -126,7 +145,7 @@ public class FactoryActivity extends AppCompatActivity {
             public void onFail() {
             }
         });
-        api.getFactoryList(type);
+        api.getFactoryList(type,search);
     }
 
     //过滤
@@ -140,14 +159,14 @@ public class FactoryActivity extends AppCompatActivity {
                 filterResults.values = l;
                 filterResults.count = l.size();
             } else {
+                String prefixString = prefix.toString().toLowerCase();
                 final List<FactoryBean> list = new ArrayList<>(factoryBeanList);
                 final List<FactoryBean> newList = new ArrayList<>();
                 for (int i = 0; i < list.size(); i++) {
-                    if(list.contains(prefix))
-//                    String id = list.get(i).name.toString().trim();
-//                    if (id.indexOf(prefixString) != -1) {
+                        String id = list.get(i).name.toString().trim().toLowerCase();
+                    if (id.indexOf(prefixString) != -1) {
                         newList.add(list.get(i));
-//                    }
+                    }
                 }
                 filterResults.values = newList;
                 filterResults.count = newList.size();
@@ -230,7 +249,7 @@ public class FactoryActivity extends AppCompatActivity {
             if (filter == null) {
                 filter = new FactoryFilter();
             }
-            return null;
+            return filter;
         }
 
         class ViewHolder {
@@ -267,5 +286,7 @@ public class FactoryActivity extends AppCompatActivity {
 //            }
 //        });
 //    }
+
+
 }
 

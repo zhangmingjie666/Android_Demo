@@ -80,7 +80,11 @@ public class PurchaseDetailAdapter extends BaseAdapter {
         viewHolder.pur_trade.setText(bean.trade);
 //        viewHolder.pur_sup_material_code.setText(bean.sup_material_code);
         viewHolder.pur_craft.setText(bean.craft);
-
+        if (position % 2 == 1) {
+            convertView.setBackgroundColor(Color.parseColor("#F5F5F5"));
+        } else {
+            convertView.setBackgroundColor(Color.parseColor("#FFFAFA"));
+        }
         return convertView;
     }
 

@@ -1,5 +1,6 @@
 package com.example.nrbzms17.ui.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,7 +73,11 @@ public class SpinnerDateAdapter extends BaseAdapter {
 
         viewHolder.txtvName.setText(managerBean.name);
 
-
+        if (position % 2 == 1) {
+            convertView.setBackgroundColor(Color.parseColor("#DCDCDC"));
+        } else {
+            convertView.setBackgroundColor(Color.parseColor("#FFFAFA"));
+        }
         return convertView;
     }
 

@@ -30,7 +30,6 @@
             android:background="@drawable/search_edittext_bg"
             android:gravity="center_vertical"
             android:hint="输入订单号"
-            android:inputType="numberDecimal"
             android:maxLength="20"
             android:paddingLeft="8dp"
             android:paddingRight="5dp"
@@ -68,11 +67,11 @@
         android:id="@+id/pullToRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <com.jingchen.pulltorefresh.PullableListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="3dp"
-            ></com.jingchen.pulltorefresh.PullableListView>
+            android:padding="3dp"></com.jingchen.pulltorefresh.PullableListView>
     </com.jingchen.pulltorefresh.PullToRefreshLayout>
 
 
