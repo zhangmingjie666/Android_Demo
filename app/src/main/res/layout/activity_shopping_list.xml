@@ -179,7 +179,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/pur_quantity_tip"
-            android:textColor="@color/black"
+            android:textColor="@color/red"
             android:textSize="15sp" />
 
         <TextView
@@ -222,7 +222,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/pur_iquantity_tip"
-            android:textColor="@color/black"
+            android:textColor="@color/red"
             android:textSize="15sp" />
 
         <TextView

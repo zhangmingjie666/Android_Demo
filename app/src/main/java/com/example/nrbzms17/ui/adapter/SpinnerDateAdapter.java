@@ -32,7 +32,7 @@ public class SpinnerDateAdapter extends BaseAdapter {
             ls = new ArrayList<>();
         }
         listData = ls;
-        listData.add(0, new DateBean("-1", "请选择"));
+        listData.add(0, new DateBean("-1", "查询日期"));
         notifyDataSetChanged();
     }
 

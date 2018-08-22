@@ -35,6 +35,15 @@ public class CraftActivity extends AppCompatActivity {
     @BindView(R.id.etCode)
     TextView etCode;
 
+    @BindView(R.id.choose)
+    TextView choose;
+
+    @BindView(R.id.kongbai)
+    TextView kongbai;
+
+    @BindView(R.id.cancel)
+    TextView cancel;
+
 
     CraftAdapter craftAdapter;
     String search = "";
@@ -50,6 +59,25 @@ public class CraftActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        choose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                choose.setVisibility(View.GONE);
+                kongbai.setVisibility(View.GONE);
+                cancel.setVisibility(View.VISIBLE);
+                etCode.setVisibility(View.VISIBLE);
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                choose.setVisibility(View.VISIBLE);
+                kongbai.setVisibility(View.VISIBLE);
+                cancel.setVisibility(View.GONE);
+                etCode.setVisibility(View.GONE);
             }
         });
     }

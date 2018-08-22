@@ -71,21 +71,20 @@
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/dye_deliverdate_tip"
+            android:id="@+id/dye_factory_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_marginLeft="170dp"
-            android:text="交货日期："
+            android:text="加工厂："
             android:textColor="@color/black"
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/dye_deliverdate"
+            android:id="@+id/dye_factory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/dye_deliverdate_tip"
+            android:layout_toRightOf="@+id/dye_factory_tip"
             android:textColor="@color/black"
             android:textSize="15sp" />
 
@@ -98,21 +97,21 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/dye_company_tip"
+            android:id="@+id/dye_color_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="170dp"
             android:layout_centerVertical="true"
-            android:text="供应商："
+            android:layout_marginLeft="170dp"
+            android:text="颜色："
             android:textColor="@color/black"
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/dye_company"
+            android:id="@+id/dye_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/dye_company_tip"
+            android:layout_toRightOf="@+id/dye_color_tip"
             android:textColor="@color/black"
             android:textSize="15sp" />
 
@@ -140,20 +139,20 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/dye_factory_tip"
+            android:id="@+id/dye_status_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="加工厂："
+            android:text="状态："
             android:textColor="@color/black"
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/dye_factory"
+            android:id="@+id/dye_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/dye_factory_tip"
-            android:textColor="@color/black"
+            android:layout_toRightOf="@+id/dye_status_tip"
+            android:textColor="@color/red"
             android:textSize="15sp" />
 
         <TextView
@@ -162,7 +161,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="170dp"
-            android:text="业务员："
+            android:text="跟单员："
             android:textColor="@color/black"
             android:textSize="15sp" />
 
@@ -188,7 +187,7 @@
             android:id="@+id/dye_quantity_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="计划数："
+            android:text="点坯数："
             android:textColor="@color/black"
             android:textSize="15sp" />
 
@@ -198,7 +197,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/dye_quantity_tip"
-            android:textColor="@color/black"
+            android:textColor="@color/red"
             android:textSize="15sp" />
 
         <TextView
@@ -206,7 +205,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="170dp"
-            android:text="已收数："
+            android:text="收货数："
             android:textColor="@color/black"
             android:textSize="15sp" />
 
@@ -241,7 +240,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/dye_iquantity_tip"
-            android:textColor="@color/black"
+            android:textColor="@color/red"
             android:textSize="15sp" />
 
         <TextView

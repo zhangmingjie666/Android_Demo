@@ -23,7 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
+        android:paddingRight="8dp"
         android:onClick="show"
-        android:src="@mipmap/camera3"/>
+        android:src="@mipmap/camera6"/>
 
 </RelativeLayout>

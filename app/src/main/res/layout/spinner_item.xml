@@ -12,8 +12,9 @@
         android:layout_height="wrap_content"
         android:gravity="left"
         android:paddingLeft="0dip"
+        android:layout_marginLeft="@dimen/dp_4_5"
         android:singleLine="true"
         android:textColor="@color/black"
-        android:textSize="18dp" />
+        android:textSize="16dp" />
 
 </LinearLayout>

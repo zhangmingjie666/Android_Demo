@@ -29,11 +29,11 @@
             android:layout_weight="1"
             android:background="@drawable/search_edittext_bg"
             android:gravity="center_vertical"
-            android:hint="输入订单号"
+            android:hint="搜索订单号"
             android:maxLength="20"
             android:paddingLeft="8dp"
             android:paddingRight="5dp"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/insSearch"
@@ -44,7 +44,7 @@
             android:gravity="center"
             android:text="查询"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
     </LinearLayout>
 
     <Spinner
@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:background="#F8F8FF"
-        android:scrollbarSize="20dp"></Spinner>
+        android:scrollbarSize="15sp"></Spinner>
 
     <com.jingchen.pulltorefresh.PullToRefreshLayout
         android:id="@+id/pullToRefreshLayout"

@@ -52,6 +52,17 @@ public class FactoryActivity extends AppCompatActivity {
     @BindView(R.id.back_menu)
     TextView back_menu;
 
+    @BindView(R.id.choose)
+    TextView choose;
+
+    @BindView(R.id.cancel)
+    TextView cancel;
+
+    @BindView(R.id.kongbai)
+    TextView kongbai;
+
+
+
 
     FactoryAdapter factoryAdapter;
 
@@ -73,6 +84,25 @@ public class FactoryActivity extends AppCompatActivity {
                 finish();
             }
         });
+        choose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                choose.setVisibility(View.GONE);
+                kongbai.setVisibility(View.GONE);
+                SearchCode.setVisibility(View.VISIBLE);
+                cancel.setVisibility(View.VISIBLE);
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                choose.setVisibility(View.VISIBLE);
+                kongbai.setVisibility(View.VISIBLE);
+                SearchCode.setVisibility(View.GONE);
+                cancel.setVisibility(View.GONE);
+            }
+        });
+
     }
 
     public void initview() {

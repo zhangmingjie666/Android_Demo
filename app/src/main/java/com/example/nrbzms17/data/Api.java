@@ -469,4 +469,24 @@ public class Api {
         params.put("company", search);
         mClient.get(GET_FACTORY, params, callback);
     }
+
+    /**
+     * 采购收货列表
+     */
+    public final static String GET_DYINGBYID = "dyeing/list";
+    public void getDyeing(String code) {
+        Map<String, String> params = new HashMap<>();
+        params.put("customcode", code);
+        mClient.get(GET_DYINGBYID, params, callback);
+    }
+
+    /**
+     * 获取去向信息
+     */
+    public final static String GET_STRAIGHT = "straight/list";
+
+    public void getStraightInfo() {
+        mClient.get(GET_STRAIGHT, null, callback);
+    }
+
 }

@@ -25,7 +25,7 @@ public class SpinnerStatusAdapter extends BaseAdapter {
             ls = new ArrayList<>();
         }
         listData = ls;
-        listData.add(0, new StatusBean("-1", "请选择"));
+        listData.add(0, new StatusBean("-1", "查询状态"));
         notifyDataSetChanged();
     }
 

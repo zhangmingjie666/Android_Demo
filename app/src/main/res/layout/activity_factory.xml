@@ -10,8 +10,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/content_bg"
+        android:layout_height="40dp"
+        android:background="#DCDCDC"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="1dp">
@@ -19,19 +19,50 @@
         <EditText
             android:layout_width="0dp"
             android:layout_height="0dp" />
+        <TextView
+            android:id="@+id/choose"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:textSize="15sp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="筛选"/>
+        <TextView
+            android:id="@+id/kongbai"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="#ffffff"
+
+/>
+
 
         <com.example.nrbzms17.ui.widget.ClearEditText
             android:id="@+id/SearchCode"
             android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
+            android:layout_weight="3"
+            android:layout_height="35dp"
             android:background="@drawable/search_edittext_bg"
             android:gravity="center_vertical"
-            android:hint=""
+            android:hint="搜索工厂"
             android:maxLength="20"
             android:paddingLeft="8dp"
             android:paddingRight="5dp"
-            android:textSize="20sp" />
+            android:visibility="gone"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:textColor="#1E90FF"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="取消"/>
 
 
     </LinearLayout>
@@ -39,13 +70,13 @@
     <RadioGroup
         android:id="@+id/rg_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/dying_select"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:background="@drawable/btn_title_bg_selector"
             android:button="@null"
@@ -55,12 +86,12 @@
             android:layout_marginLeft="10dp"
             android:text="染厂"
             android:textColor="@drawable/btn_title_text_selector"
-            android:textSize="20dp" />
+            android:textSize="15dp" />
 
         <RadioButton
             android:id="@+id/after_select"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:background="@drawable/btn_title_bg_selector"
             android:button="@null"
@@ -70,7 +101,7 @@
             android:layout_marginRight="10dp"
             android:text="后整理厂"
             android:textColor="@drawable/btn_title_text_selector"
-            android:textSize="20dp" />
+            android:textSize="15dp" />
     </RadioGroup>
 
 
