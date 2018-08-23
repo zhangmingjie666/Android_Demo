@@ -8,13 +8,14 @@
 
     <TextView
         android:id="@+id/txtv_Name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="center"
         android:paddingLeft="0dip"
         android:layout_marginLeft="@dimen/dp_4_5"
+        android:layout_centerVertical="true"
         android:singleLine="true"
         android:textColor="@color/black"
-        android:textSize="16dp" />
+        android:textSize="15sp" />
 
 </LinearLayout>

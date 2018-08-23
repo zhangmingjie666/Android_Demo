@@ -231,7 +231,7 @@
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
                     android:gravity="center_vertical"
-                    android:text="加  工  厂："
+                    android:text="直发工厂："
                     android:drawableLeft="@drawable/must5"
                     android:textColor="@color/black"
                     android:textSize="15sp" />

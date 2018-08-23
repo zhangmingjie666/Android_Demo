@@ -158,7 +158,7 @@ public class FactoryActivity extends AppCompatActivity {
         });
     }
 
-    //获取工加工厂信息
+    //获取加工厂信息
     public void getFactoryList() {
 
         Api api = new Api(this, new OnNetRequest(this) {

@@ -39,9 +39,12 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class PurchaseListActivity extends AppCompatActivity {
 
-    Button purchase_menu;
+    Button back_menu;
 
     PurchaseBean purchaseBean;
 
@@ -74,12 +77,14 @@ public class PurchaseListActivity extends AppCompatActivity {
 
     PullToRefreshLayout pullToRefreshLayout;
 
+    @BindView(R.id.txtvActionbarTitle)
+    TextView txtvActionbarTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase_list);
-
+        ButterKnife.bind(this);
         initview();
 
         setClickListeners();
@@ -88,7 +93,7 @@ public class PurchaseListActivity extends AppCompatActivity {
         getStatusInfo();
 
         getDateInfo();
-
+        txtvActionbarTitle.setText("采购列表");
     }
 
     public void initview() {
@@ -108,8 +113,8 @@ public class PurchaseListActivity extends AppCompatActivity {
         pullToRefreshLayout.setPullUpEnable(false);
 
         //返回
-        purchase_menu = findViewById(R.id.purchase_menu);
-        purchase_menu.setOnClickListener(new View.OnClickListener() {
+        back_menu = findViewById(R.id.back_menu);
+        back_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

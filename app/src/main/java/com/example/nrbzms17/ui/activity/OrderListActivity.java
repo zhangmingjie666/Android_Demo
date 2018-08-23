@@ -38,6 +38,9 @@ import com.jingchen.pulltorefresh.PullToRefreshLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class OrderListActivity extends AppCompatActivity {
 
     OrderListAdapter adapter = new OrderListAdapter();
@@ -66,11 +69,16 @@ public class OrderListActivity extends AppCompatActivity {
 
     private DateBean dateBean;
 
+    @BindView(R.id.txtvActionbarTitle)
+    TextView txtvActionbarTitle;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_order_list);
+        ButterKnife.bind(this);
 
         order_status = (Spinner) findViewById(R.id.order_status);
 
@@ -103,6 +111,7 @@ public class OrderListActivity extends AppCompatActivity {
         getStatusInfo();
 
         getDateInfo();
+        txtvActionbarTitle.setText("订单列表");
     }
 
 

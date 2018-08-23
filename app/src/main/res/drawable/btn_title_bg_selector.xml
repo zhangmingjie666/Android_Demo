@@ -14,7 +14,7 @@
             <!--上面覆盖一层距离底层的底部3dp,填充白色。两层叠加一起就形成了一条下划线效果，原理自行脑补-->
             <item android:bottom="3dp">
                 <shape>
-                    <solid android:color="#ffffff" />
+                    <solid android:color="#F8F8FF" />
                     <corners android:bottomLeftRadius="8dip" android:bottomRightRadius="8dip" android:topLeftRadius="8dip" android:topRightRadius="8dip" />
                 </shape>
             </item>

@@ -46,9 +46,11 @@ public class DyeingActivity extends AppCompatActivity {
     @BindView(R.id.kongbai)
     TextView kongbai;
 
-
     @BindView(R.id.txtvActionbarTitle)
     TextView txtvActionbarTitle;
+
+    @BindView(R.id.back_menu)
+    TextView back_menu;
 
     private List<DyingBean.Data> DyingBeanList = new ArrayList<>();
 
@@ -76,6 +78,12 @@ public class DyeingActivity extends AppCompatActivity {
                 kongbai.setVisibility(View.VISIBLE);
                 etCode.setVisibility(View.GONE);
                 cancel.setVisibility(View.GONE);
+            }
+        });
+        back_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

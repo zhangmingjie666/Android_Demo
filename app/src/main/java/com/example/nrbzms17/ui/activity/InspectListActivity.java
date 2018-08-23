@@ -31,6 +31,9 @@ import com.jingchen.pulltorefresh.PullToRefreshLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class InspectListActivity extends AppCompatActivity {
 
 
@@ -58,11 +61,14 @@ public class InspectListActivity extends AppCompatActivity {
 
     SpinnerDateAdapter dateAdapter;
 
+    @BindView(R.id.txtvActionbarTitle)
+    TextView txtvActionbarTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_inspect);
+        ButterKnife.bind(this);
 
         insCode = (ClearEditText) findViewById(R.id.insCode);
 
@@ -85,6 +91,7 @@ public class InspectListActivity extends AppCompatActivity {
         });
 
         getDateInfo();
+        txtvActionbarTitle.setText("检验列表");
     }
 
     public void initview() {

@@ -7,7 +7,7 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical">
 
-    <include layout="@layout/actionbar_pur"></include>
+    <include layout="@layout/actionbar_all"></include>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,15 +50,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="@color/content_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="1dp"
+        android:weightSum="2">
 
         <Spinner
             android:id="@+id/choose_date"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="30dp"
             android:background="#F8F8FF"
-            android:entries="@array/timeChoose"
             android:scrollbarSize="15dp"></Spinner>
+        <Spinner
+            android:id="@+id/purchase_status"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="#F8F8FF"
+            android:scrollbarSize="15dp">
+        </Spinner>
 
 
     </LinearLayout>

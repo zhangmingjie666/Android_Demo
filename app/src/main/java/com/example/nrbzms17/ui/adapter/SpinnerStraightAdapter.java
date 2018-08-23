@@ -79,8 +79,8 @@ public class SpinnerStraightAdapter extends BaseAdapter {
 
     static class ViewHolder {
         @BindView(R.id.txtv_Name)
-
         TextView txtvName;
+
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }

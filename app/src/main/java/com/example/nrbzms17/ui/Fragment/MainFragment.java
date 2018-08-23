@@ -233,11 +233,11 @@ public class MainFragment extends Fragment{
         titleview.setText("工作区");
         titleview.setTextColor(getResources().getColor(R.color.white));
         titleview.setGravity(Gravity.CENTER);
-        titleview.setTextSize(25);
+        titleview.setTextSize(16);
 
         secondview = new TextView(getActivity());
         secondview.setText("审核");
-        secondview.setTextSize(20);
+        secondview.setTextSize(13);
 
         sale.setText(menuNames[3]);
         Drawable top = getResources().getDrawable(menuIcons[3]);
@@ -262,7 +262,7 @@ public class MainFragment extends Fragment{
         thirdview = new TextView(getActivity());
         thirdview = new TextView(getActivity());
         thirdview.setText("仓库");
-        thirdview.setTextSize(20);
+        thirdview.setTextSize(13);
 
 
         echarts.setText(menuNames[7]);
@@ -287,7 +287,7 @@ public class MainFragment extends Fragment{
 
         fourthview = new TextView(getActivity());
         fourthview.setText("收货");
-        fourthview.setTextSize(20);
+        fourthview.setTextSize(13);
 
         purchasing.setText(menuNames[8]);
         top = getResources().getDrawable(menuIcons[8]);

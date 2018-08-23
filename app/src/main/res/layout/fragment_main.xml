@@ -58,7 +58,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="90dp"
         android:padding="@dimen/dp_3"
         app:indicatorStyle="ORDINARY"
         app:indicatorGravity="CENTER"

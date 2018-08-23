@@ -28,16 +28,5 @@
         android:gravity="center"
         />
 
-    <Spinner
-        android:id="@+id/order_status"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:dropDownVerticalOffset="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginEnd="10dp">
-    </Spinner>
 
 </RelativeLayout>

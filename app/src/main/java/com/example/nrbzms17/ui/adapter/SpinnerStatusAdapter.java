@@ -25,7 +25,7 @@ public class SpinnerStatusAdapter extends BaseAdapter {
             ls = new ArrayList<>();
         }
         listData = ls;
-        listData.add(0, new StatusBean("-1", "查询状态"));
+        listData.add(0, new StatusBean("-1", "状态查询"));
         notifyDataSetChanged();
     }
 
@@ -66,6 +66,11 @@ public class SpinnerStatusAdapter extends BaseAdapter {
 
 
             viewHolder.txtvName.setText(managerBean.name);
+        if (position % 2 == 1) {
+            convertView.setBackgroundColor(Color.parseColor("#DCDCDC"));
+        } else {
+            convertView.setBackgroundColor(Color.parseColor("#FFFAFA"));
+        }
 
         return convertView;
     }

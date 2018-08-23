@@ -38,6 +38,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class SaleListActivity extends AppCompatActivity {
 
     private List<SaleBean.Data> SaleBeanList = new ArrayList<>();
@@ -66,10 +69,14 @@ public class SaleListActivity extends AppCompatActivity {
 
     SpinnerDateAdapter dateAdapter;
 
+    @BindView(R.id.txtvActionbarTitle)
+    TextView txtvActionbarTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sale_list);
+        ButterKnife.bind(this);
         initview();
         getSaleList();
         setClickListeners();
@@ -82,6 +89,7 @@ public class SaleListActivity extends AppCompatActivity {
                 finish();
             }
         });
+        txtvActionbarTitle.setText("发货列表");
     }
 
     public void initview() {

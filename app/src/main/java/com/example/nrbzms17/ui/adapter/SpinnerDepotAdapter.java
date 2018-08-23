@@ -33,7 +33,7 @@ public class SpinnerDepotAdapter extends BaseAdapter {
             ls = new ArrayList<>();
         }
         listData = ls;
-        listData.add(0, new DepotBean("-1", "请选择要转入的仓库"));
+        listData.add(0, new DepotBean("-1", "转入仓库"));
         notifyDataSetChanged();
     }
 

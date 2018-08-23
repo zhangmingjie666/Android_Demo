@@ -32,6 +32,11 @@ public class DyingBean implements Serializable {
         public String instore_str; //实收数
         public String taskcode;
         public String tellas;
-
+        public String next_craft;
+        public String label;
+        public String craft;
+        public String lot;
+        public String depot;
+        public Integer straight_;
     }
 }

@@ -489,4 +489,24 @@ public class Api {
         mClient.get(GET_STRAIGHT, null, callback);
     }
 
+    /**
+     * 获取标签信息
+     */
+    public final static String GET_LABEL = "label/list";
+
+    public void getLabelList() {
+        mClient.get(GET_LABEL, null, callback);
+    }
+
+    /**
+     * 获取工艺信息
+     */
+    public final static String GET_COLOR = "color/list";
+
+    public void getColorList(String search) {
+        Map<String, String> params = new HashMap<>();
+        params.put("color", search);
+        mClient.get(GET_COLOR, params, callback);
+    }
+
 }
