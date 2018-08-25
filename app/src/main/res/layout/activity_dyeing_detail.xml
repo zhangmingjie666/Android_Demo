@@ -93,6 +93,7 @@
                     android:layout_toRightOf="@+id/dye_company_tip"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
+
                 <TextView
                     android:id="@+id/dye_task_code_tip"
                     android:layout_width="wrap_content"
@@ -180,7 +181,6 @@
 
 
             </RelativeLayout>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
@@ -188,140 +188,9 @@
                 android:background="#F5F5F5"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/dp_18"
-                android:text="请选择去向"
+                android:text="请填写信息"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
-            <RadioGroup
-                android:id="@+id/rg_title"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/dying_select"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_title_bg_selector"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:paddingEnd="20dp"
-                    android:paddingStart="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="直发"
-                    android:textColor="@drawable/btn_title_text_selector"
-                    android:textSize="15dp" />
-
-                <RadioButton
-                    android:id="@+id/after_select"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_title_bg_selector"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:paddingEnd="20dp"
-                    android:paddingStart="20dp"
-                    android:layout_marginRight="10dp"
-                    android:text="入库"
-                    android:textColor="@drawable/btn_title_text_selector"
-                    android:textSize="15dp" />
-            </RadioGroup>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="#aa000000" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="3dp">
-
-            <LinearLayout
-                android:id="@+id/factory_layout"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="2dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/dye_factory_tip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
-                    android:drawableLeft="@drawable/must5"
-                    android:gravity="center_vertical"
-                    android:text="直发工厂："
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/dye_factory"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="27dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@null"
-                    android:drawableRight="@mipmap/gogo"
-                    android:gravity="center_vertical"
-                    android:hint="请选择"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-            </LinearLayout>
-
-            <View
-                android:id="@+id/factory_line"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="#aa000000" />
-
-            <LinearLayout
-                android:id="@+id/craft_layout"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="2dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/dye_next_craft_tip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
-                    android:drawableLeft="@drawable/must"
-                    android:gravity="center_vertical"
-                    android:text="下步工艺："
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/dye_next_craft"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="27dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@null"
-                    android:drawableRight="@mipmap/gogo"
-                    android:gravity="center_vertical"
-                    android:hint="请选择"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-            </LinearLayout>
-
-            <View
-                android:id="@+id/craft_line"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="#aa000000" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -401,6 +270,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:background="#aa000000" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -439,6 +309,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:background="#aa000000" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -472,89 +343,6 @@
             </LinearLayout>
 
             <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="#aa000000" />
-            <LinearLayout
-                android:id="@+id/depot_layout"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="2dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/dye_depot_tip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:drawableLeft="@drawable/must"
-                    android:text="仓        库："
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/dye_depot"
-                    style="?android:attr/textViewStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="27dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@null"
-                    android:hint="请选择"
-                    android:drawableRight="@mipmap/gogo"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-            </LinearLayout>
-
-            <View
-                android:id="@+id/depot_line"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="#aa000000" />
-
-
-            <LinearLayout
-                android:id="@+id/label_layout"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="2dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/dye_label_tip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:text="     标        签："
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/dye_label"
-                    style="?android:attr/textViewStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="27dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@null"
-                    android:hint="请选择"
-                    android:drawableRight="@mipmap/gogo"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-            </LinearLayout>
-
-            <View
-                android:id="@+id/label_line"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="5dp"
@@ -600,7 +388,6 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:background="#aa000000" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -609,7 +396,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/pur_volume_tip"
+                    android:id="@+id/dye_volume_tip"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
@@ -620,7 +407,7 @@
                     android:textSize="15sp" />
 
                 <EditText
-                    android:id="@+id/pur_volume"
+                    android:id="@+id/dye_volume"
                     style="?android:attr/textViewStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -661,7 +448,7 @@
                     android:textSize="15sp" />
 
                 <EditText
-                    android:id="@+id/pur_shquantity"
+                    android:id="@+id/dye_shquantity"
                     style="?android:attr/textViewStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -682,27 +469,522 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:background="#aa000000" />
-
-            <Button
-                android:id="@+id/check_Submit"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="@dimen/margin_large"
-                android:layout_marginRight="@dimen/margin_large"
-                android:layout_marginTop="@dimen/dp_3"
-                android:background="#1E90FF"
-                android:text="新增并审核"
-                android:textColor="#ffffff"
-                android:textSize="18sp" />
+                android:layout_height="40dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/dye_remark_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:text="     备        注："
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/dye_remark"
+                    style="?android:attr/textViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@null"
+                    android:drawableRight="@mipmap/pen4"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+
+            <View
+                android:id="@+id/remark_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="#aa000000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:background="#F5F5F5"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_18"
+                android:text="请选择去向"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <RadioGroup
+                android:id="@+id/rg_title"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/dying_select"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_title_bg_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingEnd="20dp"
+                    android:paddingStart="20dp"
+                    android:text="直发"
+                    android:textColor="@drawable/btn_title_text_selector"
+                    android:textSize="15dp" />
+
+                <RadioButton
+                    android:id="@+id/after_select"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_title_bg_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingEnd="20dp"
+                    android:paddingStart="20dp"
+                    android:text="入库"
+                    android:textColor="@drawable/btn_title_text_selector"
+                    android:textSize="15dp" />
+            </RadioGroup>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="#aa000000" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY" />
-        </LinearLayout>
+                android:orientation="vertical"
+                android:padding="3dp">
+
+                <LinearLayout
+                    android:id="@+id/factory_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/dye_factory_tip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:drawableLeft="@drawable/must5"
+                        android:gravity="center_vertical"
+                        android:text="直发工厂："
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/dye_factory"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="27dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:drawableRight="@mipmap/gogo"
+                        android:gravity="center_vertical"
+                        android:hint="请选择"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/factory_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#aa000000" />
+
+                <LinearLayout
+                    android:id="@+id/craft_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/dye_next_craft_tip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:drawableLeft="@drawable/must"
+                        android:gravity="center_vertical"
+                        android:text="下步工艺："
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/dye_next_craft"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="27dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:drawableRight="@mipmap/gogo"
+                        android:gravity="center_vertical"
+                        android:hint="请选择"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/craft_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#aa000000" />
+
+                <LinearLayout
+                    android:id="@+id/radio_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="    点坯方式："
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        />
+
+                    <RadioGroup
+                        android:id="@+id/dianGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="27dp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/Auto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:text="自动" />
+
+                        <RadioButton
+                            android:id="@+id/NoAuto"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="手动" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/radio_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#aa000000" />
+
+                <LinearLayout
+                    android:id="@+id/depot_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/dye_depot_tip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@drawable/must"
+                        android:gravity="center_vertical"
+                        android:text="仓        库："
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/dye_depot"
+                        style="?android:attr/textViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="27dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:drawableRight="@mipmap/gogo"
+                        android:gravity="center_vertical"
+                        android:hint="请选择"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/depot_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#aa000000" />
+                <LinearLayout
+                    android:id="@+id/check_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/dye_check_tip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="     检        验："
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <CheckBox
+                        android:id="@+id/dye_check"
+                        style="?android:attr/textViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="27dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/check_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#aa000000" />
+
+
+
+                <LinearLayout
+                    android:id="@+id/label_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/dye_label_tip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="     标        签："
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/dye_label"
+                        style="?android:attr/textViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="27dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:drawableRight="@mipmap/gogo"
+                        android:gravity="center_vertical"
+                        android:hint="请选择"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/label_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#aa000000" />
+                <LinearLayout
+                    android:id="@+id/material_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/dye_material_name_tip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:text="客户产品名："
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/dye_material_name"
+                        style="?android:attr/textViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="27dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:drawableRight="@mipmap/pen4"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+
+                <View
+                    android:id="@+id/material_name_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#aa000000" />
+
+                <LinearLayout
+                    android:id="@+id/color_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/dye_color_name_tip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:text="客户颜色名："
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/dye_color_name"
+                        style="?android:attr/textViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="27dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:drawableRight="@mipmap/pen4"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+
+                <View
+                    android:id="@+id/color_name_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#aa000000" />
+
+
+
+                <LinearLayout
+                    android:id="@+id/require_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/dye_packaging_tip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:text="     检验要求："
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/dye_packaging"
+                        style="?android:attr/textViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="27dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:drawableRight="@mipmap/pen4"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/packaging_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#aa000000" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/check_add"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="@dimen/dp_3"
+                    android:layout_marginLeft="@dimen/margin_normal"
+                    android:layout_marginRight="@dimen/margin_normal"
+                    android:background="#1E90FF"
+                    android:text="新增并审核"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

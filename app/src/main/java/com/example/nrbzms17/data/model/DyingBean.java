@@ -38,5 +38,9 @@ public class DyingBean implements Serializable {
         public String lot;
         public String depot;
         public Integer straight_;
+        public String packaging;
+        public String material_name;
+        public String color_name;
+
     }
 }

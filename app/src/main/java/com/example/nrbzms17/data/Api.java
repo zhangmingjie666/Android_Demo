@@ -508,5 +508,56 @@ public class Api {
         params.put("color", search);
         mClient.get(GET_COLOR, params, callback);
     }
+    /**
+     * 染厂新增
+     */
+    public final static String POST_DYEINGBYID = "dyeing/add";
+
+    public void addDyeingDetail(String id,
+                                String type,
+                                String autocolor,
+                                String inspect_,
+                                String receive,
+                                String color,
+                                String craft,
+                                String current_craft,
+                                String volume,
+                                String quantity,
+                                String lot,
+                                String factory,
+                                String next_craft,
+                                String depot,
+                                String label,
+                                String material_name,
+                                String color_name,
+                                String remark,
+                                String packaging
+
+    ) {
+        Map<String, String> params = new HashMap<>();
+        params.put("id", id);
+        params.put("type", type);
+        params.put("autocolor", autocolor);
+        params.put("inspect_", inspect_);
+        params.put("receiver", receive);
+        params.put("color", color);
+        params.put("craft", craft);
+        params.put("current_craft", current_craft);
+        params.put("volume", volume);
+        params.put("quantity", quantity);
+        params.put("lot", lot);
+        params.put("factory", factory);
+        params.put("next_craft", next_craft);
+        params.put("depot", depot);
+        params.put("label", label);
+        params.put("material_name", material_name);
+        params.put("color_name", color_name);
+        params.put("remark", remark);
+        params.put("packaging", packaging);
+
+        mClient.post(POST_DYEINGBYID, params, callback);
+    }
+
+
 
 }
