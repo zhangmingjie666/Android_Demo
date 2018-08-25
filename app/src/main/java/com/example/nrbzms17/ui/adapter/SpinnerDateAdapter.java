@@ -60,6 +60,7 @@ public class SpinnerDateAdapter extends BaseAdapter {
 
             convertView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.spinner_item, null);
 
+
             viewHolder = new ViewHolder(convertView);
 
             convertView.setTag(viewHolder);

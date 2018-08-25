@@ -30,11 +30,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,14 +41,8 @@ import com.example.nrbzms17.Utils.JSONUtils;
 import com.example.nrbzms17.Utils.UIHelper;
 import com.example.nrbzms17.data.Api;
 import com.example.nrbzms17.data.listener.OnNetRequest;
-import com.example.nrbzms17.data.model.DateBean;
-import com.example.nrbzms17.data.model.DateBeanResponse;
 import com.example.nrbzms17.data.model.DyingBean;
-import com.example.nrbzms17.data.model.PurchaseBean;
 import com.example.nrbzms17.data.model.ResponseBean;
-import com.example.nrbzms17.data.model.StraightBean;
-import com.example.nrbzms17.data.model.StraightBeanResponse;
-import com.example.nrbzms17.ui.adapter.SpinnerStraightAdapter;
 
 import java.io.File;
 import java.io.IOException;
@@ -58,8 +50,7 @@ import java.io.IOException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DyeingDetailActivity extends AppCompatActivity implements View.OnClickListener {
-
+public class AfterFinishDetailActivity extends AppCompatActivity implements View.OnClickListener {
     //拍照
     private ImageView imageView;
     public static final int TAKE_PHOTO = 1;
@@ -93,69 +84,69 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
     private Dialog dialog;
 
 
-    @BindView(R.id.dye_customcode)
-    TextView dye_customcode;
+    @BindView(R.id.aft_customcode)
+    TextView aft_customcode;
 
-    @BindView(R.id.dye_billdate)
-    TextView dye_billdate;
+    @BindView(R.id.aft_billdate)
+    TextView aft_billdate;
 
-    @BindView(R.id.dye_material)
-    TextView dye_material;
+    @BindView(R.id.aft_material)
+    TextView aft_material;
 
-    @BindView(R.id.dye_company)
-    TextView dye_company;
+    @BindView(R.id.aft_company)
+    TextView aft_company;
 
-    @BindView(R.id.dye_rquantity)
-    TextView dye_rquantity;
+    @BindView(R.id.aft_rquantity)
+    TextView aft_rquantity;
 
-    @BindView(R.id.dye_quantity)
-    TextView dye_quantity;
+    @BindView(R.id.aft_quantity)
+    TextView aft_quantity;
 
-    @BindView(R.id.dye_shquantity)
-    TextView dye_shquantity;
+    @BindView(R.id.aft_shquantity)
+    TextView aft_shquantity;
 
 
-    @BindView(R.id.dye_factory)
-    TextView dye_factory;
+    @BindView(R.id.aft_factory)
+    TextView aft_factory;
 
-    @BindView(R.id.dye_next_craft)
-    TextView dye_next_craft;
+    @BindView(R.id.aft_next_craft)
+    TextView aft_next_craft;
 
-    @BindView(R.id.dye_color)
-    TextView dye_color;
+    @BindView(R.id.aft_color)
+    TextView aft_color;
 
-    @BindView(R.id.dye_craft)
-    TextView dye_craft;
+    @BindView(R.id.aft_craft)
+    TextView aft_craft;
 
-    @BindView(R.id.dye_volume)
-    TextView dye_volume;
+    @BindView(R.id.aft_volume)
+    TextView aft_volume;
 
-    @BindView(R.id.dye_label)
-    TextView dye_label;
+    @BindView(R.id.aft_label)
+    TextView aft_label;
 
-    @BindView(R.id.dye_remark)
-    TextView dye_remark;
+    @BindView(R.id.aft_remark)
+    TextView aft_remark;
 
-    @BindView(R.id.dye_material_name)
-    TextView dye_material_name;
+    @BindView(R.id.aft_material_name)
+    TextView aft_material_name;
 
-    @BindView(R.id.dye_color_name)
-    TextView dye_color_name;
+    @BindView(R.id.aft_color_name)
+    TextView aft_color_name;
 
-    @BindView(R.id.dye_packaging)
-    TextView dye_packaging;
+    @BindView(R.id.aft_packaging)
+    TextView aft_packaging;
 
-    @BindView(R.id.dye_lot)
-    TextView dye_lot;
+    @BindView(R.id.aft_lot)
+    TextView aft_lot;
 
-    @BindView(R.id.dye_employee)
-    TextView dye_employee;
+    @BindView(R.id.aft_employee)
+    TextView aft_employee;
 
-    @BindView(R.id.dye_current_craft)
-    TextView dye_current_craft;
+    @BindView(R.id.aft_current_craft)
+    TextView aft_current_craft;
 
-    @BindView(R.id.dye_depot)
-    TextView dye_depot;
+    @BindView(R.id.aft_depot)
+    TextView aft_depot;
 
     @BindView(R.id.depot_line)
     View depot_line;
@@ -185,8 +176,8 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
     View check_line;
 
 
-    @BindView(R.id.dye_task_code)
-    TextView dye_task_code;
+    @BindView(R.id.aft_task_code)
+    TextView aft_task_code;
 
     @BindView(R.id.set_back)
     TextView set_back;
@@ -194,13 +185,12 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
     @BindView(R.id.check_add)
     Button check_add;
 
-    @BindView(R.id.dye_check)
-    CheckBox dye_check;
+    @BindView(R.id.aft_check)
+    CheckBox aft_check;
 
     @BindView(R.id.txtvActionbarTitle)
     TextView txtvActionbarTitle;
 
-    private DyingBean.Data dying;
 
     //点坯方式 默认自动为0
     String autocolor = "0";
@@ -208,15 +198,17 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
     //是否检验
     String inspect_ = "0";
 
-//    直发还是入库
+    //    直发还是入库
 //    0:直发
 //    1:入库
     String type = "1";
 
+    private DyingBean.Data dying;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dyeing_detail);
+        setContentView(R.layout.activity_after_finish_detail);
         ButterKnife.bind(this);
         initview();
         imageView = findViewById(R.id.imageView);
@@ -226,39 +218,40 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
                 finish();
             }
         });
+
         //新增
         check_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addDyeingDetail();
+                addAfterFinishDetail();
             }
         });
-
-        txtvActionbarTitle.setText("染厂收货");
+        txtvActionbarTitle.setText("后整理收货");
     }
 
     public void initview() {
         //初始化数据
         dying = (DyingBean.Data) getIntent().getSerializableExtra(DyingBean.Data.class.getSimpleName());
-        dye_customcode.setText(dying.customcode);
-        dye_billdate.setText(dying.billdate);
-        dye_company.setText(dying.company);
-        dye_material.setText(dying.material);
-        dye_quantity.setText(dying.quantity_str);
-        dye_rquantity.setText(dying.receive_str);
-        dye_factory.setText(dying.factory);
-        dye_next_craft.setText(dying.next_craft);
-        dye_color.setText(dying.color);
-        dye_craft.setText(dying.craft);
-        dye_label.setText(dying.label);
-        dye_lot.setText(dying.lot);
-        dye_depot.setText(dying.depot);
-        dye_task_code.setText(dying.taskcode);
-        dye_remark.setText(dying.remark);
-        dye_material_name.setText(dying.material_name);
-        dye_color_name.setText(dying.color_name);
-        dye_packaging.setText(dying.packaging);
-        dye_current_craft.setText(dying.craft);
+        aft_customcode.setText(dying.customcode);
+        aft_billdate.setText(dying.billdate);
+        aft_company.setText(dying.company);
+        aft_material.setText(dying.material);
+        aft_quantity.setText(dying.quantity_str);
+        aft_rquantity.setText(dying.receive_str);
+        aft_factory.setText(dying.factory);
+        aft_next_craft.setText(dying.next_craft);
+        aft_color.setText(dying.color);
+        aft_craft.setText(dying.craft);
+        aft_label.setText(dying.label);
+        aft_lot.setText(dying.lot);
+        aft_depot.setText(dying.depot);
+        aft_task_code.setText(dying.taskcode);
+        aft_remark.setText(dying.remark);
+        aft_material_name.setText(dying.material_name);
+        aft_color_name.setText(dying.color_name);
+        aft_packaging.setText(dying.packaging);
+        aft_current_craft.setText(dying.craft);
+
         final LinearLayout depot_layout = (LinearLayout) findViewById(R.id.depot_layout);
         final LinearLayout label_layout = (LinearLayout) findViewById(R.id.label_layout);
 
@@ -271,7 +264,6 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
         final LinearLayout check_layout = (LinearLayout) findViewById(R.id.check_layout);
 
         final LinearLayout radio_layout = (LinearLayout) findViewById(R.id.radio_layout);
-
 
         //切换直发还是入库
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.rg_title);
@@ -302,7 +294,7 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
                     radio_layout.setVisibility(View.VISIBLE);
                     radio_line.setVisibility(View.VISIBLE);
                     type = "1";
-                    dye_check.setChecked(false);
+                    aft_check.setChecked(false);
 
                 }
                 if (R.id.after_select == checkedId) {
@@ -332,7 +324,6 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
                 }
             }
         });
-
         //判断去向 1:入库
         depot_layout.setVisibility(View.GONE);
         label_layout.setVisibility(View.GONE);
@@ -363,90 +354,91 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
         });
 
         //是否检验
-        dye_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        aft_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     inspect_ = "1";
                     check_add.setText("新增");
-                }else{
+                } else {
                     check_add.setText("新增并审核");
                 }
 
             }
         });
 
-
         //选择下步工艺
-        dye_next_craft.setOnClickListener(new View.OnClickListener() {
+        aft_next_craft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DyeingDetailActivity.this, CraftActivity.class);
+                Intent intent = new Intent(AfterFinishDetailActivity.this, CraftActivity.class);
                 startActivityForResult(intent, NEXT_CRAFT_BACK);
             }
         });
 
         //选择加工厂
-        dye_factory.setOnClickListener(new View.OnClickListener() {
+        aft_factory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DyeingDetailActivity.this, FactoryActivity.class);
+                Intent intent = new Intent(AfterFinishDetailActivity.this, FactoryActivity.class);
                 startActivityForResult(intent, FACTORY_BACK);
             }
         });
 
         //选择员工
-        dye_employee.setOnClickListener(new View.OnClickListener() {
+        aft_employee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DyeingDetailActivity.this, EmployeeActivity.class);
+                Intent intent = new Intent(AfterFinishDetailActivity.this, EmployeeActivity.class);
                 startActivityForResult(intent, EMPLOYEE_BACK);
             }
         });
 
         //选择颜色
-        dye_color.setOnClickListener(new View.OnClickListener() {
+        aft_color.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DyeingDetailActivity.this, ColorActivity.class);
+                Intent intent = new Intent(AfterFinishDetailActivity.this, ColorActivity.class);
                 startActivityForResult(intent, COLOR_BACK);
             }
         });
 
         //选择收货工艺
-        dye_craft.setOnClickListener(new View.OnClickListener() {
+        aft_craft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DyeingDetailActivity.this, CraftActivity.class);
+                Intent intent = new Intent(AfterFinishDetailActivity.this, CraftActivity.class);
                 startActivityForResult(intent, PURING_CRAFT_BACK);
             }
         });
 
         //选择当前工艺
-        dye_current_craft.setOnClickListener(new View.OnClickListener() {
+        aft_current_craft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DyeingDetailActivity.this, CraftActivity.class);
+                Intent intent = new Intent(AfterFinishDetailActivity.this, CraftActivity.class);
                 startActivityForResult(intent, NOW_CRAFT_BACK);
             }
         });
 
         //选择标签
-        dye_label.setOnClickListener(new View.OnClickListener() {
+        aft_label.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DyeingDetailActivity.this, LabelActivity.class);
+                Intent intent = new Intent(AfterFinishDetailActivity.this, LabelActivity.class);
                 startActivityForResult(intent, LABEL_BACK);
             }
         });
 
         //选择仓库
-        dye_depot.setOnClickListener(new View.OnClickListener() {
+        aft_depot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DyeingDetailActivity.this, DepotActivity.class);
+                Intent intent = new Intent(AfterFinishDetailActivity.this, DepotActivity.class);
                 startActivityForResult(intent, DEPOT_BACK);
             }
         });
+
+
     }
 
     //弹窗
@@ -472,7 +464,6 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
         dialogWindow.setAttributes(lp);
         dialog.show();//显示对话框
     }
-
     //弹窗选择
     @Override
     public void onClick(View view) {
@@ -494,14 +485,14 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
 
                 } else {
 
-                    imageUri = FileProvider.getUriForFile(DyeingDetailActivity.this, "com.example.nrbzms17.ui.activity.fileprovider", outputImage);
+                    imageUri = FileProvider.getUriForFile(AfterFinishDetailActivity.this, "com.example.nrbzms17.ui.activity.fileprovider", outputImage);
 
                 }
 
                 if (Build.VERSION.SDK_INT >= 23) {
-                    int checkCallPhonePermission = ContextCompat.checkSelfPermission(DyeingDetailActivity.this, Manifest.permission.CAMERA);
+                    int checkCallPhonePermission = ContextCompat.checkSelfPermission(AfterFinishDetailActivity.this, Manifest.permission.CAMERA);
                     if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(DyeingDetailActivity.this, new String[]{Manifest.permission.CAMERA}, 222);
+                        ActivityCompat.requestPermissions(AfterFinishDetailActivity.this, new String[]{Manifest.permission.CAMERA}, 222);
                         return;
                     } else {
 
@@ -520,8 +511,8 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
 
                 break;
             case R.id.choosePhoto:
-                if (ContextCompat.checkSelfPermission(DyeingDetailActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(DyeingDetailActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                if (ContextCompat.checkSelfPermission(AfterFinishDetailActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(AfterFinishDetailActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                 } else {
                     openAlbum();
                 }
@@ -565,7 +556,7 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
                         imageView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(DyeingDetailActivity.this);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(AfterFinishDetailActivity.this);
                                 builder.setMessage("确认删除吗?");
                                 builder.setTitle("提示");
                                 builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
@@ -612,7 +603,7 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
             case NEXT_CRAFT_BACK:
                 if (resultCode == RESULT_OK) {
                     String returnedData = data.getStringExtra("name");
-                    dye_next_craft.setText(returnedData);
+                    aft_next_craft.setText(returnedData);
                 }
                 break;
 
@@ -620,7 +611,7 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
             case FACTORY_BACK:
                 if (resultCode == RESULT_OK) {
                     String returnedData = data.getStringExtra("name");
-                    dye_factory.setText(returnedData);
+                    aft_factory.setText(returnedData);
                 }
                 break;
 
@@ -628,7 +619,7 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
             case EMPLOYEE_BACK:
                 if (resultCode == RESULT_OK) {
                     String returnedData = data.getStringExtra("name");
-                    dye_employee.setText(returnedData);
+                    aft_employee.setText(returnedData);
                 }
                 break;
 
@@ -636,7 +627,7 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
             case COLOR_BACK:
                 if (resultCode == RESULT_OK) {
                     String returnedData = data.getStringExtra("name");
-                    dye_color.setText(returnedData);
+                    aft_color.setText(returnedData);
                 }
                 break;
 
@@ -644,7 +635,7 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
             case PURING_CRAFT_BACK:
                 if (resultCode == RESULT_OK) {
                     String returnedData = data.getStringExtra("name");
-                    dye_craft.setText(returnedData);
+                    aft_craft.setText(returnedData);
                 }
                 break;
 
@@ -652,7 +643,7 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
             case NOW_CRAFT_BACK:
                 if (resultCode == RESULT_OK) {
                     String returnedData = data.getStringExtra("name");
-                    dye_current_craft.setText(returnedData);
+                    aft_current_craft.setText(returnedData);
                 }
                 break;
 
@@ -660,7 +651,7 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
             case LABEL_BACK:
                 if (resultCode == RESULT_OK) {
                     String returnedData = data.getStringExtra("name");
-                    dye_label.setText(returnedData);
+                    aft_label.setText(returnedData);
                 }
                 break;
 
@@ -668,7 +659,7 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
             case DEPOT_BACK:
                 if (resultCode == RESULT_OK) {
                     String returnedData = data.getStringExtra("name");
-                    dye_depot.setText(returnedData);
+                    aft_depot.setText(returnedData);
                 }
                 break;
 
@@ -736,7 +727,7 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(DyeingDetailActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(AfterFinishDetailActivity.this);
                     builder.setMessage("确认删除吗?");
                     builder.setTitle("提示");
                     builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
@@ -757,23 +748,23 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
     }
 
     //新增
-    public void addDyeingDetail() {
+    public void addAfterFinishDetail() {
 
-        String receive = dye_employee.getText().toString().trim();
-        String color = dye_color.getText().toString().trim();
-        String craft = dye_craft.getText().toString().trim();
-        String current_craft = dye_current_craft.getText().toString().trim();
-        String volume = dye_volume.getText().toString().trim();
-        String quantity = dye_shquantity.getText().toString().trim();
-        String lot = dye_lot.getText().toString().trim();
-        String factory = dye_factory.getText().toString().trim();
-        String next_craft = dye_next_craft.getText().toString().trim();
-        String depot = dye_depot.getText().toString().trim();
-        String label = dye_label.getText().toString().trim();
-        String material_name = dye_material_name.getText().toString().trim();
-        String color_name = dye_color_name.getText().toString().trim();
-        String remark = dye_remark.getText().toString().trim();
-        String packaging = dye_packaging.getText().toString().trim();
+        String receive = aft_employee.getText().toString().trim();
+        String color = aft_color.getText().toString().trim();
+        String craft = aft_craft.getText().toString().trim();
+        String current_craft = aft_current_craft.getText().toString().trim();
+        String volume = aft_volume.getText().toString().trim();
+        String quantity = aft_shquantity.getText().toString().trim();
+        String lot = aft_lot.getText().toString().trim();
+        String factory = aft_factory.getText().toString().trim();
+        String next_craft = aft_next_craft.getText().toString().trim();
+        String depot = aft_depot.getText().toString().trim();
+        String label = aft_label.getText().toString().trim();
+        String material_name = aft_material_name.getText().toString().trim();
+        String color_name = aft_color_name.getText().toString().trim();
+        String remark = aft_remark.getText().toString().trim();
+        String packaging = aft_packaging.getText().toString().trim();
 
 
 
@@ -782,10 +773,10 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
             public void onSuccess(String msg) {
                 ResponseBean responseBean = JSONUtils.fromJson(msg, ResponseBean.class);
                 if (responseBean != null && responseBean.status) {
-                    UIHelper.showShortToast(DyeingDetailActivity.this, "新增成功");
+                    UIHelper.showShortToast(AfterFinishDetailActivity.this, "新增成功");
                     finish();
                 } else {
-                    UIHelper.showShortToast(DyeingDetailActivity.this, responseBean.result);
+                    UIHelper.showShortToast(AfterFinishDetailActivity.this, responseBean.result);
                 }
             }
 
@@ -793,6 +784,6 @@ public class DyeingDetailActivity extends AppCompatActivity implements View.OnCl
             public void onFail() {
             }
         });
-        api.addDyeingDetail(dying.id,type,autocolor,inspect_,receive,color,craft,current_craft,volume,quantity,lot,factory,next_craft,depot,label,material_name,color_name,remark,packaging);
+        api.addAfterFinishDetail(dying.id,type,autocolor,inspect_,receive,color,craft,current_craft,volume,quantity,lot,factory,next_craft,depot,label,material_name,color_name,remark,packaging);
     }
 }

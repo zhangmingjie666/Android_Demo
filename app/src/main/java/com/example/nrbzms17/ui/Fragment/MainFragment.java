@@ -27,6 +27,7 @@ import com.bumptech.glide.Glide;
 import com.donkingliang.banner.CustomBanner;
 import com.example.nrbzms17.R;
 
+import com.example.nrbzms17.ui.activity.AfterFinishActivity;
 import com.example.nrbzms17.ui.activity.AllocationActivity;
 import com.example.nrbzms17.ui.activity.CheckActivity;
 import com.example.nrbzms17.ui.activity.DyeingActivity;
@@ -68,10 +69,14 @@ public class MainFragment extends Fragment{
 
             R.drawable.houzhengli,
 
-            R.drawable.buzhidao
+            R.drawable.buzhidao,
+
+            R.drawable.zhuzhuang,
+
+            R.drawable.pie
     };
 
-    private String menuNames[] = {"订单", "采购", "检验", "销售", "盘点", "调拨", "检验", "分析","采购收货","染厂收货","后整收货","定制"};
+    private String menuNames[] = {"订单", "采购", "检验", "销售", "盘点", "调拨", "检验", "分析","采购收货","染厂收货","后整收货","定制","柱状图","饼状图"};
 
 //    private List<MenuBean> list = new ArrayList<>();
 
@@ -90,6 +95,8 @@ public class MainFragment extends Fragment{
 
     Button sale1;
 
+    Button no;
+
     Button echarts;
 
     TextView titleview;
@@ -107,6 +114,14 @@ public class MainFragment extends Fragment{
     Button houzhengli;
 
     Button buzhidao;
+
+    TextView fifthview;
+
+    Button zhuzhuang;
+
+    Button pie;
+
+    Button xxoo;
 
     private CustomBanner<String> mBanner;
 
@@ -212,6 +227,12 @@ public class MainFragment extends Fragment{
 
         LinearLayout shouhuoLayout = new LinearLayout(getActivity());
 
+        LinearLayout echartsLayout = new LinearLayout(getActivity());
+
+        LinearLayout EarLayout = new LinearLayout(getActivity());
+
+
+
         titleLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
 
         order = new Button(getActivity());
@@ -221,13 +242,16 @@ public class MainFragment extends Fragment{
         check = new Button(getActivity());
         allocation = new Button(getActivity());
         sale1 = new Button(getActivity());
-        echarts = new Button(getActivity());
+        no= new Button(getActivity());
         purchasing = new Button(getActivity());
         dye_works = new Button(getActivity());
         houzhengli = new Button(getActivity());
         buzhidao = new Button(getActivity());
 
-
+        echarts = new Button(getActivity());
+        zhuzhuang = new Button(getActivity());
+        pie = new Button(getActivity());
+        xxoo= new Button(getActivity());
 
         titleview = new TextView(getActivity());
         titleview.setText("工作区");
@@ -264,11 +288,10 @@ public class MainFragment extends Fragment{
         thirdview.setText("仓库");
         thirdview.setTextSize(13);
 
-
-        echarts.setText(menuNames[7]);
-        top = getResources().getDrawable(menuIcons[7]);
-        echarts.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
-        echarts.setBackgroundColor(getResources().getColor(R.color.white));
+        no.setText(menuNames[10]);
+        top = getResources().getDrawable(menuIcons[10]);
+        no.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
+        no.setBackgroundColor(getResources().getColor(R.color.white));
 
         sale1.setText(menuNames[6]);
         top = getResources().getDrawable(menuIcons[6]);
@@ -309,6 +332,30 @@ public class MainFragment extends Fragment{
         buzhidao.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
         buzhidao.setBackgroundColor(getResources().getColor(R.color.white));
 
+        fifthview = new TextView(getActivity());
+        fifthview.setText("图表");
+        fifthview.setTextSize(13);
+
+        echarts.setText(menuNames[7]);
+        top = getResources().getDrawable(menuIcons[7]);
+        echarts.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
+        echarts.setBackgroundColor(getResources().getColor(R.color.white));
+
+        zhuzhuang.setText(menuNames[12]);
+        top = getResources().getDrawable(menuIcons[12]);
+        zhuzhuang.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
+        zhuzhuang.setBackgroundColor(getResources().getColor(R.color.white));
+
+        pie.setText(menuNames[13]);
+        top = getResources().getDrawable(menuIcons[13]);
+        pie.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
+        pie.setBackgroundColor(getResources().getColor(R.color.white));
+
+        xxoo.setText(menuNames[13]);
+        top = getResources().getDrawable(menuIcons[13]);
+        xxoo.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
+        xxoo.setBackgroundColor(getResources().getColor(R.color.white));
+
 
         //root控件
         LinearLayout.LayoutParams relativeLayout_parent_params
@@ -322,7 +369,7 @@ public class MainFragment extends Fragment{
                 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         sectitle.setMargins(5, 0, 0, 0);
 
-        //四个按钮
+        //第一行四个按钮
         LinearLayout.LayoutParams button_parent_params
                 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         button_parent_params.weight = 1.0f;
@@ -333,7 +380,7 @@ public class MainFragment extends Fragment{
                 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         thirdtitle.setMargins(5, 0, 0, 0);
 
-        //四个按钮
+        //第二行四个按钮
         LinearLayout.LayoutParams button_second
                 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         button_second.weight = 1.0f;
@@ -343,10 +390,16 @@ public class MainFragment extends Fragment{
                 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         fourtitle.setMargins(5, 0, 0, 0);
 
-        //目前一个按钮
+        //第三行四个按钮
         LinearLayout.LayoutParams button_puchasing
                 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         button_puchasing.weight =1.0f;
+
+        //图表标题
+        LinearLayout.LayoutParams fivetitle
+                = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        fourtitle.setMargins(5, 0, 0, 0);
+
 
 
         titleLayout.addView(titleview, title);
@@ -359,12 +412,18 @@ public class MainFragment extends Fragment{
         SecondbutrLayout.addView(check, button_second);
         SecondbutrLayout.addView(allocation, button_second);
         SecondbutrLayout.addView(sale1, button_second);
-        SecondbutrLayout.addView(echarts, button_second);
+        SecondbutrLayout.addView(no, button_second);
         purchaseLayout.addView(fourthview, fourtitle);
         shouhuoLayout.addView(purchasing, button_puchasing);
         shouhuoLayout.addView(dye_works, button_puchasing);
         shouhuoLayout.addView(houzhengli, button_puchasing);
         shouhuoLayout.addView(buzhidao, button_puchasing);
+        echartsLayout.addView(fifthview,fivetitle);
+        EarLayout.addView(echarts, button_second);
+        EarLayout.addView(zhuzhuang, button_second);
+        EarLayout.addView(pie, button_second);
+        EarLayout.addView(xxoo, button_second);
+
 
         rootLayout.addView(titleLayout);
         rootLayout.addView(secondLayout);
@@ -373,6 +432,8 @@ public class MainFragment extends Fragment{
         rootLayout.addView(SecondbutrLayout);
         rootLayout.addView(purchaseLayout);
         rootLayout.addView(shouhuoLayout);
+        rootLayout.addView(echartsLayout);
+        rootLayout.addView(EarLayout);
 
 
         //开启订单
@@ -453,6 +514,15 @@ public class MainFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), DyeingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //开启后整理收货
+        houzhengli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AfterFinishActivity.class);
                 startActivity(intent);
             }
         });

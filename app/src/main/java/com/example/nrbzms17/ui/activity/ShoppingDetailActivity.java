@@ -130,6 +130,9 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
     @BindView(R.id.set_back)
     Button set_back;
 
+    @BindView(R.id.txtvActionbarTitle)
+    TextView txtvActionbarTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,6 +148,7 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
                 finish();
             }
         });
+        txtvActionbarTitle.setText("采购收货");
     }
 
     public void initview() {

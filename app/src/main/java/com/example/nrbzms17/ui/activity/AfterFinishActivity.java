@@ -18,9 +18,8 @@ import com.example.nrbzms17.data.listener.OnNetRequest;
 import com.example.nrbzms17.data.model.DyingBean;
 import com.example.nrbzms17.data.model.DyingBeanResponse;
 import com.example.nrbzms17.data.model.PurchasingBean;
-import com.example.nrbzms17.data.model.PurchasingBeanResponse;
+import com.example.nrbzms17.ui.adapter.AfterFinishAdapter;
 import com.example.nrbzms17.ui.adapter.DyingAdapter;
-import com.example.nrbzms17.ui.widget.ClearEditText;
 import com.jingchen.pulltorefresh.PullToRefreshLayout;
 
 import java.util.ArrayList;
@@ -29,22 +28,12 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DyeingActivity extends AppCompatActivity {
+public class AfterFinishActivity extends AppCompatActivity {
+
 
     PullToRefreshLayout pullToRefreshLayout;
-    DyingAdapter dyingAdapter;
-
-    @BindView(R.id.etCode)
-    EditText etCode;
-
-    @BindView(R.id.choose)
-    TextView choose;
-
-    @BindView(R.id.cancel)
-    TextView cancel;
-
-    @BindView(R.id.kongbai)
-    TextView kongbai;
+    AfterFinishAdapter afterfinishAdapter;
+    private List<DyingBean.Data> DyingBeanList = new ArrayList<>();
 
     @BindView(R.id.txtvActionbarTitle)
     TextView txtvActionbarTitle;
@@ -52,49 +41,33 @@ public class DyeingActivity extends AppCompatActivity {
     @BindView(R.id.back_menu)
     TextView back_menu;
 
-    private List<DyingBean.Data> DyingBeanList = new ArrayList<>();
+    @BindView(R.id.etCode)
+    EditText etCode;
+
 
     String search = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dyeing);
+        setContentView(R.layout.activity_after_finish);
         ButterKnife.bind(this);
         initview();
-        getDyeing();
-        choose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                choose.setVisibility(View.GONE);
-                kongbai.setVisibility(View.GONE);
-                etCode.setVisibility(View.VISIBLE);
-                cancel.setVisibility(View.VISIBLE);
-            }
-        });
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                choose.setVisibility(View.VISIBLE);
-                kongbai.setVisibility(View.VISIBLE);
-                etCode.setVisibility(View.GONE);
-                cancel.setVisibility(View.GONE);
-            }
-        });
         back_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+        getAfterFinish();
     }
     public void initview(){
         pullToRefreshLayout = findViewById(R.id.pullToRefreshLayout);
-        dyingAdapter = new DyingAdapter();
+        afterfinishAdapter = new AfterFinishAdapter();
         txtvActionbarTitle.setText("收货列表");
 
         // 设置列表适配器
         ListView listView = (ListView) pullToRefreshLayout.getPullableView();
-        listView.setAdapter(dyingAdapter);
+        listView.setAdapter(afterfinishAdapter);
         pullToRefreshLayout.setPullUpEnable(false);
 
 
@@ -102,7 +75,7 @@ public class DyeingActivity extends AppCompatActivity {
         pullToRefreshLayout.setOnPullListener(new PullToRefreshLayout.OnPullListener() {
             @Override
             public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
-                getDyeing();
+                getAfterFinish();
             }
             @Override
             public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
@@ -122,7 +95,7 @@ public class DyeingActivity extends AppCompatActivity {
             }
             @Override
             public void afterTextChanged(Editable s) {
-                getDyeing();
+                getAfterFinish();
             }
         });
 
@@ -130,9 +103,9 @@ public class DyeingActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                DyingBean.Data processOrder = (DyingBean.Data) dyingAdapter.getItem(position);
+                DyingBean.Data processOrder = (DyingBean.Data) afterfinishAdapter.getItem(position);
 
-                Intent intent = new Intent(DyeingActivity.this, DyeingDetailActivity.class);
+                Intent intent = new Intent(AfterFinishActivity.this, AfterFinishDetailActivity.class);
                 Bundle bundle = new Bundle();
 
                 bundle.putSerializable(DyingBean.Data.class.getSimpleName(), processOrder);
@@ -143,18 +116,8 @@ public class DyeingActivity extends AppCompatActivity {
         });
     }
 
-    //获取订单列表
-    public void getDyeing() {
-
-//        String date ="";
-//        if(dateBean !=null){
-//            date= dateBean.id;
-//        }
-//        String date ="";
-//        if(dateBean !=null){
-//            date= dateBean.id;
-//        }
-
+    //获取后整理收货列表
+    public void getAfterFinish(){
         Api api = new Api(this, new OnNetRequest(this, true, "正在加载.....") {
             @Override
             public void onSuccess(String msg) {
@@ -167,19 +130,19 @@ public class DyeingActivity extends AppCompatActivity {
                 } else {
                     DyingBeanList = new ArrayList<>();
                 }
-                dyingAdapter.refresh(DyingBeanList);
+                afterfinishAdapter.refresh(DyingBeanList);
                 pullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);
             }
 
             @Override
             public void onFail() {
 
-                dyingAdapter.refresh(DyingBeanList);
+                afterfinishAdapter.refresh(DyingBeanList);
 
                 pullToRefreshLayout.refreshFinish(PullToRefreshLayout.FAIL);
             }
         });
 
-        api.getDyeing(search);
+        api.getAfterFinish(search);
     }
 }

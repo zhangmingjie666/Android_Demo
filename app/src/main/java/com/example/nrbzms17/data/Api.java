@@ -196,7 +196,7 @@ public class Api {
      */
     public final static String GET_INSPECTLIST = "inspect_info/list";
 
-    public void getInspectList(String status, String customcode,String date) {
+    public void getInspectList(String status, String customcode, String date) {
         Map<String, String> params = new HashMap<>();
         params.put("status", status);
         params.put("customcode", customcode);
@@ -280,7 +280,7 @@ public class Api {
      */
     public final static String GET_SALELIST = "salesend_info/list";
 
-    public void getSaleInfoList(String status,String billcode,String date) {
+    public void getSaleInfoList(String status, String billcode, String date) {
         Map<String, String> params = new HashMap<>();
         params.put("status", status);
         params.put("billcode", billcode);
@@ -291,7 +291,7 @@ public class Api {
     /**
      * 获取盘点信息
      */
-    public final static String GET_CHECKLIST= "check/list";
+    public final static String GET_CHECKLIST = "check/list";
 
     public void getCheckList(String barcode) {
         Map<String, String> params = new HashMap<>();
@@ -302,15 +302,15 @@ public class Api {
     /**
      * 仓库盘点
      */
-    public final static String POST_ADD_CHECK= "check/add";
+    public final static String POST_ADD_CHECK = "check/add";
 
-    public void addCheck(String employee_,String barcode,String volume,String quantity,String remark) {
+    public void addCheck(String employee_, String barcode, String volume, String quantity, String remark) {
         Map<String, String> params = new HashMap<>();
-        params.put("barcode",barcode);
-        params.put("volume",volume);
-        params.put("quantity",quantity);
-        params.put("remark",remark);
-        params.put("employee_",employee_);
+        params.put("barcode", barcode);
+        params.put("volume", volume);
+        params.put("quantity", quantity);
+        params.put("remark", remark);
+        params.put("employee_", employee_);
         mClient.post(POST_ADD_CHECK, params, callback);
     }
 
@@ -318,7 +318,7 @@ public class Api {
     /**
      * 获取调拨信息
      */
-    public final static String GET_ALLOCATIONLIST= "allocate/list";
+    public final static String GET_ALLOCATIONLIST = "allocate/list";
 
     public void getAlloList(String barcode) {
         Map<String, String> params = new HashMap<>();
@@ -330,12 +330,12 @@ public class Api {
     /**
      * 仓库调拨
      */
-    public final static String POST_ADD_ALLOCATION= "allocate/edit";
+    public final static String POST_ADD_ALLOCATION = "allocate/edit";
 
-    public void addAllocation(String id,String depot_) {
+    public void addAllocation(String id, String depot_) {
         Map<String, String> params = new HashMap<>();
-        params.put("id",id);
-        params.put("depot_",depot_);
+        params.put("id", id);
+        params.put("depot_", depot_);
         mClient.post(POST_ADD_ALLOCATION, params, callback);
     }
 
@@ -379,7 +379,7 @@ public class Api {
      */
     public final static String GET_PURCHASEING = "purchase/porder";
 
-    public void getPurchasing(String customcode,String date) {
+    public void getPurchasing(String customcode, String date) {
         Map<String, String> params = new HashMap<>();
         params.put("code", customcode);
         params.put("select_date", date);
@@ -463,7 +463,7 @@ public class Api {
      */
     public final static String GET_FACTORY = "factory/list";
 
-    public void getFactoryList(String type,String search) {
+    public void getFactoryList(String type, String search) {
         Map<String, String> params = new HashMap<>();
         params.put("categoryid", type);
         params.put("company", search);
@@ -471,9 +471,10 @@ public class Api {
     }
 
     /**
-     * 采购收货列表
+     * 染厂收货列表
      */
     public final static String GET_DYINGBYID = "dyeing/list";
+
     public void getDyeing(String code) {
         Map<String, String> params = new HashMap<>();
         params.put("customcode", code);
@@ -508,6 +509,7 @@ public class Api {
         params.put("color", search);
         mClient.get(GET_COLOR, params, callback);
     }
+
     /**
      * 染厂新增
      */
@@ -558,6 +560,65 @@ public class Api {
         mClient.post(POST_DYEINGBYID, params, callback);
     }
 
+    /**
+     * 后整理收货列表
+     */
+    public final static String GET_AFTERFINISHBYID = "AfterFinish/list";
 
+    public void getAfterFinish(String code) {
+        Map<String, String> params = new HashMap<>();
+        params.put("customcode", code);
+        mClient.get(GET_AFTERFINISHBYID, params, callback);
+    }
+
+    /**
+     * 后整理新增
+     */
+    public final static String POST_AFTERFINISHBYID = "afterfinish/add";
+
+    public void addAfterFinishDetail(String id,
+                                String type,
+                                String autocolor,
+                                String inspect_,
+                                String receive,
+                                String color,
+                                String craft,
+                                String current_craft,
+                                String volume,
+                                String quantity,
+                                String lot,
+                                String factory,
+                                String next_craft,
+                                String depot,
+                                String label,
+                                String material_name,
+                                String color_name,
+                                String remark,
+                                String packaging
+
+    ) {
+        Map<String, String> params = new HashMap<>();
+        params.put("id", id);
+        params.put("type", type);
+        params.put("autocolor", autocolor);
+        params.put("inspect_", inspect_);
+        params.put("receiver", receive);
+        params.put("color", color);
+        params.put("craft", craft);
+        params.put("current_craft", current_craft);
+        params.put("volume", volume);
+        params.put("quantity", quantity);
+        params.put("lot", lot);
+        params.put("factory", factory);
+        params.put("next_craft", next_craft);
+        params.put("depot", depot);
+        params.put("label", label);
+        params.put("material_name", material_name);
+        params.put("color_name", color_name);
+        params.put("remark", remark);
+        params.put("packaging", packaging);
+
+        mClient.post(POST_AFTERFINISHBYID, params, callback);
+    }
 
 }

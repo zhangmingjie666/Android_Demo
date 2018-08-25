@@ -10,68 +10,43 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/content_bg"
+        android:layout_height="40dp"
+        android:background="#DCDCDC"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="1dp"
-        android:weightSum="1">
+        android:padding="1dp">
 
         <EditText
             android:layout_width="0dp"
             android:layout_height="0dp" />
 
+
         <com.example.nrbzms17.ui.widget.ClearEditText
             android:id="@+id/etCode"
             android:layout_width="0dp"
             android:layout_height="35dp"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:background="@drawable/search_edittext_bg"
-            android:drawableLeft="@drawable/sousuo"
             android:gravity="center_vertical"
             android:hint="订单号"
+            android:drawableLeft="@drawable/sousuo"
             android:maxLength="20"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:paddingRight="5dp"
             android:textSize="15sp" />
 
-        <Button
-            android:id="@+id/etSearch"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="0dp"
             android:layout_height="35dp"
-            android:layout_marginLeft="8dp"
-            android:background="@drawable/button_bg_box"
+            android:layout_weight="1"
             android:gravity="center"
-            android:text="查询"
-            android:textColor="@color/black"
-            android:textSize="15sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/content_bg"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="1dp"
-        android:weightSum="2">
-
-        <Spinner
-            android:id="@+id/order_date"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="30dp"
-            style="@style/spinner_style"
-            android:background="#F8F8FF"
-            android:scrollbarSize="15dp"
-            ></Spinner>
-
-        <Spinner
-            android:id="@+id/order_status"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="30dp"
-            android:background="#F8F8FF"
-            android:scrollbarSize="15dp"></Spinner>
+            android:text="取消"
+            android:visibility="gone"
+            android:textColor="#1E90FF"
+            android:textSize="15sp"
+            />
     </LinearLayout>
 
     <com.jingchen.pulltorefresh.PullToRefreshLayout

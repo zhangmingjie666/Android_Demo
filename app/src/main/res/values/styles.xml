@@ -33,4 +33,9 @@
         <item name="android:windowEnterAnimation">@anim/actionsheet_dialog_in</item>
         <item name="android:windowExitAnimation">@anim/actionsheet_dialog_out</item>
     </style>
+
+    //下拉箭头
+    <style name="spinner_style" parent="Base.Widget.AppCompat.Spinner">
+        <item name="android:background">@drawable/spinner_raow_selector</item>
+    </style>
 </resources>
